@@ -1,16 +1,16 @@
 import React, { Component } from "react"
 import PageTemplate from "components/page-template"
 import CardList from "components/card-list"
-import "./home.css"
+import "./overview.css"
 
-class HomePage extends Component {
+class Overview extends Component {
 	render() {
 		return (
-			<PageTemplate pageHead="Home Page">
+			<PageTemplate pageHead="Overview">
 				<CardList />
 			</PageTemplate>
 		)
 	}
 }
 
-export default HomePage
+export default Overview

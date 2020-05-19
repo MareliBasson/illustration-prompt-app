@@ -1,0 +1,194 @@
+{
+	"prompts": [
+		{
+			"description": "Draw a dog",
+			"type": "subject",
+			"imageUrl": ""
+		},
+		{
+			"description": "Draw a person",
+			"type": "subject",
+			"imageUrl": ""
+		},
+		{
+			"description": "Draw an elephant",
+			"type": "subject",
+			"imageUrl": ""
+		},
+		{
+			"description": "Draw a bird",
+			"type": "subject",
+			"imageUrl": ""
+		},
+		{
+			"description": "Draw a cat",
+			"type": "subject",
+			"imageUrl": ""
+		},
+		{
+			"description": "add plants",
+			"type": "details",
+			"imageUrl": ""
+		},
+		{
+			"description": "add florals",
+			"type": "details",
+			"imageUrl": ""
+		},
+		{
+			"description": "add organic shapes",
+			"type": "details",
+			"imageUrl": ""
+		},
+		{
+			"description": "add dots",
+			"type": "details",
+			"imageUrl": ""
+		},
+		{
+			"description": "add geometrics",
+			"type": "details",
+			"imageUrl": ""
+		},
+		{
+			"description": "add crazy hair",
+			"type": "weird",
+			"imageUrl": ""
+		},
+		{
+			"description": "add a third eye",
+			"type": "weird",
+			"imageUrl": ""
+		},
+		{
+			"description": "add wings",
+			"type": "weird",
+			"imageUrl": ""
+		},
+		{
+			"description": "add lots of freckles",
+			"type": "weird",
+			"imageUrl": ""
+		},
+		{
+			"description": "make the legs long",
+			"type": "weird",
+			"imageUrl": ""
+		},
+		{
+			"description": "sad",
+			"type": "feeling",
+			"imageUrl": ""
+		},
+		{
+			"description": "dubious",
+			"type": "feeling",
+			"imageUrl": ""
+		},
+		{
+			"description": "annoyed",
+			"type": "feeling",
+			"imageUrl": ""
+		},
+		{
+			"description": "happy",
+			"type": "feeling",
+			"imageUrl": ""
+		},
+		{
+			"description": "dreamy",
+			"type": "feeling",
+			"imageUrl": ""
+		},
+		{
+			"description": "add boots",
+			"type": "accessory",
+			"imageUrl": ""
+		},
+		{
+			"description": "add bow",
+			"type": "accessory",
+			"imageUrl": ""
+		},
+		{
+			"description": "add spectacles",
+			"type": "accessory",
+			"imageUrl": ""
+		},
+		{
+			"description": "add necklace",
+			"type": "accessory",
+			"imageUrl": ""
+		},
+		{
+			"description": "add a hat",
+			"type": "accessory",
+			"imageUrl": ""
+		},
+		{
+			"description": "add fishnets",
+			"type": "wild",
+			"imageUrl": ""
+		},
+		{
+			"description": "add tattoos",
+			"type": "wild",
+			"imageUrl": ""
+		},
+		{
+			"description": "make it sexy",
+			"type": "wild",
+			"imageUrl": ""
+		},
+		{
+			"description": "add nipple tassles",
+			"type": "wild",
+			"imageUrl": ""
+		},
+		{
+			"description": "add piercings",
+			"type": "wild",
+			"imageUrl": ""
+		},
+		{
+			"description": "Play with scale",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "Start with a random shape",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "Swop things around",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "Add patterns",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "Use an unusual colour",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "Add something unexpected",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "Create hybrids",
+			"type": "style",
+			"imageUrl": ""
+		},
+		{
+			"description": "",
+			"type": "",
+			"imageUrl": ""
+		}
+	]
+}
