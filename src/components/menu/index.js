@@ -10,10 +10,7 @@ class Menu extends Component {
 					Home
 				</NavLink>
 				<NavLink activeClassName="active" to="/overview">
-					Overview
-				</NavLink>
-				<NavLink activeClassName="active" to="/page2">
-					Page 2
+					All Prompts
 				</NavLink>
 			</div>
 		)

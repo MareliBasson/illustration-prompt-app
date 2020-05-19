@@ -11,10 +11,10 @@ class PageTemplate extends Component {
 
 		return (
 			<div className="page">
-				<Header />
+				<Header heading={pageHead} />
 				<div className="content">
 					<div className="container">
-						<h1>{pageHead}</h1>
+						{/* <h1>{pageHead}</h1> */}
 						{children}
 					</div>
 				</div>

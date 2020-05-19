@@ -1,13 +1,13 @@
 import React, { Component } from "react"
 import PageTemplate from "components/page-template"
-import CardList from "components/card-list"
+import AllPrompts from "components/all-prompts"
 import "./overview.css"
 
 class Overview extends Component {
 	render() {
 		return (
-			<PageTemplate pageHead="Overview">
-				<CardList />
+			<PageTemplate pageHead="All Prompts">
+				<AllPrompts />
 			</PageTemplate>
 		)
 	}
