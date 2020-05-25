@@ -16,28 +16,34 @@ class PromptSelector extends Component {
 		this.clear = this.clear.bind(this)
 	}
 
-	componentDidUpdate() {
-		// console.log(this.state.selected)
-	}
-
 	componentDidMount() {
 		const db = firebase.firestore()
+
+		db.collection("types").onSnapshot((snapshot) => {
+			const typesData = []
+			snapshot.forEach((doc) => typesData.push({ ...doc.data(), id: doc.id }))
+
+			this.setState({
+				typesList: typesData,
+			})
+		})
 
 		db.collection("prompts").onSnapshot((snapshot) => {
 			const promptsData = []
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
 
 			const typeList = []
-			_.uniqBy(promptsData, "type").forEach((type) => {
-				if (type.type !== "") {
-					typeList.push(type.type + "List")
+			this.state.typesList.forEach((type) => {
+				if (type.name !== "") {
+					typeList.push(type.name)
 				}
 			})
 
-			const typeObj = {}
-			typeList.forEach((list) => (typeObj[list] = []))
+			console.log(typeList)
 
-			console.log(typeObj)
+			const typeObj = {}
+
+			typeList.forEach((type) => (typeObj[type] = _.filter(promptsData, { type: type })))
 
 			this.setState({
 				promptList: promptsData,
@@ -47,8 +53,14 @@ class PromptSelector extends Component {
 	}
 
 	onSelect(e) {
+		const selectedValue = e.target.value
+		const randomNr = Math.floor(Math.random() * this.state[selectedValue].length)
+		const selectionResult = this.state[selectedValue][randomNr]
+		const updateSelectedList = this.state[selectedValue].filter((val, index) => index !== randomNr)
+
 		this.setState({
-			selection: this.state.selection.concat(e.target.value),
+			selection: this.state.selection.concat(selectionResult),
+			[selectedValue]: updateSelectedList,
 		})
 	}
 
@@ -59,28 +71,31 @@ class PromptSelector extends Component {
 	}
 
 	render() {
-		const { selection } = this.state
+		const { selection, typesList } = this.state
 
 		console.log(this.state)
 
 		return (
 			<div className="prompt-selector">
 				<select name="" id="" onChange={this.onSelect}>
-					<option value="subject">Choose a subject</option>
-					<option value="accessory">Add an accessory</option>
-					<option value="details">Add some details</option>
-					<option value="feeling">What's the feeling?</option>
-					<option value="wild">Wild card</option>
-					<option value="weird">Make it weird</option>
-					<option value="style">Choose the format</option>
+					{typesList &&
+						typesList.map((type) => (
+							<option key={type.name} value={type.name}>
+								{type.title}
+							</option>
+						))}
 				</select>
+
 				<br />
+
 				<button onClick={this.clear}>Clear Selection</button>
+
 				<br />
+
 				<div>
 					<h3>Selection</h3>
 					{selection.map((prompt, index) => (
-						<div key={`prompt-${index}`}>{prompt}</div>
+						<div key={`prompt-${index}`}>{prompt.description}</div>
 					))}
 				</div>
 			</div>
