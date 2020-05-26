@@ -17,6 +17,8 @@ class PromptSelector extends Component {
 		this.onSelect = this.onSelect.bind(this)
 		this.clear = this.clear.bind(this)
 		this.getListStatus = this.getListStatus.bind(this)
+		this.setLists = this.setLists.bind(this)
+		this.removeCard = this.removeCard.bind(this)
 	}
 
 	componentDidMount() {
@@ -35,21 +37,30 @@ class PromptSelector extends Component {
 			const promptsData = []
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
 
-			const typeList = []
-			this.state.types.forEach((type) => {
-				if (type.name !== "") {
-					typeList.push(type.name)
+			this.setState(
+				{
+					allPrompts: promptsData,
+				},
+				() => {
+					this.setLists()
 				}
-			})
+			)
+		})
+	}
 
-			const typeObj = {}
+	setLists() {
+		const typeList = []
+		this.state.types.forEach((type) => {
+			if (type.name !== "") {
+				typeList.push(type.name)
+			}
+		})
 
-			typeList.forEach((type) => (typeObj[type] = _.filter(promptsData, { type: type })))
+		const typeObj = {}
+		typeList.forEach((type) => (typeObj[type] = _.filter(this.state.allPrompts, { type: type })))
 
-			this.setState({
-				promptList: promptsData,
-				...typeObj,
-			})
+		this.setState({
+			...typeObj,
 		})
 	}
 
@@ -69,10 +80,36 @@ class PromptSelector extends Component {
 		this.setState({
 			selection: [],
 		})
+
+		this.setLists()
 	}
 
 	getListStatus() {
-		return { weird: this.state.weird ? this.state.weird.length : 0 }
+		const statusObj = {}
+
+		if (this.state.types) {
+			this.state.types.forEach((type) => {
+				if (this.state[type.name]) {
+					statusObj[type.name] = this.state[type.name].length
+				}
+			})
+		}
+
+		console.log(statusObj)
+
+		return statusObj
+	}
+
+	removeCard(prompt) {
+		console.log("remove card triggered")
+		console.log(prompt)
+
+		this.setState({
+			[prompt.type]: this.state[prompt.type].concat(prompt),
+			selection: this.state.selection.filter((val) => {
+				return val.id !== prompt.id
+			}),
+		})
 	}
 
 	render() {
@@ -82,9 +119,10 @@ class PromptSelector extends Component {
 			<div className="prompt-selector">
 				<PromptMenu onClick={this.onSelect} types={types} listStatus={this.getListStatus()} />
 
-				<div>{selection.length > 0 && <PromptGrid selection={selection} />}</div>
+				<div>{selection.length > 0 && <PromptGrid selection={selection} removeCard={this.removeCard} />}</div>
+
 				<div onClick={this.clear} className="clear-prompts">
-					<i class="fa fa-trash"></i> <span>Clear Selection</span>
+					<i className="fa fa-trash"></i> <span>Clear Selection</span>
 				</div>
 			</div>
 		)

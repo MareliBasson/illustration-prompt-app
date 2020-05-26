@@ -9,6 +9,10 @@
 	padding: 20px 0;
 	flex: 1;
 
+	@media (max-width: 768px) {
+		padding: 20px;
+	}
+
 	h1 {
 		font-size: 20px;
 		font-weight: 300;

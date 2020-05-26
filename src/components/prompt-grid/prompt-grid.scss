@@ -25,6 +25,7 @@
 	}
 
 	.card {
+		position: relative;
 		background-color: white;
 		color: $colorPrimary;
 		text-align: center;
@@ -36,6 +37,18 @@
 		align-items: center;
 
 		@include typeColors(border-color);
+
+		.remove-card {
+			position: absolute;
+			top: 8px;
+			right: 15px;
+			font-size: 26px;
+			cursor: pointer;
+
+			&:hover {
+				color: $colorRed;
+			}
+		}
 
 		.title {
 			font-size: 1.5rem;

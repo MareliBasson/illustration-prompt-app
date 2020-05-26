@@ -11,8 +11,6 @@ class PromptMenu extends Component {
 	render() {
 		const { onClick, types, listStatus } = this.props
 
-		console.log(listStatus)
-
 		return (
 			<div className="prompt-menu">
 				{types &&
@@ -22,7 +20,7 @@ class PromptMenu extends Component {
 								key={type.name}
 								value={type.name}
 								onClick={onClick}
-								disabled={this.state[type.name] && this.state[type.name].length === 0}
+								disabled={listStatus && listStatus[type.name] === 0 ? true : false}
 								className={type.name}
 							>
 								{type.title}

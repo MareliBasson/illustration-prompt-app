@@ -36,6 +36,16 @@
 			background: white;
 			@include typeColors(color);
 		}
+
+		&:disabled {
+			background-color: $colorGrey;
+			opacity: 0.6;
+
+			&:hover {
+				transform: scale(1) translate3d(0, 0, 0);
+				color: white;
+			}
+		}
 	}
 }
 

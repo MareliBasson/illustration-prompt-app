@@ -7,10 +7,10 @@ class Menu extends Component {
 		return (
 			<div className="menu">
 				<NavLink activeClassName="active" exact to="/">
-					Home
+					<i className="fa fa-home"></i>
 				</NavLink>
 				<NavLink activeClassName="active" to="/overview">
-					All Prompts
+					<i className="fa fa-cog"></i>
 				</NavLink>
 			</div>
 		)
