@@ -1,0 +1,45 @@
+@import "styles/_variables.scss";
+
+.prompt-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-auto-rows: 1fr;
+	column-gap: 10px;
+	row-gap: 15px;
+
+	&::before {
+		content: "";
+		width: 0;
+		padding-bottom: 100%;
+		grid-row: 1 / 1;
+		grid-column: 1 / 1;
+	}
+
+	& > *:first-child {
+		grid-row: 1 / 1;
+		grid-column: 1 / 1;
+	}
+
+	.card {
+		background-color: white;
+		color: $colorPrimary;
+		text-align: center;
+		border: 4px solid lighten($colorPrimary, 30%);
+		border-radius: 5px;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.title {
+			font-size: 1.5rem;
+			text-transform: lowercase;
+		}
+		.subtitle {
+			font-size: 1rem;
+			text-transform: uppercase;
+			font-style: italic;
+			margin-top: 20px;
+		}
+	}
+}

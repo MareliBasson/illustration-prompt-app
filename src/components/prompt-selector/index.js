@@ -1,6 +1,8 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
+import PromptMenu from "components/prompt-menu"
+import PromptGrid from "components/prompt-grid"
 import "./prompt-selector.css"
 
 class PromptSelector extends Component {
@@ -21,7 +23,8 @@ class PromptSelector extends Component {
 
 		db.collection("types").onSnapshot((snapshot) => {
 			const typesData = []
-			snapshot.forEach((doc) => typesData.push({ ...doc.data(), id: doc.id }))
+			// snapshot.forEach((doc) => typesData.push({ ...doc.data(), id: doc.id }))
+			snapshot.forEach((doc) => typesData.push(doc.data()))
 
 			this.setState({
 				typesList: typesData,
@@ -38,8 +41,6 @@ class PromptSelector extends Component {
 					typeList.push(type.name)
 				}
 			})
-
-			console.log(typeList)
 
 			const typeObj = {}
 
@@ -73,30 +74,20 @@ class PromptSelector extends Component {
 	render() {
 		const { selection, typesList } = this.state
 
-		console.log(this.state)
-
 		return (
 			<div className="prompt-selector">
-				<select name="" id="" onChange={this.onSelect}>
-					{typesList &&
-						typesList.map((type) => (
-							<option key={type.name} value={type.name}>
-								{type.title}
-							</option>
-						))}
-				</select>
+				<PromptMenu onClick={this.onSelect} typesList={typesList} />
 
 				<br />
 
-				<button onClick={this.clear}>Clear Selection</button>
-
 				<br />
+				<br />
+				<hr />
 
 				<div>
-					<h3>Selection</h3>
-					{selection.map((prompt, index) => (
-						<div key={`prompt-${index}`}>{prompt.description}</div>
-					))}
+					<PromptGrid selection={selection} />
+
+					<button onClick={this.clear}>Clear Selection</button>
 				</div>
 			</div>
 		)
