@@ -7,8 +7,8 @@ class Header extends Component {
 		return (
 			<div className="header">
 				<div className="container">
-					<div className="header__container">
-						<div className="header__logo">{this.props.heading}</div>
+					<div className="header-container">
+						<div className="title">{this.props.heading}</div>
 						<Menu />
 					</div>
 				</div>

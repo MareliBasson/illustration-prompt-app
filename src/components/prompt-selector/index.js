@@ -16,6 +16,7 @@ class PromptSelector extends Component {
 
 		this.onSelect = this.onSelect.bind(this)
 		this.clear = this.clear.bind(this)
+		this.getListStatus = this.getListStatus.bind(this)
 	}
 
 	componentDidMount() {
@@ -23,11 +24,10 @@ class PromptSelector extends Component {
 
 		db.collection("types").onSnapshot((snapshot) => {
 			const typesData = []
-			// snapshot.forEach((doc) => typesData.push({ ...doc.data(), id: doc.id }))
 			snapshot.forEach((doc) => typesData.push(doc.data()))
 
 			this.setState({
-				typesList: typesData,
+				types: typesData,
 			})
 		})
 
@@ -36,7 +36,7 @@ class PromptSelector extends Component {
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
 
 			const typeList = []
-			this.state.typesList.forEach((type) => {
+			this.state.types.forEach((type) => {
 				if (type.name !== "") {
 					typeList.push(type.name)
 				}
@@ -71,23 +71,20 @@ class PromptSelector extends Component {
 		})
 	}
 
+	getListStatus() {
+		return { weird: this.state.weird ? this.state.weird.length : 0 }
+	}
+
 	render() {
-		const { selection, typesList } = this.state
+		const { selection, types } = this.state
 
 		return (
 			<div className="prompt-selector">
-				<PromptMenu onClick={this.onSelect} typesList={typesList} />
+				<PromptMenu onClick={this.onSelect} types={types} listStatus={this.getListStatus()} />
 
-				<br />
-
-				<br />
-				<br />
-				<hr />
-
-				<div>
-					<PromptGrid selection={selection} />
-
-					<button onClick={this.clear}>Clear Selection</button>
+				<div>{selection.length > 0 && <PromptGrid selection={selection} />}</div>
+				<div onClick={this.clear} className="clear-prompts">
+					<i class="fa fa-trash"></i> <span>Clear Selection</span>
 				</div>
 			</div>
 		)

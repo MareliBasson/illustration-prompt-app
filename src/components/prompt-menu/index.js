@@ -9,60 +9,36 @@ class PromptMenu extends Component {
 	}
 
 	render() {
-		const { onClick, typesList } = this.props
+		const { onClick, types, listStatus } = this.props
+
+		console.log(listStatus)
 
 		return (
 			<div className="prompt-menu">
-				{/* <select name="" id="" onChange={this.onSelect}>
-					{typesList &&
-						typesList.map((type) => {
-							return (
-								<option
-									key={type.name}
-									value={type.name}
-									disabled={this.state[type.name] && this.state[type.name].length === 0}
-								>
-									{type.title}
-								</option>
-							)
-						})}
-				</select> */}
-
-				{/* {typesList &&
-					typesList.map((type) => {
+				{types &&
+					types.map((type) => {
 						return (
 							<button
 								key={type.name}
 								value={type.name}
 								onClick={onClick}
 								disabled={this.state[type.name] && this.state[type.name].length === 0}
+								className={type.name}
 							>
 								{type.title}
 							</button>
 						)
-					})} */}
+					})}
 
-				<nav className="gooey-menu">
+				{/* Gooey Menu Test */}
+				{/* <nav className="gooey-menu">
 					<input type="checkbox" className="menu-open" name="menu-open" id="menu-open" />
 					<label className="menu-open-button" htmlFor="menu-open">
 						Prompt Me!
 					</label>
 
-					{/* <a className="menu-item">
-						<i className="fa fa-bar-chart"></i>
-					</a>
-					<a className="menu-item">
-						<i className="fa fa-plus"></i>
-					</a>
-					<a className="menu-item">
-						<i className="fa fa-heart"></i>
-					</a>
-					<a className="menu-item">
-						<i className="fa fa-envelope"></i>
-					</a> */}
-
-					{typesList &&
-						typesList.map((type) => {
+					{types &&
+						types.map((type) => {
 							return (
 								<button
 									key={type.name}
@@ -75,10 +51,9 @@ class PromptMenu extends Component {
 								</button>
 							)
 						})}
-				</nav>
-
+				</nav> */}
 				{/* <!-- filters --> */}
-				<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+				{/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 					<defs>
 						<filter id="shadowed-goo">
 							<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
@@ -100,7 +75,7 @@ class PromptMenu extends Component {
 							<feComposite in2="goo" in="SourceGraphic" result="mix" />
 						</filter>
 					</defs>
-				</svg>
+				</svg> */}
 			</div>
 		)
 	}

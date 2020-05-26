@@ -14,7 +14,7 @@ class PromptGrid extends Component {
 		return (
 			<div className="prompt-grid">
 				{selection.map((prompt, index) => (
-					<div key={`prompt-${index}`} className="card">
+					<div key={`prompt-${index}`} className={`card ${prompt.type}`}>
 						<div className="title">{prompt.description}</div>
 						<div className="subtitle">{prompt.type}</div>
 					</div>
