@@ -1,8 +1,38 @@
+@import "styles/_variables.scss";
+
 .prompt-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 20px;
+
 	.prompt {
 		margin-bottom: 10px;
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
+		display: grid;
+		grid-template-columns: 1fr 1fr 100px;
+		padding: 5px 10px;
+
+		&:hover {
+			background-color: lighten($colorIndigo, 30%);
+		}
+
+		.options {
+			text-align: right;
+
+			button {
+				border: none;
+				background: none;
+				color: white;
+				margin-left: 10px;
+
+				&:hover {
+					&.delete {
+						color: $colorRed;
+					}
+					&.update {
+						color: $colorLightGreen;
+					}
+				}
+			}
+		}
 	}
 }

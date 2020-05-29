@@ -11,10 +11,12 @@ class AllPrompts extends Component {
 			types: [],
 			allPrompts: [],
 			newPromptName: "",
+			selectedPrompt: {},
 		}
 
 		this.onCreate = this.onCreate.bind(this)
 		this.onDelete = this.onDelete.bind(this)
+		this.onUpdate = this.onUpdate.bind(this)
 	}
 
 	componentDidMount() {
@@ -39,7 +41,6 @@ class AllPrompts extends Component {
 	}
 
 	onCreate() {
-		console.log("test")
 		const db = firebase.firestore()
 		db.collection("prompts").add({ description: this.state.newPromptName })
 	}
@@ -49,39 +50,61 @@ class AllPrompts extends Component {
 		db.collection("prompts").doc(promptId).delete()
 	}
 
-	render() {
-		const { allPrompts, newPromptName, types } = this.state
+	onUpdate(prompt) {
+		this.setState({
+			selectedPrompt: prompt,
+		})
+	}
 
-		console.log(this.state)
+	render() {
+		const { allPrompts, newPromptName, types, selectedPrompt } = this.state
+
+		// console.log(this.state)
+		console.log(selectedPrompt)
 
 		return (
 			<div className="prompt-list">
-				<input
-					type="text"
-					value={newPromptName}
-					onChange={(e) => {
-						this.setState({
-							newPromptName: e.target.value,
-						})
-					}}
-				/>
-				<button onClick={this.onCreate}>Create</button>
-				<hr />
+				<div className="column left">
+					{allPrompts.map((prompt) => (
+						<div key={prompt.id} className="prompt">
+							<div className="description">{prompt.description}</div>
+							<div className="type">{prompt.type}</div>
+							<div className="options">
+								<button
+									onClick={() => {
+										this.onDelete(prompt.id)
+									}}
+									className="delete"
+								>
+									<i className="fa fa-trash"></i>
+								</button>
+								<button
+									onClick={() => {
+										this.onUpdate(prompt)
+									}}
+									className="update"
+								>
+									<i className="fa fa-pencil"></i>
+								</button>
+							</div>
+						</div>
+					))}
+				</div>
+				<div className="column right">
+					<span>Add new prompt: </span>
+					<input
+						type="text"
+						value={newPromptName}
+						onChange={(e) => {
+							this.setState({
+								newPromptName: e.target.value,
+							})
+						}}
+					/>
+					<button onClick={this.onCreate}>Create</button>
 
-				{allPrompts.map((prompt) => (
-					<div key={prompt.id} className="prompt">
-						<div className="description">{prompt.description}</div>
-						<div className="type">{prompt.type}</div>
-						<PromptUpdate prompt={prompt} types={types} />
-						<button
-							onClick={() => {
-								this.onDelete(prompt.id)
-							}}
-						>
-							Delete
-						</button>
-					</div>
-				))}
+					<PromptUpdate prompt={selectedPrompt} types={types} />
+				</div>
 			</div>
 		)
 	}

@@ -6,7 +6,7 @@ import "./overview.css"
 class Overview extends Component {
 	render() {
 		return (
-			<PageTemplate pageHead="All Prompts">
+			<PageTemplate pageHead="">
 				<AllPrompts />
 			</PageTemplate>
 		)
