@@ -29,5 +29,27 @@ body {
 	}
 }
 
-button {
+.btn {
+	background-color: $colorGreen;
+	color: white;
+	border: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	line-height: 1.3rem;
+	min-width: 80px;
+}
+
+select {
+	-webkit-appearance: none;
+	border: none;
+	border-radius: 3px;
+	padding: 5px 10px;
+	min-width: 100px;
+}
+
+input {
+	border: none;
+	background-color: white;
+	border-radius: 3px;
+	padding: 5px 10px;
 }

@@ -6,13 +6,20 @@
 	column-gap: 20px;
 
 	.prompt {
-		margin-bottom: 10px;
 		display: grid;
-		grid-template-columns: 1fr 1fr 100px;
-		padding: 5px 10px;
+		grid-template-columns: 1fr 50px 100px;
+		padding: 10px 10px;
+		cursor: pointer;
 
 		&:hover {
-			background-color: lighten($colorIndigo, 30%);
+			background-color: $colorDeepPurple;
+			.options {
+				button {
+					&.update {
+						color: $colorCyan;
+					}
+				}
+			}
 		}
 
 		.options {
@@ -28,11 +35,15 @@
 					&.delete {
 						color: $colorRed;
 					}
-					&.update {
-						color: $colorLightGreen;
-					}
 				}
 			}
 		}
+	}
+
+	.prompt-action {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		column-gap: 10px;
+		margin-bottom: 10px;
 	}
 }

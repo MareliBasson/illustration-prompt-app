@@ -2,15 +2,15 @@ import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
 
-class PromptUpdate extends Component {
+class PromptCreate extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			description: "",
-			type: "",
+			newPromptName: "",
+			newType: "",
 		}
 
-		this.onUpdate = this.onUpdate.bind(this)
+		this.onCreate = this.onCreate.bind(this)
 	}
 
 	componentDidUpdate(prevProps) {
@@ -22,29 +22,28 @@ class PromptUpdate extends Component {
 		}
 	}
 
-	onUpdate(promptId) {
-		const { description, type } = this.state
-		const { prompt } = this.props
-
+	onCreate() {
 		const db = firebase.firestore()
-		db.collection("prompts")
-			.doc(promptId)
-			.set({ ...prompt, description, type })
+		db.collection("prompts").add({ description: this.state.newPromptName, type: this.state.newType })
+		this.setState({
+			newPromptName: "",
+			newType: "",
+		})
 	}
 
 	render() {
-		const { description, type } = this.state
-		const { prompt, types } = this.props
+		const { newPromptName, newType } = this.state
+		const { types } = this.props
 
 		return (
-			<div className="prompt-action update-prompt">
-				<span>Update prompt: </span>
+			<div className="prompt-action new-prompt">
+				<span>Add prompt: </span>
 				<input
 					type="text"
-					value={description}
+					value={newPromptName}
 					onChange={(e) => {
 						this.setState({
-							description: e.target.value,
+							newPromptName: e.target.value,
 						})
 					}}
 					placeholder="Prompt Description"
@@ -54,10 +53,10 @@ class PromptUpdate extends Component {
 					id=""
 					onChange={(e) => {
 						this.setState({
-							type: e.target.value,
+							newType: e.target.value,
 						})
 					}}
-					value={type}
+					value={newType}
 				>
 					<option value="none">Select Type</option>
 					{types.map((type) => (
@@ -66,12 +65,12 @@ class PromptUpdate extends Component {
 						</option>
 					))}
 				</select>
-				<button onClick={() => this.onUpdate(prompt.id)} className="btn">
-					Update
+				<button onClick={this.onCreate} className="btn">
+					Create
 				</button>
 			</div>
 		)
 	}
 }
 
-export default PromptUpdate
+export default PromptCreate

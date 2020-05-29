@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
+import _ from "lodash"
+import PromptCreate from "./prompt-create"
 import PromptUpdate from "./prompt-update"
 import "./all-prompts.css"
 
@@ -11,12 +13,12 @@ class AllPrompts extends Component {
 			types: [],
 			allPrompts: [],
 			newPromptName: "",
+			newType: "",
 			selectedPrompt: {},
 		}
 
-		this.onCreate = this.onCreate.bind(this)
 		this.onDelete = this.onDelete.bind(this)
-		this.onUpdate = this.onUpdate.bind(this)
+		this.selectPrompt = this.selectPrompt.bind(this)
 	}
 
 	componentDidMount() {
@@ -26,7 +28,7 @@ class AllPrompts extends Component {
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
 
 			this.setState({
-				allPrompts: promptsData,
+				allPrompts: _.sortBy(promptsData, ["type", "description"]),
 			})
 		})
 
@@ -35,73 +37,59 @@ class AllPrompts extends Component {
 			snapshot.forEach((doc) => typesData.push(doc.data()))
 
 			this.setState({
-				types: typesData,
+				types: _.sortBy(typesData, "name"),
 			})
 		})
 	}
 
-	onCreate() {
-		const db = firebase.firestore()
-		db.collection("prompts").add({ description: this.state.newPromptName })
+	onDelete(e, promptId) {
+		e.stopPropagation()
+		if (window.confirm("Are you sure you want to delete this prompt?")) {
+			const db = firebase.firestore()
+			db.collection("prompts").doc(promptId).delete()
+		}
 	}
 
-	onDelete(promptId) {
-		const db = firebase.firestore()
-		db.collection("prompts").doc(promptId).delete()
-	}
-
-	onUpdate(prompt) {
+	selectPrompt(prompt) {
 		this.setState({
 			selectedPrompt: prompt,
 		})
 	}
 
 	render() {
-		const { allPrompts, newPromptName, types, selectedPrompt } = this.state
-
-		// console.log(this.state)
-		console.log(selectedPrompt)
+		const { allPrompts, types, selectedPrompt } = this.state
 
 		return (
 			<div className="prompt-list">
 				<div className="column left">
 					{allPrompts.map((prompt) => (
-						<div key={prompt.id} className="prompt">
+						<div
+							key={prompt.id}
+							className="prompt"
+							onClick={() => {
+								this.selectPrompt(prompt)
+							}}
+						>
 							<div className="description">{prompt.description}</div>
 							<div className="type">{prompt.type}</div>
 							<div className="options">
+								<button className="update">
+									<i className="fa fa-pencil"></i>
+								</button>
 								<button
-									onClick={() => {
-										this.onDelete(prompt.id)
+									onClick={(e) => {
+										this.onDelete(e, prompt.id)
 									}}
 									className="delete"
 								>
 									<i className="fa fa-trash"></i>
-								</button>
-								<button
-									onClick={() => {
-										this.onUpdate(prompt)
-									}}
-									className="update"
-								>
-									<i className="fa fa-pencil"></i>
 								</button>
 							</div>
 						</div>
 					))}
 				</div>
 				<div className="column right">
-					<span>Add new prompt: </span>
-					<input
-						type="text"
-						value={newPromptName}
-						onChange={(e) => {
-							this.setState({
-								newPromptName: e.target.value,
-							})
-						}}
-					/>
-					<button onClick={this.onCreate}>Create</button>
+					<PromptCreate types={types} />
 
 					<PromptUpdate prompt={selectedPrompt} types={types} />
 				</div>
