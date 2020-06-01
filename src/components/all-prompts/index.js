@@ -15,10 +15,14 @@ class AllPrompts extends Component {
 			newPromptName: "",
 			newType: "",
 			selectedPrompt: {},
+			showCreateForm: false,
+			showCreateBtn: true,
 		}
 
 		this.onDelete = this.onDelete.bind(this)
 		this.selectPrompt = this.selectPrompt.bind(this)
+		this.closeUpdate = this.closeUpdate.bind(this)
+		this.toggleCreateForm = this.toggleCreateForm.bind(this)
 	}
 
 	componentDidMount() {
@@ -51,13 +55,35 @@ class AllPrompts extends Component {
 	}
 
 	selectPrompt(prompt) {
+		const { selectedPrompt } = this.state
+
+		if (_.isEmpty(selectedPrompt) || !_.isEqual(prompt, selectedPrompt)) {
+			this.setState({
+				selectedPrompt: prompt,
+				showCreateBtn: false,
+				showCreateForm: false,
+			})
+		}
+	}
+
+	closeUpdate() {
 		this.setState({
-			selectedPrompt: prompt,
+			selectedPrompt: {},
+			showCreateBtn: true,
+		})
+	}
+
+	toggleCreateForm() {
+		this.setState({
+			showCreateForm: !this.state.showCreateForm,
+			showCreateBtn: !this.state.showCreateBtn,
 		})
 	}
 
 	render() {
-		const { allPrompts, types, selectedPrompt } = this.state
+		const { allPrompts, types, selectedPrompt, showCreateForm, showCreateBtn } = this.state
+
+		console.log(this.state)
 
 		return (
 			<div className="prompt-list">
@@ -65,7 +91,7 @@ class AllPrompts extends Component {
 					{allPrompts.map((prompt) => (
 						<div
 							key={prompt.id}
-							className="prompt"
+							className={`prompt ${_.isEqual(prompt, selectedPrompt) ? "selected" : ""}`}
 							onClick={() => {
 								this.selectPrompt(prompt)
 							}}
@@ -73,14 +99,11 @@ class AllPrompts extends Component {
 							<div className="description">{prompt.description}</div>
 							<div className="type">{prompt.type}</div>
 							<div className="options">
-								<button className="update">
-									<i className="fa fa-pencil"></i>
-								</button>
 								<button
 									onClick={(e) => {
 										this.onDelete(e, prompt.id)
 									}}
-									className="delete"
+									className="btn btn-icon "
 								>
 									<i className="fa fa-trash"></i>
 								</button>
@@ -89,9 +112,25 @@ class AllPrompts extends Component {
 					))}
 				</div>
 				<div className="column right">
-					<PromptCreate types={types} />
+					<div className="prompt-actions">
+						{showCreateBtn && (
+							<div
+								onClick={() => {
+									this.toggleCreateForm()
+								}}
+								className="btn-create-prompt"
+							>
+								<i className="fa fa-plus"></i>
+								<h3>Create Prompt</h3>
+							</div>
+						)}
 
-					<PromptUpdate prompt={selectedPrompt} types={types} />
+						{showCreateForm && <PromptCreate types={types} closeForm={this.toggleCreateForm} />}
+
+						{!_.isEmpty(selectedPrompt) && (
+							<PromptUpdate prompt={selectedPrompt} types={types} closeUpdate={this.closeUpdate} />
+						)}
+					</div>
 				</div>
 			</div>
 		)

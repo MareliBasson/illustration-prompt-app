@@ -9,20 +9,28 @@ class PromptUpdate extends Component {
 			description: "",
 			type: "",
 		}
+		this.updatePrompt = this.updatePrompt.bind(this)
+		this.handleUpdate = this.handleUpdate.bind(this)
+	}
 
-		this.onUpdate = this.onUpdate.bind(this)
+	componentDidMount() {
+		this.updatePrompt()
 	}
 
 	componentDidUpdate(prevProps) {
 		if (!_.isEqual(prevProps.prompt, this.props.prompt)) {
-			this.setState({
-				description: this.props.prompt.description,
-				type: this.props.prompt.type,
-			})
+			this.updatePrompt()
 		}
 	}
 
-	onUpdate(promptId) {
+	updatePrompt() {
+		this.setState({
+			description: this.props.prompt.description,
+			type: this.props.prompt.type,
+		})
+	}
+
+	handleUpdate(promptId) {
 		const { description, type } = this.state
 		const { prompt } = this.props
 
@@ -30,45 +38,65 @@ class PromptUpdate extends Component {
 		db.collection("prompts")
 			.doc(promptId)
 			.set({ ...prompt, description, type })
+
+		this.setState({
+			description: "",
+			type: "",
+		})
+
+		this.props.closeUpdate()
 	}
 
 	render() {
 		const { description, type } = this.state
-		const { prompt, types } = this.props
+		const { prompt, types, closeUpdate } = this.props
+
+		console.log(prompt)
 
 		return (
-			<div className="prompt-action update-prompt">
-				<span>Update prompt: </span>
-				<input
-					type="text"
-					value={description}
-					onChange={(e) => {
-						this.setState({
-							description: e.target.value,
-						})
-					}}
-					placeholder="Prompt Description"
-				/>
-				<select
-					name="type"
-					id=""
-					onChange={(e) => {
-						this.setState({
-							type: e.target.value,
-						})
-					}}
-					value={type}
-				>
-					<option value="none">Select Type</option>
-					{types.map((type) => (
-						<option key={type.name} value={type.name}>
-							{type.name}
-						</option>
-					))}
-				</select>
-				<button onClick={() => this.onUpdate(prompt.id)} className="btn">
-					Update
-				</button>
+			<div className="action-container">
+				<div className="action update-prompt">
+					<div className="form-heading">
+						<h3>Update selected prompt: </h3>
+						<button onClick={() => closeUpdate()} className="btn btn-icon">
+							<i className="fa fa-times"></i>
+						</button>
+					</div>
+					<div className="form-fields">
+						<input
+							type="text"
+							value={description}
+							onChange={(e) => {
+								this.setState({
+									description: e.target.value,
+								})
+							}}
+							placeholder="Description"
+						/>
+						<select
+							name="type"
+							id=""
+							onChange={(e) => {
+								this.setState({
+									type: e.target.value,
+								})
+							}}
+							value={type}
+						>
+							<option value="none">Select Type</option>
+							{types.map((type) => (
+								<option key={type.name} value={type.name}>
+									{type.name}
+								</option>
+							))}
+						</select>
+					</div>
+					<div className="form-btns">
+						<button onClick={() => this.handleUpdate(prompt.id)} className="btn btn-primary">
+							Apply
+						</button>
+					</div>
+				</div>
 			</div>
 		)
 	}

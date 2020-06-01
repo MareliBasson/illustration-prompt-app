@@ -5,45 +5,105 @@
 	grid-template-columns: 1fr 1fr;
 	column-gap: 20px;
 
+	@media (max-width: 768px) {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+
 	.prompt {
 		display: grid;
-		grid-template-columns: 1fr 50px 100px;
+		grid-template-columns: 1fr 50px 80px;
 		padding: 10px 10px;
 		cursor: pointer;
 
-		&:hover {
-			background-color: $colorDeepPurple;
-			.options {
-				button {
-					&.update {
-						color: $colorCyan;
-					}
-				}
-			}
+		.type {
+			text-align: right;
 		}
 
 		.options {
+			opacity: 0;
 			text-align: right;
 
-			button {
-				border: none;
-				background: none;
-				color: white;
-				margin-left: 10px;
+			@media (max-width: 768px) {
+				opacity: 1;
+			}
+		}
 
-				&:hover {
-					&.delete {
-						color: $colorRed;
-					}
-				}
+		&:hover,
+		&.selected {
+			background-color: rgba($colorGreen, 0.3);
+
+			.options {
+				opacity: 1;
 			}
 		}
 	}
 
-	.prompt-action {
-		display: grid;
-		grid-template-columns: repeat(4, 1fr);
-		column-gap: 10px;
-		margin-bottom: 10px;
+	.prompt-actions {
+		position: sticky;
+		top: 20px;
+		padding-top: 10px;
+
+		.btn-create-prompt {
+			border: 2px solid $colorGreen;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+			text-align: center;
+			height: 150px;
+			box-sizing: border-box;
+
+			i {
+				margin-bottom: 10px;
+				font-size: 40px;
+			}
+
+			&:hover {
+				background-color: rgba($colorGreen, 0.3);
+			}
+		}
+
+		.action-container {
+			@media (max-width: 768px) {
+				position: fixed;
+				background-color: rgba(0, 0, 0, 0.7);
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.action {
+				max-width: 450px;
+				height: 150px;
+				padding: 20px;
+				border: 2px solid $colorGreen;
+				border-radius: 5px;
+				background-color: $colorPrimary;
+
+				.form-heading {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 20px;
+				}
+
+				.form-fields {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					column-gap: 10px;
+					margin-bottom: 10px;
+				}
+
+				.form-btns {
+					text-align: right;
+				}
+			}
+		}
 	}
 }

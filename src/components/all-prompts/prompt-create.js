@@ -8,6 +8,7 @@ class PromptCreate extends Component {
 		this.state = {
 			newPromptName: "",
 			newType: "",
+			validation: "",
 		}
 
 		this.onCreate = this.onCreate.bind(this)
@@ -23,51 +24,71 @@ class PromptCreate extends Component {
 	}
 
 	onCreate() {
+		const { newPromptName, newType, validation } = this.state
 		const db = firebase.firestore()
-		db.collection("prompts").add({ description: this.state.newPromptName, type: this.state.newType })
-		this.setState({
-			newPromptName: "",
-			newType: "",
-		})
+
+		if (newPromptName && newType) {
+			db.collection("prompts").add({ description: newPromptName, type: newType })
+			this.setState({
+				newPromptName: "",
+				newType: "",
+				validation: "",
+			})
+		} else {
+			this.setState({
+				validation: "Enter a description and select a type to create a prompt",
+			})
+		}
 	}
 
 	render() {
 		const { newPromptName, newType } = this.state
-		const { types } = this.props
+		const { types, closeForm } = this.props
 
 		return (
-			<div className="prompt-action new-prompt">
-				<span>Add prompt: </span>
-				<input
-					type="text"
-					value={newPromptName}
-					onChange={(e) => {
-						this.setState({
-							newPromptName: e.target.value,
-						})
-					}}
-					placeholder="Prompt Description"
-				/>
-				<select
-					name="type"
-					id=""
-					onChange={(e) => {
-						this.setState({
-							newType: e.target.value,
-						})
-					}}
-					value={newType}
-				>
-					<option value="none">Select Type</option>
-					{types.map((type) => (
-						<option key={type.name} value={type.name}>
-							{type.name}
-						</option>
-					))}
-				</select>
-				<button onClick={this.onCreate} className="btn">
-					Create
-				</button>
+			<div className="action-container">
+				<div className="action new-prompt">
+					<div className="form-heading">
+						<h3>Create a new prompt: </h3>
+						<button onClick={() => closeForm()} className="btn btn-icon">
+							<i className="fa fa-times"></i>
+						</button>
+					</div>
+					<div className="form-fields">
+						<input
+							type="text"
+							value={newPromptName}
+							onChange={(e) => {
+								this.setState({
+									newPromptName: e.target.value,
+								})
+							}}
+							placeholder="Description"
+						/>
+						<select
+							name="type"
+							id=""
+							onChange={(e) => {
+								this.setState({
+									newType: e.target.value,
+								})
+							}}
+							value={newType}
+						>
+							<option value="none">Select Type</option>
+							{types.map((type) => (
+								<option key={type.name} value={type.name}>
+									{type.name}
+								</option>
+							))}
+						</select>
+					</div>
+					<div className="form-btns">
+						<button onClick={this.onCreate} className="btn btn-primary" disabled={!newPromptName || !newType}>
+							Create
+						</button>
+					</div>
+				</div>
 			</div>
 		)
 	}
