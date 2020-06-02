@@ -65,23 +65,25 @@ class PromptCreate extends Component {
 							}}
 							placeholder="Description"
 						/>
-						<select
-							name="type"
-							id=""
-							onChange={(e) => {
-								this.setState({
-									newType: e.target.value,
-								})
-							}}
-							value={newType}
-						>
-							<option value="none">Select Type</option>
-							{types.map((type) => (
-								<option key={type.name} value={type.name}>
-									{type.name}
-								</option>
-							))}
-						</select>
+						<div className="select-wrapper">
+							<select
+								name="type"
+								id=""
+								onChange={(e) => {
+									this.setState({
+										newType: e.target.value,
+									})
+								}}
+								value={newType}
+							>
+								<option value="none">Select Type</option>
+								{types.map((type) => (
+									<option key={type.name} value={type.name}>
+										{type.name}
+									</option>
+								))}
+							</select>
+						</div>
 					</div>
 					<div className="form-btns">
 						<button onClick={this.onCreate} className="btn btn-primary" disabled={!newPromptName || !newType}>

@@ -73,23 +73,25 @@ class PromptUpdate extends Component {
 							}}
 							placeholder="Description"
 						/>
-						<select
-							name="type"
-							id=""
-							onChange={(e) => {
-								this.setState({
-									type: e.target.value,
-								})
-							}}
-							value={type}
-						>
-							<option value="none">Select Type</option>
-							{types.map((type) => (
-								<option key={type.name} value={type.name}>
-									{type.name}
-								</option>
-							))}
-						</select>
+						<div className="select-wrappr">
+							<select
+								name="type"
+								id=""
+								onChange={(e) => {
+									this.setState({
+										type: e.target.value,
+									})
+								}}
+								value={type}
+							>
+								<option value="none">Select Type</option>
+								{types.map((type) => (
+									<option key={type.name} value={type.name}>
+										{type.name}
+									</option>
+								))}
+							</select>
+						</div>
 					</div>
 					<div className="form-btns">
 						<button onClick={() => this.handleUpdate(prompt.id)} className="btn btn-primary">

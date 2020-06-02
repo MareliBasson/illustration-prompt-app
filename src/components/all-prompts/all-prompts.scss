@@ -55,6 +55,7 @@
 			text-align: center;
 			height: 150px;
 			box-sizing: border-box;
+			margin-bottom: 20px;
 
 			i {
 				margin-bottom: 10px;
@@ -64,22 +65,24 @@
 			&:hover {
 				background-color: rgba($colorGreen, 0.3);
 			}
+
+			@media (max-width: 768px) {
+				flex-direction: row;
+				height: auto;
+				padding: 10px;
+				h3 {
+					line-height: 1.3em;
+				}
+				i {
+					margin: 0px 10px 0px 0px;
+					font-size: 20px;
+				}
+			}
 		}
 
 		.action-container {
-			@media (max-width: 768px) {
-				position: fixed;
-				background-color: rgba(0, 0, 0, 0.7);
-				top: 0;
-				left: 0;
-				width: 100vw;
-				height: 100vh;
-				display: flex;
-				justify-content: center;
-				align-items: center;
-			}
 			.action {
-				max-width: 450px;
+				width: 100%;
 				height: 150px;
 				padding: 20px;
 				border: 2px solid $colorGreen;
@@ -102,6 +105,27 @@
 
 				.form-btns {
 					text-align: right;
+				}
+			}
+
+			@media (max-width: 768px) {
+				position: fixed;
+				background-color: rgba(0, 0, 0, 0.7);
+				top: 0;
+				left: 0;
+				width: 100vw;
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				.action {
+					height: auto;
+					max-width: 80%;
+
+					.form-fields {
+						margin-bottom: 20px;
+					}
 				}
 			}
 		}

@@ -80,12 +80,37 @@ h5 {
 	}
 }
 
-select {
-	-webkit-appearance: none;
-	border: none;
+.select-wrapper {
+	background-color: #fff;
+	display: inline-block;
+	position: relative;
 	border-radius: 3px;
-	padding: 5px 10px;
-	min-width: 100px;
+	overflow: hidden;
+
+	&:after {
+		font-family: "FontAwesome";
+		content: "\f0d7";
+		display: block;
+		color: black;
+		z-index: 10;
+		position: absolute;
+		right: 10px;
+		top: 10px;
+	}
+
+	select {
+		width: 100%;
+		padding: 10px 40px 10px 10px;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		-moz-appearance: none;
+		border: none;
+		appearance: none;
+		background-color: transparent;
+		position: relative;
+		cursor: pointer;
+		z-index: 10;
+	}
 }
 
 input {
