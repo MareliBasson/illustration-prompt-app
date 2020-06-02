@@ -83,8 +83,6 @@ class AllPrompts extends Component {
 	render() {
 		const { allPrompts, types, selectedPrompt, showCreateForm, showCreateBtn } = this.state
 
-		// console.log(this.state)
-
 		return (
 			<div className="prompt-list">
 				<div className="column left">

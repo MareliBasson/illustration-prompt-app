@@ -60,18 +60,16 @@ class PromptUpdate extends Component {
 		const { prompt, closeUpdate } = this.props
 
 		return (
-			<>
-				<PromptForm
-					formName="Test"
-					closeForm={closeUpdate}
-					descriptionVal={description}
-					typeVal={type}
-					setValue={this.setValue}
-					onSubmit={() => this.handleUpdate(prompt.id)}
-					disableSubmit={false}
-					submitLabel="Apply"
-				/>
-			</>
+			<PromptForm
+				formName="Edit selected prompt"
+				closeForm={closeUpdate}
+				descriptionVal={description}
+				typeVal={type}
+				setValue={this.setValue}
+				onSubmit={() => this.handleUpdate(prompt.id)}
+				disableSubmit={false}
+				submitLabel="Apply"
+			/>
 		)
 	}
 }

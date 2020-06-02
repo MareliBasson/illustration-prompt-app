@@ -54,7 +54,7 @@ class PromptCreate extends Component {
 								}}
 								value={typeVal}
 							>
-								<option value="none">Select Type</option>
+								<option value="default">Select Type</option>
 								{types.map((type) => (
 									<option key={type.name} value={type.name}>
 										{type.name}

@@ -1,97 +1,54 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
+import PromptForm from "./prompt-form"
 
 class PromptCreate extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			newPromptName: "",
-			newType: "",
-			validation: "",
+			description: "",
+			type: "",
 		}
 
-		this.onCreate = this.onCreate.bind(this)
+		this.handleCreate = this.handleCreate.bind(this)
+		this.setValue = this.setValue.bind(this)
 	}
 
-	componentDidUpdate(prevProps) {
-		if (!_.isEqual(prevProps.prompt, this.props.prompt)) {
-			this.setState({
-				description: this.props.prompt.description,
-				type: this.props.prompt.type,
-			})
-		}
-	}
-
-	onCreate() {
-		const { newPromptName, newType } = this.state
+	handleCreate() {
+		const { description, type } = this.state
 		const db = firebase.firestore()
 
-		if (newPromptName && newType) {
-			db.collection("prompts").add({ description: newPromptName, type: newType })
+		if (description && type) {
+			db.collection("prompts").add({ description: description, type: type })
 			this.setState({
-				newPromptName: "",
-				newType: "",
-				validation: "",
-			})
-		} else {
-			this.setState({
-				validation: "Enter a description and select a type to create a prompt",
+				description: "",
+				type: "",
 			})
 		}
+	}
+
+	setValue(e, prop) {
+		this.setState({
+			[prop]: e.target.value,
+		})
 	}
 
 	render() {
-		const { newPromptName, newType } = this.state
-		const { types, closeForm } = this.props
+		const { description, type } = this.state
+		const { closeForm } = this.props
 
 		return (
-			<div className="prompt-form-container">
-				<div className="prompt-form new-prompt">
-					<div className="form-heading">
-						<h3>Create a new prompt: </h3>
-						<button onClick={() => closeForm()} className="btn btn-icon">
-							<i className="fa fa-times"></i>
-						</button>
-					</div>
-					<div className="form-fields">
-						<input
-							type="text"
-							value={newPromptName}
-							onChange={(e) => {
-								this.setState({
-									newPromptName: e.target.value,
-								})
-							}}
-							placeholder="Description"
-						/>
-						<div className="select-wrapper">
-							<select
-								name="type"
-								id=""
-								onChange={(e) => {
-									this.setState({
-										newType: e.target.value,
-									})
-								}}
-								value={newType}
-							>
-								<option value="none">Select Type</option>
-								{types.map((type) => (
-									<option key={type.name} value={type.name}>
-										{type.name}
-									</option>
-								))}
-							</select>
-						</div>
-					</div>
-					<div className="form-btns">
-						<button onClick={this.onCreate} className="btn btn-primary" disabled={!newPromptName || !newType}>
-							Create
-						</button>
-					</div>
-				</div>
-			</div>
+			<PromptForm
+				formName="Create a new prompt"
+				closeForm={closeForm}
+				descriptionVal={description}
+				typeVal={type}
+				setValue={this.setValue}
+				onSubmit={() => this.handleCreate()}
+				disableSubmit={!description || !type}
+				submitLabel="Create"
+			/>
 		)
 	}
 }
