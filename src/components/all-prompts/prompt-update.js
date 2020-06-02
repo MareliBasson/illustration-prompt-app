@@ -73,7 +73,7 @@ class PromptUpdate extends Component {
 							}}
 							placeholder="Description"
 						/>
-						<div className="select-wrappr">
+						<div className="select-wrapper">
 							<select
 								name="type"
 								id=""

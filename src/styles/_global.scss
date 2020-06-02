@@ -86,6 +86,7 @@ h5 {
 	position: relative;
 	border-radius: 3px;
 	overflow: hidden;
+	height: 38px;
 
 	&:after {
 		font-family: "FontAwesome";
@@ -118,4 +119,5 @@ input {
 	background-color: white;
 	border-radius: 3px;
 	padding: 5px 10px;
+	height: 38px;
 }

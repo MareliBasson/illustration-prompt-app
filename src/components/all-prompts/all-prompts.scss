@@ -44,6 +44,8 @@
 		top: 20px;
 		padding-top: 10px;
 
+		$actionHeight: 180px;
+
 		.btn-create-prompt {
 			border: 2px solid $colorGreen;
 			border-radius: 5px;
@@ -53,7 +55,7 @@
 			align-items: center;
 			cursor: pointer;
 			text-align: center;
-			height: 150px;
+			height: $actionHeight;
 			box-sizing: border-box;
 			margin-bottom: 20px;
 
@@ -70,6 +72,7 @@
 				flex-direction: row;
 				height: auto;
 				padding: 10px;
+
 				h3 {
 					line-height: 1.3em;
 				}
@@ -83,11 +86,14 @@
 		.action-container {
 			.action {
 				width: 100%;
-				height: 150px;
-				padding: 20px;
+				height: $actionHeight;
+				padding: 10px 20px;
 				border: 2px solid $colorGreen;
 				border-radius: 5px;
 				background-color: $colorPrimary;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
 
 				.form-heading {
 					display: flex;
@@ -100,7 +106,7 @@
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
 					column-gap: 10px;
-					margin-bottom: 10px;
+					margin-bottom: 20px;
 				}
 
 				.form-btns {
@@ -122,9 +128,18 @@
 				.action {
 					height: auto;
 					max-width: 80%;
+					padding: 20px;
+				}
+			}
 
+			@media (max-width: 560px) {
+				.action {
 					.form-fields {
-						margin-bottom: 20px;
+						grid-template-columns: 1fr;
+
+						input {
+							margin-bottom: 10px;
+						}
 					}
 				}
 			}
