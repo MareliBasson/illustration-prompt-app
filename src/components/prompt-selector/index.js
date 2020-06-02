@@ -95,14 +95,14 @@ class PromptSelector extends Component {
 			})
 		}
 
-		console.log(statusObj)
+		// console.log(statusObj)
 
 		return statusObj
 	}
 
 	removeCard(prompt) {
-		console.log("remove card triggered")
-		console.log(prompt)
+		// console.log("remove card triggered")
+		// console.log(prompt)
 
 		this.setState({
 			[prompt.type]: this.state[prompt.type].concat(prompt),

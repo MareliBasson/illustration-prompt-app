@@ -51,7 +51,7 @@ class PromptUpdate extends Component {
 		const { description, type } = this.state
 		const { prompt, types, closeUpdate } = this.props
 
-		console.log(prompt)
+		// console.log(prompt)
 
 		return (
 			<div className="action-container">
