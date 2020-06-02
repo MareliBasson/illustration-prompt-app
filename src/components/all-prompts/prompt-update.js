@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
-import PromptForm from "./prompt-form"
+import PromptForm from "components/prompt-form"
 
 class PromptUpdate extends Component {
 	constructor(props) {
@@ -46,7 +46,7 @@ class PromptUpdate extends Component {
 			type: "",
 		})
 
-		this.props.closeUpdate()
+		this.props.closeForm()
 	}
 
 	setValue(e, prop) {
@@ -57,12 +57,12 @@ class PromptUpdate extends Component {
 
 	render() {
 		const { description, type } = this.state
-		const { prompt, closeUpdate } = this.props
+		const { prompt, closeForm } = this.props
 
 		return (
 			<PromptForm
 				formName="Edit selected prompt"
-				closeForm={closeUpdate}
+				closeForm={closeForm}
 				descriptionVal={description}
 				typeVal={type}
 				setValue={this.setValue}

@@ -10,7 +10,6 @@ class AllPrompts extends Component {
 		super(props)
 
 		this.state = {
-			types: [],
 			allPrompts: [],
 			newPromptName: "",
 			newType: "",
@@ -21,8 +20,8 @@ class AllPrompts extends Component {
 
 		this.onDelete = this.onDelete.bind(this)
 		this.selectPrompt = this.selectPrompt.bind(this)
-		this.closeUpdate = this.closeUpdate.bind(this)
-		this.toggleCreateForm = this.toggleCreateForm.bind(this)
+		this.closeForm = this.closeForm.bind(this)
+		this.openCreateForm = this.openCreateForm.bind(this)
 	}
 
 	componentDidMount() {
@@ -33,15 +32,6 @@ class AllPrompts extends Component {
 
 			this.setState({
 				allPrompts: _.sortBy(promptsData, ["type", "description"]),
-			})
-		})
-
-		db.collection("types").onSnapshot((snapshot) => {
-			const typesData = []
-			snapshot.forEach((doc) => typesData.push(doc.data()))
-
-			this.setState({
-				types: _.sortBy(typesData, "name"),
 			})
 		})
 	}
@@ -66,22 +56,23 @@ class AllPrompts extends Component {
 		}
 	}
 
-	closeUpdate() {
+	closeForm() {
 		this.setState({
 			selectedPrompt: {},
+			showCreateForm: false,
 			showCreateBtn: true,
 		})
 	}
 
-	toggleCreateForm() {
+	openCreateForm() {
 		this.setState({
-			showCreateForm: !this.state.showCreateForm,
-			showCreateBtn: !this.state.showCreateBtn,
+			showCreateForm: true,
+			showCreateBtn: false,
 		})
 	}
 
 	render() {
-		const { allPrompts, types, selectedPrompt, showCreateForm, showCreateBtn } = this.state
+		const { allPrompts, selectedPrompt, showCreateForm, showCreateBtn } = this.state
 
 		return (
 			<div className="prompt-list">
@@ -114,7 +105,7 @@ class AllPrompts extends Component {
 						{showCreateBtn && (
 							<div
 								onClick={() => {
-									this.toggleCreateForm()
+									this.openCreateForm()
 								}}
 								className="btn-create-prompt"
 							>
@@ -123,11 +114,9 @@ class AllPrompts extends Component {
 							</div>
 						)}
 
-						{showCreateForm && <PromptCreate types={types} closeForm={this.toggleCreateForm} />}
+						{showCreateForm && <PromptCreate closeForm={this.closeForm} />}
 
-						{!_.isEmpty(selectedPrompt) && (
-							<PromptUpdate prompt={selectedPrompt} types={types} closeUpdate={this.closeUpdate} />
-						)}
+						{!_.isEmpty(selectedPrompt) && <PromptUpdate prompt={selectedPrompt} closeForm={this.closeForm} />}
 					</div>
 				</div>
 			</div>

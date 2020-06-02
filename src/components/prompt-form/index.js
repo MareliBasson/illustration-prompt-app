@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
+import "./prompt-form.css"
 
 class PromptCreate extends Component {
 	constructor(props) {
