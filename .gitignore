@@ -26,4 +26,3 @@ src/**/*.css
 .vscode/*
 package-lock\.json
 
-src/firebaseConfig.js

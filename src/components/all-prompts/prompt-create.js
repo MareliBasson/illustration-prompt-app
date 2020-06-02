@@ -24,7 +24,7 @@ class PromptCreate extends Component {
 	}
 
 	onCreate() {
-		const { newPromptName, newType, validation } = this.state
+		const { newPromptName, newType } = this.state
 		const db = firebase.firestore()
 
 		if (newPromptName && newType) {
