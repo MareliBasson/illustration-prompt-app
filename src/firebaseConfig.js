@@ -11,7 +11,9 @@ const config = {
 	appId: process.env.REACT_APP_FIREBASE_APPID,
 	measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID,
 }
-// Initialize Firebase
+
+console.log(config)
+
 firebase.initializeApp(config)
 
 const storage = firebase.storage()
