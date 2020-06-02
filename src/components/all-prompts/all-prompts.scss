@@ -83,8 +83,8 @@
 			}
 		}
 
-		.action-container {
-			.action {
+		.prompt-form-container {
+			.prompt-form {
 				width: 100%;
 				height: $actionHeight;
 				padding: 10px 20px;
@@ -125,7 +125,7 @@
 				justify-content: center;
 				align-items: center;
 
-				.action {
+				.prompt-form {
 					height: auto;
 					max-width: 80%;
 					padding: 20px;
@@ -133,7 +133,7 @@
 			}
 
 			@media (max-width: 560px) {
-				.action {
+				.prompt-form {
 					.form-fields {
 						grid-template-columns: 1fr;
 

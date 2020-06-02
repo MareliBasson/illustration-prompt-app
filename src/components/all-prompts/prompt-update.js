@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
+import PromptForm from "./prompt-form"
 
 class PromptUpdate extends Component {
 	constructor(props) {
@@ -11,6 +12,7 @@ class PromptUpdate extends Component {
 		}
 		this.updatePrompt = this.updatePrompt.bind(this)
 		this.handleUpdate = this.handleUpdate.bind(this)
+		this.setValue = this.setValue.bind(this)
 	}
 
 	componentDidMount() {
@@ -47,59 +49,29 @@ class PromptUpdate extends Component {
 		this.props.closeUpdate()
 	}
 
+	setValue(e, prop) {
+		this.setState({
+			[prop]: e.target.value,
+		})
+	}
+
 	render() {
 		const { description, type } = this.state
-		const { prompt, types, closeUpdate } = this.props
-
-		// console.log(prompt)
+		const { prompt, closeUpdate } = this.props
 
 		return (
-			<div className="action-container">
-				<div className="action update-prompt">
-					<div className="form-heading">
-						<h3>Update selected prompt: </h3>
-						<button onClick={() => closeUpdate()} className="btn btn-icon">
-							<i className="fa fa-times"></i>
-						</button>
-					</div>
-					<div className="form-fields">
-						<input
-							type="text"
-							value={description}
-							onChange={(e) => {
-								this.setState({
-									description: e.target.value,
-								})
-							}}
-							placeholder="Description"
-						/>
-						<div className="select-wrapper">
-							<select
-								name="type"
-								id=""
-								onChange={(e) => {
-									this.setState({
-										type: e.target.value,
-									})
-								}}
-								value={type}
-							>
-								<option value="none">Select Type</option>
-								{types.map((type) => (
-									<option key={type.name} value={type.name}>
-										{type.name}
-									</option>
-								))}
-							</select>
-						</div>
-					</div>
-					<div className="form-btns">
-						<button onClick={() => this.handleUpdate(prompt.id)} className="btn btn-primary">
-							Apply
-						</button>
-					</div>
-				</div>
-			</div>
+			<>
+				<PromptForm
+					formName="Test"
+					closeForm={closeUpdate}
+					descriptionVal={description}
+					typeVal={type}
+					setValue={this.setValue}
+					onSubmit={() => this.handleUpdate(prompt.id)}
+					disableSubmit={false}
+					submitLabel="Apply"
+				/>
+			</>
 		)
 	}
 }

@@ -46,8 +46,8 @@ class PromptCreate extends Component {
 		const { types, closeForm } = this.props
 
 		return (
-			<div className="action-container">
-				<div className="action new-prompt">
+			<div className="prompt-form-container">
+				<div className="prompt-form new-prompt">
 					<div className="form-heading">
 						<h3>Create a new prompt: </h3>
 						<button onClick={() => closeForm()} className="btn btn-icon">
