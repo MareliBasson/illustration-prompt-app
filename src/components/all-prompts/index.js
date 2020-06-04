@@ -10,7 +10,9 @@ class AllPrompts extends Component {
 		super(props)
 
 		this.state = {
-			allPrompts: [],
+			prompts: [],
+			types: [],
+			editedList: [],
 			newPromptName: "",
 			newType: "",
 			selectedPrompt: {},
@@ -31,7 +33,17 @@ class AllPrompts extends Component {
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
 
 			this.setState({
-				allPrompts: _.sortBy(promptsData, ["type", "description"]),
+				prompts: promptsData,
+				editedList: _.sortBy(promptsData, ["type", "description"]),
+			})
+		})
+
+		db.collection("types").onSnapshot((snapshot) => {
+			const typesData = []
+			snapshot.forEach((doc) => typesData.push(doc.data()))
+
+			this.setState({
+				types: _.sortBy(typesData, "name"),
 			})
 		})
 	}
@@ -71,55 +83,93 @@ class AllPrompts extends Component {
 		})
 	}
 
+	handleSort(prop) {
+		console.log("sort things")
+		this.setState({
+			editedList: _.sortBy(this.state.prompts, prop),
+		})
+	}
+
+	handleFilter(e) {
+		console.log("filter things")
+		this.setState({
+			editedList: e.target.value === "all" ? this.state.prompts : _.filter(this.state.prompts, ["type", e.target.value]),
+		})
+	}
+
 	render() {
-		const { allPrompts, selectedPrompt, showCreateForm, showCreateBtn } = this.state
+		const { editedList, types, selectedPrompt, showCreateForm, showCreateBtn } = this.state
 
 		return (
-			<div className="prompt-list">
-				<div className="column left">
-					{allPrompts.map((prompt) => (
-						<div
-							key={prompt.id}
-							className={`prompt ${_.isEqual(prompt, selectedPrompt) ? "selected" : ""}`}
-							onClick={() => {
-								this.selectPrompt(prompt)
-							}}
-						>
-							<div className="description">{prompt.description}</div>
-							<div className="type">{prompt.type}</div>
-							<div className="options">
-								<button
-									onClick={(e) => {
-										this.onDelete(e, prompt.id)
-									}}
-									className="btn btn-icon "
-								>
-									<i className="fa fa-trash"></i>
-								</button>
-							</div>
+			<>
+				<div className="prompt-filters">
+					<div className="sorting">
+						Sort by:
+						<div className="btn btn-primary" onClick={() => this.handleSort("description")}>
+							Description
 						</div>
-					))}
-				</div>
-				<div className="column right">
-					<div className="prompt-actions">
-						{showCreateBtn && (
-							<div
-								onClick={() => {
-									this.openCreateForm()
-								}}
-								className="btn-create-prompt"
-							>
-								<i className="fa fa-plus"></i>
-								<h3>Create Prompt</h3>
-							</div>
-						)}
-
-						{showCreateForm && <PromptCreate closeForm={this.closeForm} />}
-
-						{!_.isEmpty(selectedPrompt) && <PromptUpdate prompt={selectedPrompt} closeForm={this.closeForm} />}
+						<div className="btn btn-primary" onClick={() => this.handleSort(["type", "description"])}>
+							Type
+						</div>
+					</div>
+					<div className="filtering">
+						Filter by type:{" "}
+						<select name="" id="" onChange={(e) => this.handleFilter(e)}>
+							<option value="all">All Prompts</option>
+							{types.map((type) => (
+								<option key={type.name} value={type.name}>
+									{type.name}
+								</option>
+							))}
+						</select>
 					</div>
 				</div>
-			</div>
+				<div className="prompt-list">
+					<div className="column left">
+						{editedList.map((prompt) => (
+							<div
+								key={prompt.id}
+								className={`prompt ${_.isEqual(prompt, selectedPrompt) ? "selected" : ""}`}
+								onClick={() => {
+									this.selectPrompt(prompt)
+								}}
+							>
+								<div className="description">{prompt.description}</div>
+								<div className="type">{prompt.type}</div>
+								<div className="options">
+									<button
+										onClick={(e) => {
+											this.onDelete(e, prompt.id)
+										}}
+										className="btn btn-icon "
+									>
+										<i className="fa fa-trash"></i>
+									</button>
+								</div>
+							</div>
+						))}
+					</div>
+					<div className="column right">
+						<div className="prompt-actions">
+							{showCreateBtn && (
+								<div
+									onClick={() => {
+										this.openCreateForm()
+									}}
+									className="btn-create-prompt"
+								>
+									<i className="fa fa-plus"></i>
+									<h3>Create Prompt</h3>
+								</div>
+							)}
+
+							{showCreateForm && <PromptCreate closeForm={this.closeForm} />}
+
+							{!_.isEmpty(selectedPrompt) && <PromptUpdate prompt={selectedPrompt} closeForm={this.closeForm} />}
+						</div>
+					</div>
+				</div>
+			</>
 		)
 	}
 }
