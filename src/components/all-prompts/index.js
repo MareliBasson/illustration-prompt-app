@@ -86,7 +86,7 @@ class AllPrompts extends Component {
 	handleSort(prop) {
 		console.log("sort things")
 		this.setState({
-			editedList: _.sortBy(this.state.prompts, prop),
+			editedList: _.sortBy(this.state.editedList, prop),
 		})
 	}
 
