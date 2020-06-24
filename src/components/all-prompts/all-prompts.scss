@@ -2,6 +2,14 @@
 
 .prompt-filters {
 	margin-bottom: 40px;
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 20px;
+
+	.btn,
+	.select-wrapper {
+		margin-left: 10px;
+	}
 }
 
 .prompt-list {
@@ -46,7 +54,7 @@
 	.prompt-actions {
 		position: sticky;
 		top: 20px;
-		padding-top: 10px;
+		// padding-top: 10px;
 
 		.btn-create-prompt {
 			border: 2px solid $colorGreen;

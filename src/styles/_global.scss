@@ -60,6 +60,10 @@ h5 {
 		}
 	}
 
+	&.btn-in-form {
+		padding: 9px 10px;
+	}
+
 	&.btn-icon {
 		border: none;
 		background: none;
@@ -88,6 +92,7 @@ h5 {
 	border-radius: 3px;
 	overflow: hidden;
 	height: 38px;
+	vertical-align: middle;
 
 	&:after {
 		font-family: "FontAwesome";

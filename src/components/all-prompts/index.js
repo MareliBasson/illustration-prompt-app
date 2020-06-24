@@ -102,30 +102,32 @@ class AllPrompts extends Component {
 
 		return (
 			<>
-				<div className="prompt-filters">
-					<div className="sorting">
-						Sort by:
-						<div className="btn btn-primary" onClick={() => this.handleSort("description")}>
-							Description
-						</div>
-						<div className="btn btn-primary" onClick={() => this.handleSort(["type", "description"])}>
-							Type
-						</div>
-					</div>
-					<div className="filtering">
-						Filter by type:{" "}
-						<select name="" id="" onChange={(e) => this.handleFilter(e)}>
-							<option value="all">All Prompts</option>
-							{types.map((type) => (
-								<option key={type.name} value={type.name}>
-									{type.name}
-								</option>
-							))}
-						</select>
-					</div>
-				</div>
 				<div className="prompt-list">
 					<div className="column left">
+						<div className="prompt-filters">
+							<div className="filtering">
+								Filter by type:{" "}
+								<div className="select-wrapper">
+									<select name="" id="" onChange={(e) => this.handleFilter(e)}>
+										<option value="all">All Prompts</option>
+										{types.map((type) => (
+											<option key={type.name} value={type.name}>
+												{type.name}
+											</option>
+										))}
+									</select>
+								</div>
+							</div>
+							<div className="sorting">
+								Sort by:
+								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort("description")}>
+									Description
+								</div>
+								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort(["type", "description"])}>
+									Type
+								</div>
+							</div>
+						</div>
 						{editedList.map((prompt) => (
 							<div
 								key={prompt.id}
