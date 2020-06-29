@@ -42,6 +42,16 @@ h5 {
 	padding: 0;
 }
 
+input,
+button {
+	outline: none;
+
+	&:hover,
+	&:focus {
+		outline: none;
+	}
+}
+
 .btn {
 	border: none;
 	border-radius: 3px;
@@ -50,6 +60,13 @@ h5 {
 	display: inline-block;
 
 	&.btn-primary {
+		background-color: white;
+		color: $colorPrimary;
+		padding: 5px 10px;
+		min-width: 80px;
+	}
+
+	&.btn-confirm {
 		background-color: $colorGreen;
 		color: white;
 		padding: 5px 10px;
@@ -85,6 +102,14 @@ h5 {
 	}
 }
 
+input[type="text"] {
+	border: none;
+	background-color: white;
+	border-radius: 3px;
+	padding: 5px 10px;
+	height: 38px;
+}
+
 .select-wrapper {
 	background-color: #fff;
 	display: inline-block;
@@ -99,7 +124,6 @@ h5 {
 		content: "\f0d7";
 		display: block;
 		color: black;
-		z-index: 10;
 		position: absolute;
 		right: 10px;
 		top: 10px;
@@ -116,14 +140,37 @@ h5 {
 		background-color: transparent;
 		position: relative;
 		cursor: pointer;
-		z-index: 10;
 	}
 }
 
-input {
-	border: none;
-	background-color: white;
-	border-radius: 3px;
-	padding: 5px 10px;
-	height: 38px;
+.file-input-wrapper {
+	position: relative;
+
+	$file-btn-width: 80px;
+	$file-btn-buffer: 20px;
+
+	label {
+		position: relative;
+		display: inline-block;
+		width: $file-btn-width;
+		z-index: 2;
+	}
+
+	.file-input-buffer {
+		position: relative;
+		width: $file-btn-buffer;
+		height: 30px;
+		display: inline-block;
+		background-color: $colorPrimary;
+		z-index: 2;
+	}
+
+	input[type="file"] {
+		position: absolute;
+		z-index: 1;
+		top: 6px;
+		left: $file-btn-width + $file-btn-buffer - 70px;
+		font-size: 15px;
+		color: rgb(153, 153, 153);
+	}
 }

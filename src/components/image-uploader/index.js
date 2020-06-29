@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import storage from "firebaseConfig"
+import "./image-uploader.css"
 
 class ImageUpload extends Component {
 	constructor(props) {
@@ -45,33 +46,36 @@ class ImageUpload extends Component {
 		)
 	}
 	render() {
+		const { url, progress } = this.state
+
+		console.log(progress)
 		return (
-			<div className="center">
-				<br />
-				<h2 className="green-text">React Firebase Image Uploader</h2>
-				<br />
-				<br />
-				<div className="row">
-					<progress value={this.state.progress} max="100" className="progress" />
-				</div>
-				<br />
-				<br />
-				<br />
-				<div className="file-field input-field">
-					<div className="btn">
-						<span>File</span>
-						<input type="file" onChange={this.handleChange} />
+			<div className="image-uploader">
+				<h4>Image: </h4>
+				<div className="file-input">
+					<div className="file-input-wrapper">
+						<label htmlFor="upload" className="btn btn-primary">
+							Choose File
+						</label>
+						<div className="file-input-buffer">&nbsp;</div>
+						<input id="upload" type="file" onChange={this.handleChange} />
 					</div>
-					<div className="file-path-wrapper">
-						<input className="file-path validate" type="text" />
-					</div>
+					<button onClick={this.handleUpload} className="btn btn-confirm">
+						Upload
+					</button>
 				</div>
-				<button onClick={this.handleUpload} className="waves-effect waves-light btn">
-					Upload
-				</button>
-				<br />
-				<br />
-				<img src={this.state.url || "https://via.placeholder.com/400x300"} alt="Uploaded Images" height="300" width="400" />
+				<div className="preview">
+					{progress > 0 && progress < 100 && (
+						<div className="progress-wrapper">
+							<progress value={progress} max="100" className="progress" />
+						</div>
+					)}
+					{url && (
+						<div className="image-wrapper">
+							<img src={url} alt="Uploaded Images" height="200" />
+						</div>
+					)}
+				</div>
 			</div>
 		)
 	}

@@ -1,9 +1,10 @@
 import React, { Component } from "react"
 import { firebase } from "firebaseConfig"
 import _ from "lodash"
+import ImageUploader from "components/image-uploader"
 import "./prompt-form.css"
 
-class PromptCreate extends Component {
+class PromptForm extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -38,38 +39,45 @@ class PromptCreate extends Component {
 						</button>
 					</div>
 					<div className="form-fields">
-						<input
-							type="text"
-							value={descriptionVal}
-							onChange={(e) => {
-								setValue(e, "description")
-							}}
-							placeholder="Description"
-						/>
-						<div className="select-wrapper">
-							<select
-								name="type"
-								id=""
+						<div className="description">
+							<h4>Description:</h4>
+							<input
+								type="text"
+								value={descriptionVal}
 								onChange={(e) => {
-									setValue(e, "type")
+									setValue(e, "description")
 								}}
-								value={typeVal}
-							>
-								<option value="default">Select Type</option>
-								{types.map((type) => (
-									<option key={type.name} value={type.name}>
-										{type.name}
-									</option>
-								))}
-							</select>
+								placeholder="Description"
+							/>
+						</div>
+						<div className="type">
+							<h4>Type:</h4>
+							<div className="select-wrapper">
+								<select
+									name="type"
+									id=""
+									onChange={(e) => {
+										setValue(e, "type")
+									}}
+									value={typeVal}
+								>
+									<option value="default">Select Type</option>
+									{types.map((type) => (
+										<option key={type.name} value={type.name}>
+											{type.name}
+										</option>
+									))}
+								</select>
+							</div>
 						</div>
 					</div>
+					<ImageUploader />
 					<div className="form-btns">
 						<button
 							onClick={() => {
 								onSubmit()
 							}}
-							className="btn btn-primary"
+							className="btn btn-confirm"
 							disabled={disableSubmit}
 						>
 							{submitLabel}
@@ -81,4 +89,4 @@ class PromptCreate extends Component {
 	}
 }
 
-export default PromptCreate
+export default PromptForm

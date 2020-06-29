@@ -59,6 +59,8 @@ class PromptUpdate extends Component {
 		const { description, type } = this.state
 		const { prompt, closeForm } = this.props
 
+		console.log(prompt)
+
 		return (
 			<PromptForm
 				formName="Edit selected prompt"
