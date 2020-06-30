@@ -8,6 +8,7 @@ class PromptCreate extends Component {
 		this.state = {
 			description: "",
 			type: "",
+			image: "",
 		}
 
 		this.handleCreate = this.handleCreate.bind(this)
@@ -15,21 +16,23 @@ class PromptCreate extends Component {
 	}
 
 	handleCreate() {
-		const { description, type } = this.state
+		const { description, type, image } = this.state
 		const db = firebase.firestore()
 
 		if (description && type) {
-			db.collection("prompts").add({ description: description, type: type })
+			db.collection("prompts").add({ description: description, type: type, image: image ? image : "" })
+
 			this.setState({
 				description: "",
 				type: "",
+				image: "",
 			})
 		}
 	}
 
-	setValue(e, prop) {
+	setValue(value, prop) {
 		this.setState({
-			[prop]: e.target.value,
+			[prop]: value,
 		})
 	}
 

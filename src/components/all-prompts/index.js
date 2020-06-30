@@ -84,14 +84,12 @@ class AllPrompts extends Component {
 	}
 
 	handleSort(prop) {
-		console.log("sort things")
 		this.setState({
 			editedList: _.sortBy(this.state.editedList, prop),
 		})
 	}
 
 	handleFilter(e) {
-		console.log("filter things")
 		this.setState({
 			editedList: e.target.value === "all" ? this.state.prompts : _.filter(this.state.prompts, ["type", e.target.value]),
 		})

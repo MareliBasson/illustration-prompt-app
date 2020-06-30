@@ -11,7 +11,7 @@ class PromptUpdate extends Component {
 			type: "",
 		}
 		this.updatePrompt = this.updatePrompt.bind(this)
-		this.handleUpdate = this.handleUpdate.bind(this)
+		this.handleSubmit = this.handleSubmit.bind(this)
 		this.setValue = this.setValue.bind(this)
 	}
 
@@ -29,37 +29,37 @@ class PromptUpdate extends Component {
 		this.setState({
 			description: this.props.prompt.description,
 			type: this.props.prompt.type,
+			image: this.props.prompt.image,
 		})
 	}
 
-	handleUpdate(promptId) {
-		const { description, type } = this.state
+	handleSubmit(promptId) {
+		const { description, type, image } = this.state
 		const { prompt } = this.props
 
 		const db = firebase.firestore()
 		db.collection("prompts")
 			.doc(promptId)
-			.set({ ...prompt, description, type })
+			.set({ ...prompt, description, type, image })
 
 		this.setState({
 			description: "",
 			type: "",
+			image: "",
 		})
 
 		this.props.closeForm()
 	}
 
-	setValue(e, prop) {
+	setValue(value, prop) {
 		this.setState({
-			[prop]: e.target.value,
+			[prop]: value,
 		})
 	}
 
 	render() {
-		const { description, type } = this.state
+		const { description, type, image } = this.state
 		const { prompt, closeForm } = this.props
-
-		console.log(prompt)
 
 		return (
 			<PromptForm
@@ -67,8 +67,9 @@ class PromptUpdate extends Component {
 				closeForm={closeForm}
 				descriptionVal={description}
 				typeVal={type}
+				imageUrl={image}
 				setValue={this.setValue}
-				onSubmit={() => this.handleUpdate(prompt.id)}
+				onSubmit={() => this.handleSubmit(prompt.id)}
 				disableSubmit={false}
 				submitLabel="Apply"
 			/>

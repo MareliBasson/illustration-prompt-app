@@ -27,7 +27,7 @@ class PromptForm extends Component {
 
 	render() {
 		const { types } = this.state
-		const { formName, closeForm, descriptionVal, typeVal, setValue, onSubmit, disableSubmit, submitLabel } = this.props
+		const { formName, closeForm, descriptionVal, typeVal, setValue, onSubmit, disableSubmit, submitLabel, imageUrl } = this.props
 
 		return (
 			<div className="prompt-form-container">
@@ -45,7 +45,7 @@ class PromptForm extends Component {
 								type="text"
 								value={descriptionVal}
 								onChange={(e) => {
-									setValue(e, "description")
+									setValue(e.target.value, "description")
 								}}
 								placeholder="Description"
 							/>
@@ -57,7 +57,7 @@ class PromptForm extends Component {
 									name="type"
 									id=""
 									onChange={(e) => {
-										setValue(e, "type")
+										setValue(e.target.value, "type")
 									}}
 									value={typeVal}
 								>
@@ -71,7 +71,7 @@ class PromptForm extends Component {
 							</div>
 						</div>
 					</div>
-					<ImageUploader />
+					<ImageUploader setValue={setValue} imageUrl={imageUrl} />
 					<div className="form-btns">
 						<button
 							onClick={() => {
