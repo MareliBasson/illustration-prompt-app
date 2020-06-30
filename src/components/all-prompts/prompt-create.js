@@ -20,13 +20,18 @@ class PromptCreate extends Component {
 		const db = firebase.firestore()
 
 		if (description && type) {
-			db.collection("prompts").add({ description: description, type: type, image: image ? image : "" })
+			db.collection("prompts").add({ description: description, type: type, imageUrl: image ? image : "" })
 
-			this.setState({
-				description: "",
-				type: "",
-				image: "",
-			})
+			this.setState(
+				{
+					description: "",
+					type: "",
+					image: "",
+				},
+				() => {
+					this.props.closeForm()
+				}
+			)
 		}
 	}
 
@@ -47,9 +52,9 @@ class PromptCreate extends Component {
 				descriptionVal={description}
 				typeVal={type}
 				setValue={this.setValue}
-				onSubmit={() => this.handleCreate()}
-				disableSubmit={!description || !type}
-				submitLabel="Create"
+				onPrimarySubmit={() => this.handleCreate()}
+				disablePrimary={!description || !type}
+				primaryBtnLabel="Create"
 			/>
 		)
 	}

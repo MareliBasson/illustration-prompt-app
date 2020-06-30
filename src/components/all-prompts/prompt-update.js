@@ -9,9 +9,11 @@ class PromptUpdate extends Component {
 		this.state = {
 			description: "",
 			type: "",
+			image: "",
 		}
 		this.updatePrompt = this.updatePrompt.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.onDelete = this.onDelete.bind(this)
 		this.setValue = this.setValue.bind(this)
 	}
 
@@ -25,11 +27,19 @@ class PromptUpdate extends Component {
 		}
 	}
 
+	onDelete(e, promptId) {
+		e.stopPropagation()
+		if (window.confirm("Are you sure you want to delete this prompt?")) {
+			const db = firebase.firestore()
+			db.collection("prompts").doc(promptId).delete()
+		}
+	}
+
 	updatePrompt() {
 		this.setState({
 			description: this.props.prompt.description,
 			type: this.props.prompt.type,
-			image: this.props.prompt.image,
+			image: this.props.prompt.imageUrl,
 		})
 	}
 
@@ -40,7 +50,7 @@ class PromptUpdate extends Component {
 		const db = firebase.firestore()
 		db.collection("prompts")
 			.doc(promptId)
-			.set({ ...prompt, description, type, image })
+			.set({ ...prompt, description, type, imageUrl: image })
 
 		this.setState({
 			description: "",
@@ -61,6 +71,8 @@ class PromptUpdate extends Component {
 		const { description, type, image } = this.state
 		const { prompt, closeForm } = this.props
 
+		const haveChanged = description === prompt.description && type === prompt.type && image === prompt.imageUrl
+
 		return (
 			<PromptForm
 				formName="Edit selected prompt"
@@ -69,9 +81,11 @@ class PromptUpdate extends Component {
 				typeVal={type}
 				imageUrl={image}
 				setValue={this.setValue}
-				onSubmit={() => this.handleSubmit(prompt.id)}
-				disableSubmit={false}
-				submitLabel="Apply"
+				onPrimarySubmit={() => this.handleSubmit(prompt.id)}
+				disablePrimary={haveChanged}
+				primaryBtnLabel="Apply Changes"
+				onSecondarySubmit={(e) => this.onDelete(e, prompt.id)}
+				secondaryBtnLabel="Delete Prompt"
 			/>
 		)
 	}

@@ -77,6 +77,17 @@ button {
 		}
 	}
 
+	&.btn-destruct {
+		background-color: $colorRed;
+		color: white;
+		padding: 5px 10px;
+		min-width: 80px;
+
+		&:hover {
+			background-color: darken($colorRed, 10%);
+		}
+	}
+
 	&.btn-in-form {
 		padding: 9px 10px;
 	}

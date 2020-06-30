@@ -135,8 +135,9 @@ class AllPrompts extends Component {
 								}}
 							>
 								<div className="description">{prompt.description}</div>
+								<div className="image">{prompt.imageUrl && <i className="fa fa-file-image-o"></i>}</div>
 								<div className="type">{prompt.type}</div>
-								<div className="options">
+								{/* <div className="options">
 									<button
 										onClick={(e) => {
 											this.onDelete(e, prompt.id)
@@ -145,7 +146,7 @@ class AllPrompts extends Component {
 									>
 										<i className="fa fa-trash"></i>
 									</button>
-								</div>
+								</div> */}
 							</div>
 						))}
 					</div>

@@ -23,6 +23,9 @@ class PromptGrid extends Component {
 						>
 							<i className="fa fa-times"></i>
 						</div>
+						<div className="image">
+							<img src={prompt.imageUrl} alt="" />
+						</div>
 						<div className="title">{prompt.description}</div>
 						<div className="subtitle">{prompt.type}</div>
 					</div>

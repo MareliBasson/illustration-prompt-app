@@ -40,7 +40,9 @@ class ImageUpload extends Component {
 					.child(image.name)
 					.getDownloadURL()
 					.then((url) => {
-						// this.setState({ url })
+						this.setState({
+							url: url,
+						})
 						this.props.setValue(url, "image")
 					})
 			}
@@ -52,8 +54,7 @@ class ImageUpload extends Component {
 		const { imageUrl } = this.props
 
 		const inProgress = progress > 0 && progress < 100
-
-		console.log(url)
+		const hasImage = url || imageUrl
 
 		return (
 			<div className="image-uploader">
@@ -70,24 +71,26 @@ class ImageUpload extends Component {
 						Upload
 					</button>
 				</div>
-				<div className="preview">
-					{inProgress && (
-						<div className="progress-wrapper">
-							<progress value={progress} max="100" className="progress" />
-						</div>
-					)}
-					{(url || imageUrl) && !inProgress && (
-						<>
-							<div className="image-wrapper">
-								<img src={url ? url : imageUrl} alt="Uploaded Images" />
+				{(hasImage || inProgress) && (
+					<div className="preview">
+						{inProgress && (
+							<div className="progress-wrapper">
+								<progress value={progress} max="100" className="progress" />
 							</div>
+						)}
+						{hasImage && !inProgress && (
+							<>
+								<div className="image-wrapper">
+									<img src={url ? url : imageUrl} alt="Uploaded Images" />
+								</div>
 
-							<button className="btn btn-primary" onClick={() => this.props.setValue("", "image")}>
-								Remove Image
-							</button>
-						</>
-					)}
-				</div>
+								<button className="btn btn-icon" onClick={() => this.props.setValue("", "image")}>
+									<i className="fa fa-times"></i>
+								</button>
+							</>
+						)}
+					</div>
+				)}
 			</div>
 		)
 	}

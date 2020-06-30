@@ -27,7 +27,20 @@ class PromptForm extends Component {
 
 	render() {
 		const { types } = this.state
-		const { formName, closeForm, descriptionVal, typeVal, setValue, onSubmit, disableSubmit, submitLabel, imageUrl } = this.props
+		const {
+			formName,
+			closeForm,
+			descriptionVal,
+			typeVal,
+			setValue,
+			onPrimarySubmit,
+			disablePrimary,
+			primaryBtnLabel,
+			onSecondarySubmit,
+			disableSecondary,
+			secondaryBtnLabel,
+			imageUrl,
+		} = this.props
 
 		return (
 			<div className="prompt-form-container">
@@ -71,16 +84,30 @@ class PromptForm extends Component {
 							</div>
 						</div>
 					</div>
+
 					<ImageUploader setValue={setValue} imageUrl={imageUrl} />
+
 					<div className="form-btns">
+						{secondaryBtnLabel && (
+							<button
+								onClick={(e) => {
+									onSecondarySubmit(e)
+									closeForm()
+								}}
+								className="btn btn-destruct"
+								disabled={disableSecondary}
+							>
+								{secondaryBtnLabel}
+							</button>
+						)}
 						<button
 							onClick={() => {
-								onSubmit()
+								onPrimarySubmit()
 							}}
 							className="btn btn-confirm"
-							disabled={disableSubmit}
+							disabled={disablePrimary}
 						>
-							{submitLabel}
+							{primaryBtnLabel}
 						</button>
 					</div>
 				</div>
