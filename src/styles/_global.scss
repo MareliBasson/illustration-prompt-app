@@ -110,6 +110,7 @@ button {
 	&:disabled {
 		background-color: $colorGrey;
 		opacity: 0.8;
+		pointer-events: none;
 	}
 }
 

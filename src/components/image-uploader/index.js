@@ -50,7 +50,7 @@ class ImageUpload extends Component {
 	}
 
 	render() {
-		const { url, progress } = this.state
+		const { url, progress, image } = this.state
 		const { imageUrl } = this.props
 
 		const inProgress = progress > 0 && progress < 100
@@ -67,7 +67,7 @@ class ImageUpload extends Component {
 						<div className="file-input-buffer">&nbsp;</div>
 						<input id="upload" type="file" onChange={this.handleChange} />
 					</div>
-					<button onClick={this.handleUpload} className="btn btn-confirm">
+					<button onClick={this.handleUpload} className="btn btn-confirm" disabled={!image}>
 						Upload
 					</button>
 				</div>

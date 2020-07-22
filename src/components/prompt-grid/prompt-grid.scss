@@ -31,10 +31,15 @@
 		text-align: center;
 		border: 5px solid lighten($colorPrimary, 30%);
 		border-radius: 10px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
+		// display: flex;
+		// flex-direction: column;
+		// justify-content: center;
+		// align-items: center;
+		padding: 30px 20px 20px;
+		display: grid;
 		align-items: center;
+		grid-template-rows: 1fr 40px 30px;
+		grid-template-areas: "image" "description" "type";
 
 		@include typeColors(border-color);
 
@@ -51,20 +56,22 @@
 		}
 
 		.image {
+			grid-area: image;
 			img {
-				height: 180px;
+				height: 185px;
 			}
 		}
 
 		.title {
+			grid-area: description;
 			font-size: 1.5rem;
 			text-transform: lowercase;
 		}
 		.subtitle {
+			grid-area: type;
 			font-size: 1rem;
 			text-transform: uppercase;
 			font-style: italic;
-			margin-top: 20px;
 		}
 	}
 }
