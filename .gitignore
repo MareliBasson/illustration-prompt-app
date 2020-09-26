@@ -26,3 +26,4 @@ src/**/*.css
 .vscode/*
 package-lock\.json
 
+**/serviceAccountKey.json
