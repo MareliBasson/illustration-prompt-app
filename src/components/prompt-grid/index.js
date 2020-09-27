@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./prompt-grid.css";
 
 const PromptGrid = ({ selection, removeCard }) => {
