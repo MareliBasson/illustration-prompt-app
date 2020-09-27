@@ -1,16 +1,15 @@
 import React, { Component } from "react";
 import PageTemplate from "components/page-template";
-import PromptSelector from "components/prompt-selector";
-import "./home.css";
+import AllPrompts from "components/all-prompts";
 
-class HomePage extends Component {
+class Overview extends Component {
   render() {
     return (
       <PageTemplate pageHead="">
-        <PromptSelector />
+        <AllPrompts />
       </PageTemplate>
     );
   }
 }
 
-export default HomePage;
+export default Overview;
