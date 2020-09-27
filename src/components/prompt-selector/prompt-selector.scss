@@ -1,32 +1,32 @@
 @import "styles/_variables.scss";
 .prompt-selector {
-	.clear-prompts {
-		position: fixed;
-		right: -126px;
-		width: 180px;
-		height: 80px;
-		top: 45%;
-		background-color: $colorRed;
-		border-radius: 80px 0% 0 80px;
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		text-align: right;
-		padding: 10px 10px 10px 20px;
-		transition: right 0.2s ease;
-		cursor: pointer;
-		box-sizing: border-box;
+  .clear-prompts {
+    position: fixed;
+    right: -126px;
+    width: 180px;
+    height: 80px;
+    top: 45%;
+    background-color: $colorRed;
+    border-radius: 80px 0% 0 80px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: right;
+    padding: 10px 10px 10px 20px;
+    transition: right 0.2s ease;
+    cursor: pointer;
+    box-sizing: border-box;
 
-		i {
-			font-size: 26px;
-			margin-right: 26px;
-		}
-		span {
-			font-size: 1.2rem;
-		}
-		&:hover {
-			right: 0px;
-			transition: right 0.2s ease;
-		}
-	}
+    i {
+      font-size: 26px;
+      margin-right: 26px;
+    }
+    span {
+      font-size: 1.2rem;
+    }
+    &:hover {
+      right: 0px;
+      transition: right 0.2s ease;
+    }
+  }
 }
