@@ -1,20 +1,32 @@
 import React from "react";
+import styled from "styled-components";
 import Header from "components/header";
-import "./page-template.css";
 
 const PageTemplate = ({ children, pageHead }) => {
   return (
-    <div className="page">
+    <Page>
       <Header heading={pageHead} />
 
-      <div className="content">
-        <div className="container">
-          {/* <h1>{pageHead}</h1> */}
-          {children}
-        </div>
-      </div>
-    </div>
+      <PageContent>
+        <div className="container">{children}</div>
+      </PageContent>
+    </Page>
   );
 };
+
+const Page = styled.div`
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+const PageContent = styled.div`
+  padding: 20px 0;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    padding: 20px;
+  }
+`;
 
 export default PageTemplate;
