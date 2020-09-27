@@ -46,6 +46,10 @@ const ImageUpload = ({ imageUrl, setValue }) => {
   const inProgress = progress > 0 && progress < 100;
   const hasImage = url || imageUrl;
 
+  // TODO: investigate multiple imageUrl and url checks when image is selected
+  // console.log(url)
+  // console.log(imageUrl)
+
   return (
     <div className="image-uploader">
       <h4>Image: </h4>
