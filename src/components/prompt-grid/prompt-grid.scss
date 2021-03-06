@@ -11,18 +11,19 @@
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	}
 
-	&::before {
-		content: '';
-		width: 0;
-		padding-bottom: 100%;
-		grid-row: 1 / 1;
-		grid-column: 1 / 1;
-	}
+	// Square grid rows
+	// &::before {
+	// 	content: '';
+	// 	width: 0;
+	// 	padding-bottom: 100%;
+	// 	grid-row: 1 / 1;
+	// 	grid-column: 1 / 1;
+	// }
 
-	& > *:first-child {
-		grid-row: 1 / 1;
-		grid-column: 1 / 1;
-	}
+	// & > *:first-child {
+	// 	grid-row: 1 / 1;
+	// 	grid-column: 1 / 1;
+	// }
 
 	.card {
 		position: relative;
@@ -31,17 +32,11 @@
 		text-align: center;
 		border: 5px solid lighten($colorPrimary, 30%);
 		border-radius: 10px;
-		// display: flex;
-		// flex-direction: column;
-		// justify-content: center;
-		// align-items: center;
 		padding: 30px 20px 20px;
 		display: grid;
 		align-items: center;
 		grid-template-rows: 1fr 40px 30px;
-		grid-template-areas: 'image' 'description' 'type';
-
-		@include typeColors(border-color);
+		grid-template-areas: 'description' 'type';
 
 		.remove-card {
 			position: absolute;
@@ -55,12 +50,12 @@
 			}
 		}
 
-		.image {
-			grid-area: image;
-			img {
-				height: 185px;
-			}
-		}
+		// .image {
+		// 	grid-area: image;
+		// 	img {
+		// 		height: 185px;
+		// 	}
+		// }
 
 		.title {
 			grid-area: description;

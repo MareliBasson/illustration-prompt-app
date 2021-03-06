@@ -20,4 +20,4 @@ firestoreService.backup(['prompts', 'colors', 'types']).then((collections) => {
 	console.log(JSON.stringify(collections))
 })
 
-// to run script: $node uploadData
+// to run script: $node exportData

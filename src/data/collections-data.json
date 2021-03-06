@@ -2,21 +2,31 @@
 	"promptCollections": [
 		{
 			"type": "subject",
-			"title": "Choose a subject",
+			"title": "Subject",
 			"color": "pink",
-			"prompts": ["Draw a dog", "Draw a person", "Draw an elephant", "Draw a bird", "Draw a cat"]
+			"prompts": ["Dog", "Lady", "Hoepoe", "Cat"]
 		},
 		{
 			"type": "details",
-			"title": "Add some details",
+			"title": "Details",
 			"color": "cyan",
-			"prompts": ["add plants", "add florals", "add organic shapes", "add dots", "add geometrics"]
+			"prompts": ["add plants", "add florals", "add dots", "add geometrics"]
 		},
 		{
 			"type": "weird",
 			"title": "Make it weird",
 			"color": "yellow",
-			"prompts": ["add crazy hair", "add a third eye", "add wings", "add lots of freckles", "make the legs long"]
+			"prompts": [
+				"add crazy hair",
+				"add a third eye",
+				"add wings",
+				"add lots of freckles",
+				"add fishnets",
+				"add tattoos",
+				"make it sexy",
+				"add nipple tassles",
+				"add piercings"
+			]
 		},
 		{
 			"type": "feeling",
@@ -26,15 +36,9 @@
 		},
 		{
 			"type": "accessory",
-			"title": "Add an accessory",
+			"title": "Accessories",
 			"color": "orange",
 			"prompts": ["add boots", "add bow", "add spectacles", "add necklace", "add a hat"]
-		},
-		{
-			"type": "wild",
-			"title": "Wild card",
-			"color": "light green",
-			"prompts": ["add fishnets", "add tattoos", "make it sexy", "add nipple tassles", "add piercings"]
 		},
 		{
 			"type": "style",

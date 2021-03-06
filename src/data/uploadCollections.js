@@ -44,7 +44,7 @@ const buildObj = (data) => {
 
 firestoreService.restore(buildObj(allCollectionsData))
 
-// to run script: $node uploadData
+// to run script: $node uploadCollections
 
 // Data structures
 // const obj = {

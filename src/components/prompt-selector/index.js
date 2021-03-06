@@ -33,6 +33,15 @@ class PromptSelector extends Component {
 			})
 		})
 
+		db.collection('colors').onSnapshot((snapshot) => {
+			const colorsData = []
+			snapshot.forEach((doc) => colorsData.push(doc.data()))
+
+			this.setState({
+				colors: colorsData,
+			})
+		})
+
 		db.collection('prompts').onSnapshot((snapshot) => {
 			const promptsData = []
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
@@ -108,13 +117,17 @@ class PromptSelector extends Component {
 	}
 
 	render() {
-		const { selection, types } = this.state
+		const { selection, types, colors } = this.state
 
 		return (
 			<div className="prompt-selector">
-				<PromptMenu onClick={this.onSelect} types={types} listStatus={this.getListStatus()} />
+				<PromptMenu onClick={this.onSelect} types={types} listStatus={this.getListStatus()} colors={colors} />
 
-				<div>{selection.length > 0 && <PromptGrid selection={selection} removeCard={this.removeCard} />}</div>
+				<div>
+					{selection.length > 0 && (
+						<PromptGrid selection={selection} removeCard={this.removeCard} types={types} colors={colors} />
+					)}
+				</div>
 
 				<div onClick={this.clear} className="clear-prompts">
 					<i className="fa fa-trash"></i> <span>Clear Selection</span>
