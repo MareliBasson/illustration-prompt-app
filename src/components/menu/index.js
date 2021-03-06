@@ -9,7 +9,7 @@ const Menu = () => {
 				<i className="fa fa-home"></i>
 			</NavLink>
 
-			<NavLink activeClassName="active" to="/overview">
+			<NavLink activeClassName="active" to="/settings">
 				<i className="fa fa-cog"></i>
 			</NavLink>
 		</div>

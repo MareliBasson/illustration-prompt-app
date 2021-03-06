@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PageTemplate from 'components/page-template'
 import AllPrompts from 'components/all-prompts'
 
-class Overview extends Component {
+class Settings extends Component {
 	render() {
 		return (
 			<PageTemplate pageHead="">
@@ -12,4 +12,4 @@ class Overview extends Component {
 	}
 }
 
-export default Overview
+export default Settings
