@@ -22,7 +22,7 @@ $colorBrown: #795548;
 $colorGrey: #9e9e9e;
 $colorBlueGrey: #607d8b;
 
-$fontPrimary: "Open Sans Condensed", sans-serif;
+$fontPrimary: 'Open Sans Condensed', sans-serif;
 
 @mixin typeColors($property) {
 	&.subject {

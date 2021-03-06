@@ -1,348 +1,294 @@
 {
-  "promptCollections": [
-    {
-      "type": "subject",
-      "title": "Choose a subject",
-      "color": "pink",
-      "prompts": [
-        "Draw a dog",
-        "Draw a person",
-        "Draw an elephant",
-        "Draw a bird",
-        "Draw a cat"
-      ]
-    },
-    {
-      "type": "details",
-      "title": "Add some details",
-      "color": "cyan",
-      "prompts": [
-        "add plants",
-        "add florals",
-        "add organic shapes",
-        "add dots",
-        "add geometrics"
-      ]
-    },
-    {
-      "type": "weird",
-      "title": "Make it weird",
-      "color": "yellow",
-      "prompts": [
-        "add crazy hair",
-        "add a third eye",
-        "add wings",
-        "add lots of freckles",
-        "make the legs long"
-      ]
-    },
-    {
-      "type": "feeling",
-      "title": "What's the vibe?",
-      "color": "deep purple",
-      "prompts": [
-        "sad",
-        "dubious",
-        "annoyed",
-        "happy",
-        "dreamy",
-        "anger",
-        "restless"
-      ]
-    },
-    {
-      "type": "accessory",
-      "title": "Add an accessory",
-      "color": "orange",
-      "prompts": [
-        "add boots",
-        "add bow",
-        "add spectacles",
-        "add necklace",
-        "add a hat"
-      ]
-    },
-    {
-      "type": "wild",
-      "title": "Wild card",
-      "color": "light green",
-      "prompts": [
-        "add fishnets",
-        "add tattoos",
-        "make it sexy",
-        "add nipple tassles",
-        "add piercings"
-      ]
-    },
-    {
-      "type": "style",
-      "title": "What's the style?",
-      "color": "blue",
-      "prompts": [
-        "Play with scale",
-        "Start with a random shape",
-        "Swop things around",
-        "Add patterns",
-        "Use an unusual colour",
-        "Add something unexpected",
-        "Create hybrids"
-      ]
-    },
-    {
-      "type": "animals",
-      "title": "Animals",
-      "color": "",
-      "prompts": [
-        "snakes",
-        "crow",
-        "cat",
-        "fox",
-        "bird",
-        "octopus",
-        "platypus",
-        "lizards",
-        "frogs",
-        "goat",
-        "raven",
-        "scorpion",
-        "ferret",
-        "mystical creature",
-        "hairless cat",
-        "eagle"
-      ]
-    },
-    {
-      "type": "insects",
-      "title": "Insects",
-      "color": "",
-      "prompts": [
-        "dragon fly",
-        "lady bug",
-        "millipede",
-        "beetle",
-        "centipede",
-        "butterfly",
-        "moth",
-        "cicada"
-      ]
-    },
-    {
-      "type": "plants",
-      "title": "Plants",
-      "color": "",
-      "prompts": [
-        "wisteria flowers",
-        "fungi",
-        "phothos",
-        "ivy",
-        "poisonous plants",
-        "non-green monstera leaves",
-        "big leaf plants",
-        "tiger lillies",
-        "aloe",
-        "moss",
-        "fern fronds",
-        "monsters",
-        "raspberries",
-        "cherries",
-        "nightshade"
-      ]
-    },
-    {
-      "type": "eyes",
-      "title": "Eyes",
-      "color": "",
-      "prompts": [
-        "lots of eyes",
-        "exaggerated lashes",
-        "third eye",
-        "bloody eyes",
-        "bloody tears",
-        "multiple pupils",
-        "red eyes",
-        "one white eye",
-        "heterochromia",
-        "slitted pupils",
-        "goat pupils"
-      ]
-    },
-    {
-      "type": "head",
-      "title": "Head",
-      "color": "",
-      "prompts": [
-        "brains",
-        "white hair",
-        "fangs",
-        "vitiligo",
-        "thorns",
-        "split tongue",
-        "broken horn",
-        "blood",
-        "large face tattoo",
-        "freckles",
-        "piercings",
-        "horns",
-        "plant growth",
-        "mask",
-        "scars",
-        "busted lip",
-        "smile",
-        "hair clips"
-      ]
-    },
-    {
-      "type": "body",
-      "title": "Body",
-      "color": "",
-      "prompts": [
-        "shark tattoo",
-        "scars",
-        "vitiligo",
-        "thorns",
-        "neck bandages",
-        "eyes",
-        "plant growth",
-        "bruises",
-        "blood",
-        "wings",
-        "blue skin",
-        "tattoos",
-        "stitches"
-      ]
-    },
-    {
-      "type": "extras",
-      "title": "Extras",
-      "color": "",
-      "prompts": [
-        "blood bag",
-        "pirate ship",
-        "moon",
-        "plague dr mask",
-        "burning crown",
-        "geometric stuff",
-        "crescent moon",
-        "bandaids",
-        "bones",
-        "choker/necklace",
-        "feathers",
-        "barbed wire",
-        "fire",
-        "thorn/flower crown"
-      ]
-    },
-    {
-      "type": "weapons",
-      "title": "Weapon",
-      "color": "",
-      "prompts": [
-        "staff",
-        "bow and arrow",
-        "axe",
-        "sci-fi flail/gun",
-        "dagger",
-        "knife"
-      ]
-    },
-    {
-      "type": "color-scheme",
-      "title": "Color scheme",
-      "color": "",
-      "prompts": [
-        "payne's grey",
-        "red",
-        "green",
-        "purple",
-        "dramatic lighting",
-        "light colors",
-        "prussian blue",
-        "dark red",
-        "sage green",
-        "muted colors"
-      ]
-    }
-  ],
-  "colors": [
-    {
-      "name": "deep orange",
-      "value": "ff5722"
-    },
-    {
-      "name": "teal",
-      "value": "009688"
-    },
-    {
-      "name": "indigo",
-      "value": "3f51b5"
-    },
-    {
-      "name": "grey",
-      "value": "9e9e9e"
-    },
-    {
-      "name": "pink",
-      "value": "e91e63"
-    },
-    {
-      "name": "lime",
-      "value": "cddc39"
-    },
-    {
-      "name": "light blue",
-      "value": "03a9f4"
-    },
-    {
-      "name": "blue",
-      "value": "2196f3"
-    },
-    {
-      "name": "deep orange",
-      "value": "ff5722"
-    },
-    {
-      "name": "orange",
-      "value": "ff9800"
-    },
-    {
-      "name": "red",
-      "value": "f44336"
-    },
-    {
-      "name": "blue grey",
-      "value": "607d8b"
-    },
-    {
-      "name": "purple",
-      "value": "9c27b0"
-    },
-    {
-      "name": "light green",
-      "value": "8bc34a"
-    },
-    {
-      "name": "deep purple",
-      "value": "673ab7"
-    },
-    {
-      "name": "green",
-      "value": "4caf50"
-    },
-    {
-      "name": "yellow",
-      "value": "ffeb3b"
-    },
-    {
-      "name": "amber",
-      "value": "ffc107"
-    },
-    {
-      "name": "cyan",
-      "value": "00bcd4"
-    },
-    {
-      "name": "brown",
-      "value": "795548"
-    }
-  ]
+	"promptCollections": [
+		{
+			"type": "subject",
+			"title": "Choose a subject",
+			"color": "pink",
+			"prompts": ["Draw a dog", "Draw a person", "Draw an elephant", "Draw a bird", "Draw a cat"]
+		},
+		{
+			"type": "details",
+			"title": "Add some details",
+			"color": "cyan",
+			"prompts": ["add plants", "add florals", "add organic shapes", "add dots", "add geometrics"]
+		},
+		{
+			"type": "weird",
+			"title": "Make it weird",
+			"color": "yellow",
+			"prompts": ["add crazy hair", "add a third eye", "add wings", "add lots of freckles", "make the legs long"]
+		},
+		{
+			"type": "feeling",
+			"title": "What's the vibe?",
+			"color": "deep purple",
+			"prompts": ["sad", "dubious", "annoyed", "happy", "dreamy", "anger", "restless"]
+		},
+		{
+			"type": "accessory",
+			"title": "Add an accessory",
+			"color": "orange",
+			"prompts": ["add boots", "add bow", "add spectacles", "add necklace", "add a hat"]
+		},
+		{
+			"type": "wild",
+			"title": "Wild card",
+			"color": "light green",
+			"prompts": ["add fishnets", "add tattoos", "make it sexy", "add nipple tassles", "add piercings"]
+		},
+		{
+			"type": "style",
+			"title": "What's the style?",
+			"color": "blue",
+			"prompts": [
+				"Play with scale",
+				"Start with a random shape",
+				"Swop things around",
+				"Add patterns",
+				"Use an unusual colour",
+				"Add something unexpected",
+				"Create hybrids"
+			]
+		},
+		{
+			"type": "animals",
+			"title": "Animals",
+			"color": "",
+			"prompts": [
+				"snakes",
+				"crow",
+				"cat",
+				"fox",
+				"bird",
+				"octopus",
+				"platypus",
+				"lizards",
+				"frogs",
+				"goat",
+				"raven",
+				"scorpion",
+				"ferret",
+				"mystical creature",
+				"hairless cat",
+				"eagle"
+			]
+		},
+		{
+			"type": "insects",
+			"title": "Insects",
+			"color": "",
+			"prompts": ["dragon fly", "lady bug", "millipede", "beetle", "centipede", "butterfly", "moth", "cicada"]
+		},
+		{
+			"type": "plants",
+			"title": "Plants",
+			"color": "",
+			"prompts": [
+				"wisteria flowers",
+				"fungi",
+				"phothos",
+				"ivy",
+				"poisonous plants",
+				"non-green monstera leaves",
+				"big leaf plants",
+				"tiger lillies",
+				"aloe",
+				"moss",
+				"fern fronds",
+				"monsters",
+				"raspberries",
+				"cherries",
+				"nightshade"
+			]
+		},
+		{
+			"type": "eyes",
+			"title": "Eyes",
+			"color": "",
+			"prompts": [
+				"lots of eyes",
+				"exaggerated lashes",
+				"third eye",
+				"bloody eyes",
+				"bloody tears",
+				"multiple pupils",
+				"red eyes",
+				"one white eye",
+				"heterochromia",
+				"slitted pupils",
+				"goat pupils"
+			]
+		},
+		{
+			"type": "head",
+			"title": "Head",
+			"color": "",
+			"prompts": [
+				"brains",
+				"white hair",
+				"fangs",
+				"vitiligo",
+				"thorns",
+				"split tongue",
+				"broken horn",
+				"blood",
+				"large face tattoo",
+				"freckles",
+				"piercings",
+				"horns",
+				"plant growth",
+				"mask",
+				"scars",
+				"busted lip",
+				"smile",
+				"hair clips"
+			]
+		},
+		{
+			"type": "body",
+			"title": "Body",
+			"color": "",
+			"prompts": [
+				"shark tattoo",
+				"scars",
+				"vitiligo",
+				"thorns",
+				"neck bandages",
+				"eyes",
+				"plant growth",
+				"bruises",
+				"blood",
+				"wings",
+				"blue skin",
+				"tattoos",
+				"stitches"
+			]
+		},
+		{
+			"type": "extras",
+			"title": "Extras",
+			"color": "",
+			"prompts": [
+				"blood bag",
+				"pirate ship",
+				"moon",
+				"plague dr mask",
+				"burning crown",
+				"geometric stuff",
+				"crescent moon",
+				"bandaids",
+				"bones",
+				"choker/necklace",
+				"feathers",
+				"barbed wire",
+				"fire",
+				"thorn/flower crown"
+			]
+		},
+		{
+			"type": "weapons",
+			"title": "Weapon",
+			"color": "",
+			"prompts": ["staff", "bow and arrow", "axe", "sci-fi flail/gun", "dagger", "knife"]
+		},
+		{
+			"type": "color-scheme",
+			"title": "Color scheme",
+			"color": "",
+			"prompts": [
+				"payne's grey",
+				"red",
+				"green",
+				"purple",
+				"dramatic lighting",
+				"light colors",
+				"prussian blue",
+				"dark red",
+				"sage green",
+				"muted colors"
+			]
+		}
+	],
+	"colors": [
+		{
+			"name": "deep orange",
+			"value": "ff5722"
+		},
+		{
+			"name": "teal",
+			"value": "009688"
+		},
+		{
+			"name": "indigo",
+			"value": "3f51b5"
+		},
+		{
+			"name": "grey",
+			"value": "9e9e9e"
+		},
+		{
+			"name": "pink",
+			"value": "e91e63"
+		},
+		{
+			"name": "lime",
+			"value": "cddc39"
+		},
+		{
+			"name": "light blue",
+			"value": "03a9f4"
+		},
+		{
+			"name": "blue",
+			"value": "2196f3"
+		},
+		{
+			"name": "deep orange",
+			"value": "ff5722"
+		},
+		{
+			"name": "orange",
+			"value": "ff9800"
+		},
+		{
+			"name": "red",
+			"value": "f44336"
+		},
+		{
+			"name": "blue grey",
+			"value": "607d8b"
+		},
+		{
+			"name": "purple",
+			"value": "9c27b0"
+		},
+		{
+			"name": "light green",
+			"value": "8bc34a"
+		},
+		{
+			"name": "deep purple",
+			"value": "673ab7"
+		},
+		{
+			"name": "green",
+			"value": "4caf50"
+		},
+		{
+			"name": "yellow",
+			"value": "ffeb3b"
+		},
+		{
+			"name": "amber",
+			"value": "ffc107"
+		},
+		{
+			"name": "cyan",
+			"value": "00bcd4"
+		},
+		{
+			"name": "brown",
+			"value": "795548"
+		}
+	]
 }

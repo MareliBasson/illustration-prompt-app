@@ -1,28 +1,26 @@
-import React from "react";
-import "./prompt-menu.css";
+import React from 'react'
+import './prompt-menu.css'
 
 const PromptMenu = ({ onClick, types, listStatus }) => {
-  return (
-    <div className="prompt-menu">
-      {types &&
-        types.map((type) => {
-          return (
-            <button
-              key={type.name}
-              value={type.name}
-              onClick={onClick}
-              disabled={
-                listStatus && listStatus[type.name] === 0 ? true : false
-              }
-              className={type.name}
-            >
-              {type.title}
-            </button>
-          );
-        })}
+	return (
+		<div className="prompt-menu">
+			{types &&
+				types.map((type) => {
+					return (
+						<button
+							key={type.name}
+							value={type.name}
+							onClick={onClick}
+							disabled={listStatus && listStatus[type.name] === 0 ? true : false}
+							className={type.name}
+						>
+							{type.title}
+						</button>
+					)
+				})}
 
-      {/* Gooey Menu Test */}
-      {/* <nav className="gooey-menu">
+			{/* Gooey Menu Test */}
+			{/* <nav className="gooey-menu">
 					<input type="checkbox" className="menu-open" name="menu-open" id="menu-open" />
 					<label className="menu-open-button" htmlFor="menu-open">
 						Prompt Me!
@@ -43,8 +41,8 @@ const PromptMenu = ({ onClick, types, listStatus }) => {
 							)
 						})}
 				</nav> */}
-      {/* <!-- filters --> */}
-      {/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+			{/* <!-- filters --> */}
+			{/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 					<defs>
 						<filter id="shadowed-goo">
 							<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
@@ -67,8 +65,8 @@ const PromptMenu = ({ onClick, types, listStatus }) => {
 						</filter>
 					</defs>
 				</svg> */}
-    </div>
-  );
-};
+		</div>
+	)
+}
 
-export default PromptMenu;
+export default PromptMenu

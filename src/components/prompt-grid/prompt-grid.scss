@@ -1,4 +1,4 @@
-@import "styles/_variables.scss";
+@import 'styles/_variables.scss';
 
 .prompt-grid {
 	display: grid;
@@ -12,7 +12,7 @@
 	}
 
 	&::before {
-		content: "";
+		content: '';
 		width: 0;
 		padding-bottom: 100%;
 		grid-row: 1 / 1;
@@ -39,7 +39,7 @@
 		display: grid;
 		align-items: center;
 		grid-template-rows: 1fr 40px 30px;
-		grid-template-areas: "image" "description" "type";
+		grid-template-areas: 'image' 'description' 'type';
 
 		@include typeColors(border-color);
 
