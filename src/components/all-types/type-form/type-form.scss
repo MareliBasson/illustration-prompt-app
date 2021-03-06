@@ -1,0 +1,83 @@
+@import 'styles/_variables.scss';
+
+.prompt-form-container {
+	position: relative;
+	z-index: $prompt-form-z-index;
+
+	.prompt-form {
+		width: 100%;
+		height: $actionHeight;
+		max-height: 90vh;
+		overflow-x: scroll;
+		padding: 10px 20px;
+		border: 2px solid $colorGreen;
+		border-radius: 5px;
+		background-color: $colorPrimary;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+
+		.form-heading {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 20px;
+		}
+
+		.form-fields {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			margin-bottom: 15px;
+
+			> * {
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				margin-bottom: 15px;
+				align-items: center;
+			}
+		}
+
+		.image-uploader {
+			border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+			padding-bottom: 15px;
+			margin-bottom: 15px;
+		}
+
+		.form-btns {
+			text-align: right;
+
+			> * {
+				margin-left: 10px;
+			}
+		}
+	}
+
+	@media (max-width: 768px) {
+		position: fixed;
+		background-color: rgba(0, 0, 0, 0.7);
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		.prompt-form {
+			height: auto;
+			max-width: 80%;
+			padding: 20px;
+		}
+	}
+
+	@media (max-width: 560px) {
+		.prompt-form {
+			.form-fields {
+				grid-template-columns: 1fr;
+
+				input {
+					margin-bottom: 10px;
+				}
+			}
+		}
+	}
+}
