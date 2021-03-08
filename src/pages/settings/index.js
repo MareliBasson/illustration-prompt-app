@@ -7,7 +7,7 @@ import './settings.css'
 
 const Settings = () => {
 	const screens = ['prompts', 'types']
-	const [settingsScreen, setSettingsScreen] = React.useState('types')
+	const [settingsScreen, setSettingsScreen] = React.useState('prompts')
 
 	return (
 		<PageTemplate pageHead="">
