@@ -1,67 +1,43 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import { firebase } from 'firebaseConfig'
 import TypeForm from 'components/settings-types/type-form'
 
-class TypeCreate extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			name: '',
-			title: '',
-			color: '',
-		}
+const TypeCreate = ({ closeForm }) => {
+	const [name, setName] = useState('')
+	const [title, setTitle] = useState('')
+	const [color, setColor] = useState('')
 
-		this.handleCreate = this.handleCreate.bind(this)
-		this.setValue = this.setValue.bind(this)
-	}
-
-	handleCreate() {
-		const { name, title, color } = this.state
+	const handleCreate = () => {
 		const db = firebase.firestore()
 
-		if (name && color) {
+		if (title && name && color) {
 			db.collection('types').add({
 				name,
 				title,
 				color,
 			})
 
-			this.setState(
-				{
-					name: '',
-					title: '',
-					color: '',
-				},
-				() => {
-					this.props.closeForm()
-				}
-			)
+			setName('')
+			setTitle('')
+			setColor('')
+
+			closeForm()
 		}
 	}
 
-	setValue(value, prop) {
-		this.setState({
-			[prop]: value,
-		})
-	}
-
-	render() {
-		const { name, color } = this.state
-		const { closeForm } = this.props
-
-		return (
-			<TypeForm
-				formName="Create a new type"
-				closeForm={closeForm}
-				nameVal={name}
-				colorVal={color}
-				setValue={this.setValue}
-				onPrimarySubmit={() => this.handleCreate()}
-				disablePrimary={!name || !color}
-				primaryBtnLabel="Create"
-			/>
-		)
-	}
+	return (
+		<TypeForm
+			formName="Create a new type"
+			closeForm={closeForm}
+			nameVal={name}
+			colorVal={color}
+			setTitle={setTitle}
+			setName={setName}
+			setColor={setColor}
+			onPrimarySubmit={() => handleCreate()}
+			disablePrimary={!name || !color || !title}
+			primaryBtnLabel="Create"
+		/>
+	)
 }
-
 export default TypeCreate

@@ -24,30 +24,6 @@ $colorBlueGrey: #607d8b;
 
 $fontPrimary: 'Open Sans Condensed', sans-serif;
 
-@mixin typeColors($property) {
-	&.subject {
-		#{$property}: $colorPink;
-	}
-	&.feeling {
-		#{$property}: $colorDeepPurple;
-	}
-	&.style {
-		#{$property}: $colorBlue;
-	}
-	&.details {
-		#{$property}: $colorCyan;
-	}
-	&.wild {
-		#{$property}: $colorLightGreen;
-	}
-	&.weird {
-		#{$property}: $colorYellow;
-	}
-	&.accessory {
-		#{$property}: $colorOrange;
-	}
-}
-
 $actionHeight: auto;
 
 $select-z-index: 4;
