@@ -56,7 +56,7 @@ const TypeUpdate = ({ type, closeForm }) => {
 		console.log(name.current)
 		console.log(name.title)
 		console.log('-------------------------------')
-	}, [name, title, color, type, updateType])
+	}, [name, title, color, type, () => updateType])
 
 	const haveChanged = name === type.name && color === type.color && title === type.title
 
