@@ -32,7 +32,7 @@ class SettingsTypes extends Component {
 
 			this.setState({
 				types: typesData,
-				editedList: _.sortBy(typesData, 'name'),
+				editedList: _.sortBy(typesData, 'title'),
 			})
 		})
 
@@ -92,9 +92,9 @@ class SettingsTypes extends Component {
 
 		return (
 			<>
-				<div className="prompt-list">
+				<div className="type-list">
 					<div className="column left">
-						<div className="prompt-filters">
+						<div className="type-filters">
 							<div className="sorting">
 								Sort by:
 								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort('title')}>
@@ -114,7 +114,7 @@ class SettingsTypes extends Component {
 							return (
 								<div
 									key={type.id}
-									className={`prompt ${_.isEqual(type, selectedType) ? 'selected' : ''}`}
+									className={`type ${_.isEqual(type, selectedType) ? 'selected' : ''}`}
 									onClick={() => {
 										this.selectType(type)
 									}}
@@ -129,13 +129,13 @@ class SettingsTypes extends Component {
 						})}
 					</div>
 					<div className="column right">
-						<div className="prompt-actions">
+						<div className="type-actions">
 							{showCreateBtn && (
 								<div
 									onClick={() => {
 										this.openCreateForm()
 									}}
-									className="btn-create-prompt"
+									className="btn-create-type"
 								>
 									<i className="fa fa-plus"></i>
 									<h3>Create Type</h3>

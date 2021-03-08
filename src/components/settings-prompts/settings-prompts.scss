@@ -6,6 +6,11 @@
 	grid-template-columns: auto auto;
 	column-gap: 20px;
 
+	@media (max-width: 992px) {
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+	}
+
 	.btn,
 	.select-wrapper {
 		margin-left: 10px;

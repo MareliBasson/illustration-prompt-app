@@ -12,10 +12,6 @@ const Menu = () => {
 			<NavLink activeClassName="active" to="/settings">
 				<i className="fa fa-cog"></i>
 			</NavLink>
-
-			<NavLink activeClassName="active" to="/type-settings">
-				<i className="fa fa-cog"></i>
-			</NavLink>
 		</div>
 	)
 }

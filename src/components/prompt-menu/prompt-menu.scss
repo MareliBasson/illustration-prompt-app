@@ -31,9 +31,6 @@
 
 		&:hover {
 			transform: scale(1.1) translate3d(0, 0, 0);
-
-			background: white;
-			@include typeColors(color);
 		}
 
 		&:disabled {

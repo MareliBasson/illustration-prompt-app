@@ -104,7 +104,7 @@ class SettingsPrompts extends Component {
 				<div className="prompt-list">
 					<div className="column left">
 						<div className="prompt-filters">
-							<div className="filtering">
+							<div className="filter-section filtering">
 								Filter by type:{' '}
 								<div className="select-wrapper">
 									<select name="" id="" onChange={(e) => this.handleFilter(e)}>
@@ -117,7 +117,7 @@ class SettingsPrompts extends Component {
 									</select>
 								</div>
 							</div>
-							<div className="sorting">
+							<div className="filter-section sorting">
 								Sort by:
 								<div
 									className="btn btn-primary btn-in-form"

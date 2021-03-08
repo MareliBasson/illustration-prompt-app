@@ -1,10 +1,15 @@
 @import 'styles/_variables.scss';
 
-.prompt-filters {
+.type-filters {
 	margin-bottom: 40px;
 	display: grid;
 	grid-template-columns: auto auto;
 	column-gap: 20px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+	}
 
 	.btn,
 	.select-wrapper {
@@ -12,7 +17,7 @@
 	}
 }
 
-.prompt-list {
+.type-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 20px;
@@ -22,7 +27,7 @@
 		flex-direction: column-reverse;
 	}
 
-	.prompt {
+	.type {
 		display: grid;
 		grid-template-columns: 2fr 1fr 1fr;
 		padding: 10px 10px;
@@ -58,11 +63,11 @@
 		}
 	}
 
-	.prompt-actions {
+	.type-actions {
 		position: sticky;
 		top: 20px;
 
-		.btn-create-prompt {
+		.btn-create-type {
 			border: 2px solid $colorGreen;
 			border-radius: 5px;
 			display: flex;
