@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { firebase } from 'firebaseConfig'
-import _ from 'lodash'
 import TypeForm from 'components/settings-types/type-form'
 
 const TypeUpdate = ({ type, closeForm }) => {
