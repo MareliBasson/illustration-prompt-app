@@ -7,22 +7,6 @@ const TypeUpdate = ({ type, closeForm }) => {
 	const [title, setTitle] = useState('')
 	const [color, setColor] = useState('')
 
-	useEffect(() => {
-		updateType()
-		console.log('from type')
-		console.log(type.name)
-		console.log(type.title)
-		console.log(type.color)
-		console.log('from state')
-		console.log(name)
-		console.log(title)
-		console.log(color)
-		console.log('from current')
-		console.log(name.current)
-		console.log(name.title)
-		console.log('-------------------------------')
-	}, [name, title, color, type])
-
 	const onDelete = (e, typeId) => {
 		e.stopPropagation()
 		if (window.confirm('Are you sure you want to delete this type?')) {
@@ -57,6 +41,22 @@ const TypeUpdate = ({ type, closeForm }) => {
 
 		closeForm()
 	}
+
+	useEffect(() => {
+		updateType()
+		console.log('from type')
+		console.log(type.name)
+		console.log(type.title)
+		console.log(type.color)
+		console.log('from state')
+		console.log(name)
+		console.log(title)
+		console.log(color)
+		console.log('from current')
+		console.log(name.current)
+		console.log(name.title)
+		console.log('-------------------------------')
+	}, [name, title, color, type, updateType])
 
 	const haveChanged = name === type.name && color === type.color && title === type.title
 
