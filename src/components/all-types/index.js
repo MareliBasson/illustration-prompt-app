@@ -90,7 +90,13 @@ class AllTypes extends Component {
 	}
 
 	render() {
-		const { editedList, types, selectedType, showCreateForm, showCreateBtn } = this.state
+		const {
+			editedList,
+			// types,
+			selectedType,
+			showCreateForm,
+			showCreateBtn,
+		} = this.state
 
 		console.log(editedList)
 
