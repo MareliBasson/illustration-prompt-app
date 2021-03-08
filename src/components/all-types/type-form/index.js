@@ -16,9 +16,8 @@ const TypeForm = ({
 	onSecondarySubmit,
 	disableSecondary,
 	secondaryBtnLabel,
-	imageUrl,
 }) => {
-	const [colors, setColors] = useState()
+	const [colors, setColors] = useState([])
 
 	useEffect(() => {
 		const db = firebase.firestore()
@@ -27,7 +26,9 @@ const TypeForm = ({
 			const colorsData = []
 			snapshot.forEach((doc) => colorsData.push(doc.data()))
 
-			setColors(_.sortBy(colorsData, 'name'))
+			if (_.isEmpty(colors)) {
+				setColors(_.sortBy(colorsData, 'name'))
+			}
 		})
 	})
 
