@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
-import TypeForm from 'components/all-types/type-form'
+import TypeForm from 'components/settings-types/type-form'
 
 class TypeCreate extends Component {
 	constructor(props) {

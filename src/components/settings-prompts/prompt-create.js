@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
-import PromptForm from 'components/prompt-form'
+import PromptForm from './prompt-form'
 
 class PromptCreate extends Component {
 	constructor(props) {

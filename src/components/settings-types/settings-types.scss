@@ -24,31 +24,37 @@
 
 	.prompt {
 		display: grid;
-		grid-template-columns: 2fr 1fr 50px;
+		grid-template-columns: 2fr 1fr 1fr;
 		padding: 10px 10px;
 		cursor: pointer;
 
-		.type {
-			text-align: right;
+		.title {
 			white-space: nowrap;
 		}
 
-		.options {
-			opacity: 0;
-			text-align: right;
+		.name {
+			white-space: nowrap;
+		}
 
-			@media (max-width: 768px) {
-				opacity: 1;
+		.color {
+			white-space: nowrap;
+			display: flex;
+			justify-content: flex-end;
+			align-items: center;
+
+			span {
+				display: inline-block;
+				min-width: 20px;
+				min-height: 20px;
+				border-radius: 100%;
+				margin-left: 10px;
+				flex: 0;
 			}
 		}
 
 		&:hover,
 		&.selected {
 			background-color: rgba($colorGreen, 0.3);
-
-			.options {
-				opacity: 1;
-			}
 		}
 	}
 

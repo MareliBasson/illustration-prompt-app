@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
-import PromptForm from 'components/prompt-form'
+import PromptForm from './prompt-form'
 
 class PromptUpdate extends Component {
 	constructor(props) {

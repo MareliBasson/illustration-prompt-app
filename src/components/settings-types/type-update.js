@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
-import TypeForm from 'components/all-types/type-form'
+import TypeForm from 'components/settings-types/type-form'
 
 class TypeUpdate extends Component {
 	constructor(props) {
@@ -85,7 +85,7 @@ class TypeUpdate extends Component {
 				disablePrimary={haveChanged}
 				primaryBtnLabel="Apply Changes"
 				onSecondarySubmit={(e) => this.onDelete(e, type.id)}
-				secondaryBtnLabel="Delete Prompt"
+				secondaryBtnLabel="Delete type"
 			/>
 		)
 	}

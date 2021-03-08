@@ -3,9 +3,9 @@ import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 import PromptCreate from './prompt-create'
 import PromptUpdate from './prompt-update'
-import './all-prompts.css'
+import './settings-prompts.css'
 
-class AllPrompts extends Component {
+class SettingsPrompts extends Component {
 	constructor(props) {
 		super(props)
 
@@ -184,4 +184,4 @@ class AllPrompts extends Component {
 	}
 }
 
-export default AllPrompts
+export default SettingsPrompts

@@ -3,9 +3,9 @@ import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 import TypeCreate from './type-create'
 import TypeUpdate from './type-update'
-import './all-types.css'
+import './settings-types.css'
 
-class AllTypes extends Component {
+class SettingsTypes extends Component {
 	constructor(props) {
 		super(props)
 
@@ -16,8 +16,6 @@ class AllTypes extends Component {
 			selectedType: {},
 			showCreateForm: false,
 			showCreateBtn: true,
-			// newPromptName: '',
-			// newType: '',
 		}
 
 		this.onDelete = this.onDelete.bind(this)
@@ -43,7 +41,7 @@ class AllTypes extends Component {
 			snapshot.forEach((doc) => colorsData.push(doc.data()))
 
 			this.setState({
-				colors: _.sortBy(colorsData, 'name'),
+				colors: _.sortBy(colorsData, 'title'),
 			})
 		})
 	}
@@ -90,15 +88,7 @@ class AllTypes extends Component {
 	}
 
 	render() {
-		const {
-			editedList,
-			// types,
-			selectedType,
-			showCreateForm,
-			showCreateBtn,
-		} = this.state
-
-		console.log(editedList)
+		const { editedList, selectedType, showCreateForm, showCreateBtn, colors } = this.state
 
 		return (
 			<>
@@ -107,27 +97,36 @@ class AllTypes extends Component {
 						<div className="prompt-filters">
 							<div className="sorting">
 								Sort by:
+								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort('title')}>
+									Title
+								</div>
 								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort('name')}>
-									Type
+									Name
 								</div>
 								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort('color')}>
 									Color
 								</div>
 							</div>
 						</div>
-						{editedList.map((type) => (
-							<div
-								key={type.id}
-								className={`prompt ${_.isEqual(type, selectedType) ? 'selected' : ''}`}
-								onClick={() => {
-									this.selectType(type)
-								}}
-							>
-								<div className="description">{type.name}</div>
-								<div className="description">{type.title}</div>
-								<div className="type">{type.color}</div>
-							</div>
-						))}
+						{editedList.map((type) => {
+							const colorObj = _.find(colors, (color) => color.name === type.color)
+
+							return (
+								<div
+									key={type.id}
+									className={`prompt ${_.isEqual(type, selectedType) ? 'selected' : ''}`}
+									onClick={() => {
+										this.selectType(type)
+									}}
+								>
+									<div className="title">{type.title}</div>
+									<div className="name">{type.name}</div>
+									<div className="color">
+										{type.color} <span style={{ backgroundColor: `#${colorObj?.value}` }}></span>
+									</div>
+								</div>
+							)
+						})}
 					</div>
 					<div className="column right">
 						<div className="prompt-actions">
@@ -154,4 +153,4 @@ class AllTypes extends Component {
 	}
 }
 
-export default AllTypes
+export default SettingsTypes
