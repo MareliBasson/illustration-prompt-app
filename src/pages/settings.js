@@ -8,7 +8,7 @@ import { tokens } from 'styles/variables'
 
 const Settings = () => {
 	const screens = ['prompts', 'types']
-	const [settingsScreen, setSettingsScreen] = React.useState('types')
+	const [settingsScreen, setSettingsScreen] = React.useState('prompts')
 
 	return (
 		<PageTemplate pageHead="">

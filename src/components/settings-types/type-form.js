@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
+import { firebase } from 'firebaseConfig'
+
 import { tokens } from 'styles/variables'
 
 const TypeForm = ({

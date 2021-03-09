@@ -20,7 +20,7 @@
 .prompt-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	column-gap: 20px;
+	column-gap: 60px;
 
 	@media (max-width: 768px) {
 		display: flex;

@@ -25,7 +25,7 @@ const PageContent = styled.div`
 	flex: 1;
 
 	@media (max-width: 768px) {
-		padding: 20px;
+		padding: 40px;
 	}
 `
 
