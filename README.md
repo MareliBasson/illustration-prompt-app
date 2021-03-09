@@ -6,4 +6,6 @@ Menu base: https://codepen.io/lbebber/pen/pvwZJp?editors=0100
 
 ## Notes
 
-`CI=''` part of the build command - allows a build to pass even if there's errors on Netlify
+### Netlify deployments
+
+`CI=''` part of the build command - allows a build to pass even if there's warnings
