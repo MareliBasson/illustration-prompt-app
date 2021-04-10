@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 import PromptMenu from 'components/prompt-menu'
-import PromptGrid from 'components/prompt-grid'
+import PromptGrid from './prompt-grid'
 import './prompt-selector.css'
 
 class PromptSelector extends Component {
