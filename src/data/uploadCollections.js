@@ -10,11 +10,18 @@ firestoreService.initializeApp(serviceAccount, databaseURL)
 const allCollectionsData = require('./collections-data.json')
 
 const buildObj = (data) => {
+	let colorArr = []
 	let promptArr = []
 	let categoryArr = []
-	let colorArr = []
 
-	data.promptCollections.forEach((collection) => {
+	data.colors.forEach((color) => {
+		colorArr.push({
+			name: color.name,
+			value: color.value,
+		})
+	})
+
+	data.promptCollections.forEach((collection, index) => {
 		collection.prompts.forEach((prompt) => {
 			promptArr.push({
 				category: collection.category,
@@ -23,17 +30,11 @@ const buildObj = (data) => {
 			})
 		})
 
+		// Colors are assigned in the sequence listed in the data structure
 		categoryArr.push({
-			color: collection.color,
+			color: colorArr[index].name,
 			name: collection.category,
 			title: collection.title,
-		})
-	})
-
-	data.colors.forEach((color) => {
-		colorArr.push({
-			name: color.name,
-			value: color.value,
 		})
 	})
 
@@ -43,6 +44,7 @@ const buildObj = (data) => {
 firestoreService.restore(buildObj(allCollectionsData))
 
 // to run script: $node uploadCollections
+
 
 // Data structures
 // const obj = {

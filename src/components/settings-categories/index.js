@@ -122,7 +122,7 @@ class SettingsCategories extends Component {
 									<div className="title">{category.title}</div>
 									<div className="name">{category.name}</div>
 									<div className="color">
-										{category.color} <span style={{ backgroundColor: `#${colorObj?.value}` }}></span>
+										{category.color} <span style={{ backgroundColor: colorObj?.value }}></span>
 									</div>
 								</div>
 							)

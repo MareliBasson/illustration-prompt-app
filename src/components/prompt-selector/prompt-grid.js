@@ -15,7 +15,7 @@ const PromptGrid = ({ selection, removeCard, categories, colors }) => {
 				return (
 					<PromptCard
 						key={`prompt-${index}`}
-						$color={"#"+colorObj?.value}
+						$color={colorObj?.value}
 					>
 						<DeleteCard
 							onClick={() => {

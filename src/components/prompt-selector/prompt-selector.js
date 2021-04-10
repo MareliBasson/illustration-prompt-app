@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
-import PromptMenu from 'components/prompt-menu'
+import {PromptMenu} from 'components/prompt-menu'
 import PromptGrid from './prompt-grid'
 import styled from 'styled-components'
 import { tokens } from 'styles/variables'

@@ -1,10 +1,12 @@
 import React from 'react'
-import styled from 'styled-components'
 import _ from 'lodash'
+
+import styled from 'styled-components'
+import { tokens } from 'styles/variables'
+
 import {PageTemplate} from 'components/page-template'
 import SettingsPrompts from 'components/settings-prompts'
 import SettingsCategories from 'components/settings-categories'
-import { tokens } from 'styles/variables'
 
 export const Settings = () => {
 	const screens = ['prompts', 'categories']
