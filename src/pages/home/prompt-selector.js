@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
@@ -7,101 +7,83 @@ import { tokens } from 'styles/variables'
 
 import { PromptSelectorMenu } from 'pages/home/prompt-selector-menu'
 
-export class PromptSelector extends Component {
-	constructor(props) {
-		super(props)
+export const PromptSelector = () => {
+	const [ selection, setSelection ] = React.useState([])
+	const [ categories, setCategories ] = React.useState([])
+	const [ colors, setColors ] = React.useState([])
+	const [ allPrompts, setAllPrompts ] = React.useState([])
+	const [ promptLists, setPromptLists ] = React.useState()
 
-		this.state = {
-			selected: '',
-			selection: [],
-		}
-
-		this.onSelect = this.onSelect.bind(this)
-		this.clear = this.clear.bind(this)
-		this.getListStatus = this.getListStatus.bind(this)
-		this.setLists = this.setLists.bind(this)
-		this.removeCard = this.removeCard.bind(this)
-	}
-
-	componentDidMount() {
+	React.useEffect(() => {
 		const db = firebase.firestore()
 
 		db.collection('categories').onSnapshot((snapshot) => {
 			const categoriesData = []
 			snapshot.forEach((doc) => categoriesData.push(doc.data()))
 
-			this.setState({
-				categories: categoriesData,
-			})
+			setCategories(categoriesData)
 		})
 
 		db.collection('colors').onSnapshot((snapshot) => {
 			const colorsData = []
 			snapshot.forEach((doc) => colorsData.push(doc.data()))
 
-			this.setState({
-				colors: colorsData,
-			})
+			setColors(colorsData)
 		})
 
 		db.collection('prompts').onSnapshot((snapshot) => {
 			const promptsData = []
 			snapshot.forEach((doc) => promptsData.push({ ...doc.data(), id: doc.id }))
 
-			this.setState(
-				{
-					allPrompts: promptsData,
-				},
-				() => {
-					this.setLists()
-				}
-			)
+			setAllPrompts(promptsData)
 		})
-	}
 
-	setLists() {
+		setLists()
+	}, [allPrompts.length])
+
+	const setLists=()=> {
 		const categoryList = []
-		this.state.categories.forEach((category) => {
+		categories.forEach((category) => {
 			if (category.name !== '') {
 				categoryList.push(category.name)
 			}
 		})
 
 		const categoryObj = {}
-		categoryList.forEach((category) => (categoryObj[category] = _.filter(this.state.allPrompts, { category: category })))
-
-		this.setState({
-			...categoryObj,
-		})
+		categoryList.forEach((category) => (categoryObj[category] = _.filter(allPrompts, { category: category })))
+		
+		
+		setPromptLists(categoryObj)
 	}
 
-	onSelect(e) {
+	const onSelect=(e)=> {
 		const selectedValue = e.target.value
-		const randomNr = Math.floor(Math.random() * this.state[selectedValue].length)
-		const selectionResult = this.state[selectedValue][randomNr]
-		const updateSelectedList = this.state[selectedValue].filter((val, index) => index !== randomNr)
 
-		this.setState({
-			selection: this.state.selection.concat(selectionResult),
-			[selectedValue]: updateSelectedList,
-		})
+		if ( !_.isEmpty(promptLists) ) {
+			const randomNr = Math.floor(Math.random() * promptLists[selectedValue]?.length)
+			const selectionResult = promptLists[selectedValue][randomNr]
+			const updateSelectedList = promptLists[selectedValue].filter((val, index) => index !== randomNr)
+
+			setSelection(selection.concat(selectionResult))
+			setPromptLists({
+				...promptLists,
+				[selectedValue]: updateSelectedList
+			})
+		}
 	}
 
-	clear() {
-		this.setState({
-			selection: [],
-		})
-
-		this.setLists()
+	const clear=()=> {
+		setSelection([])
+		setLists()
 	}
 
-	getListStatus() {
+	const getListStatus=()=> {
 		const statusObj = {}
 
-		if (this.state.categories) {
-			this.state.categories.forEach((category) => {
-				if (this.state[category.name]) {
-					statusObj[category.name] = this.state[category.name].length
+		if (categories && promptLists) {
+			categories.forEach((category) => {
+				if (promptLists[category.name]) {
+					statusObj[category.name] = promptLists[category.name].length
 				}
 			})
 		}
@@ -109,34 +91,33 @@ export class PromptSelector extends Component {
 		return statusObj
 	}
 
-	removeCard(prompt) {
-		this.setState({
-			[prompt.category]: this.state[prompt.category].concat(prompt),
-			selection: this.state.selection.filter((val) => {
-				return val.id !== prompt.id
-			}),
+	const removeCard = (prompt) => {
+		setPromptLists({
+			...promptLists,
+			[prompt.category]: promptLists[prompt.category].concat(prompt)
 		})
-	}
-
-	render() {
-		const { selection, categories, colors } = this.state
-
-		return (
-			<div>
-				<PromptSelectorMenu onClick={this.onSelect} categories={categories} listStatus={this.getListStatus()} colors={colors} />
-
-				<div>
-					{selection.length > 0 && (
-						<PromptGrid selection={selection} removeCard={this.removeCard} categories={categories} colors={colors} />
-					)}
-				</div>
-
-				<ClearPrompts onClick={this.clear}>
-					<i className="fa fa-trash"></i> <span>Clear Selection</span>
-				</ClearPrompts>
-			</div>
+		setSelection(
+			selection.filter((val) => {
+				return val.id !== prompt.id
+			})
 		)
 	}
+
+	return (
+		<div>
+			<PromptSelectorMenu onClick={onSelect} categories={categories} listStatus={getListStatus()} colors={colors} />
+
+			<div>
+				{selection.length > 0 && (
+					<PromptGrid selection={selection} removeCard={removeCard} categories={categories} colors={colors} />
+				)}
+			</div>
+
+			<ClearPrompts onClick={clear}>
+				<i className="fa fa-trash"></i> <span>Clear Selection</span>
+			</ClearPrompts>
+		</div>
+	)
 }
 
 const ClearPrompts = styled.div`
@@ -169,9 +150,6 @@ const ClearPrompts = styled.div`
 		}
 
 `
-
-
-
 
 const PromptGrid = ({ selection, removeCard, categories, colors }) => {
 	return (
@@ -252,4 +230,3 @@ const CardCategory = styled.div`
 	text-transform: uppercase;
 	font-style: italic;
 `
-
