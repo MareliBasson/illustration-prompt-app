@@ -1,7 +1,7 @@
 {
 	"promptCollections": [
 		{
-			"type": "humanoid",
+			"category": "humanoid",
 			"title": "Humanoid",
 			"color": "pink",
 			"prompts": [ 
@@ -13,7 +13,7 @@
 			]
 		},
 		{
-			"type": "details",
+			"category": "details",
 			"title": "What to add",
 			"color": "cyan",
 			"prompts": [
@@ -23,7 +23,7 @@
 			]
 		},
 		{
-			"type": "feeling",
+			"category": "feeling",
 			"title": "Expressions",
 			"color": "deep purple",
 			"prompts": [
@@ -37,7 +37,7 @@
 			]
 		},
 		{
-			"type": "accessory",
+			"category": "accessory",
 			"title": "Accessories",
 			"color": "orange",
 			"prompts": [
@@ -59,7 +59,7 @@
 			]
 		},
 		{
-			"type": "style",
+			"category": "style",
 			"title": "What's the style?",
 			"color": "blue",
 			"prompts": [
@@ -73,7 +73,7 @@
 			]
 		},
 		{
-			"type": "animals",
+			"category": "animals",
 			"title": "Animals",
 			"color": "",
 			"prompts": [
@@ -99,7 +99,7 @@
 			]
 		},
 		{
-			"type": "insects",
+			"category": "insects",
 			"title": "Insects",
 			"color": "",
 			"prompts": [
@@ -117,7 +117,7 @@
 			]
 		},
 		{
-			"type": "plants",
+			"category": "plants",
 			"title": "Plants",
 			"color": "",
 			"prompts": [
@@ -139,7 +139,7 @@
 			]
 		},
 		{
-			"type": "eyes",
+			"category": "eyes",
 			"title": "Eyes",
 			"color": "",
 			"prompts": [
@@ -157,7 +157,7 @@
 			]
 		},
 		{
-			"type": "head",
+			"category": "head",
 			"title": "Head",
 			"color": "",
 			"prompts": [
@@ -183,7 +183,7 @@
 			]
 		},
 		{
-			"type": "body",
+			"category": "body",
 			"title": "Body",
 			"color": "",
 			"prompts": [
@@ -203,7 +203,7 @@
 			]
 		},
 		{
-			"type": "extras",
+			"category": "extras",
 			"title": "Extras",
 			"color": "",
 			"prompts": [
@@ -222,7 +222,7 @@
 			]
 		},
 		{
-			"type": "weapons",
+			"category": "weapons",
 			"title": "Weapon",
 			"color": "",
 			"prompts": [
@@ -235,7 +235,7 @@
 			]
 		},
 		{
-			"type": "color-scheme",
+			"category": "color-scheme",
 			"title": "Color scheme",
 			"color": "",
 			"prompts": [
@@ -254,68 +254,52 @@
 	],
 	"colors": [
 		{
-			"name": "deep orange",
-			"value": "ff5722"
-		},
-		{
-			"name": "teal",
-			"value": "009688"
-		},
-		{
-			"name": "indigo",
-			"value": "3f51b5"
-		},
-		{
-			"name": "grey",
-			"value": "9e9e9e"
+			"name": "red",
+			"value": "f44336"
 		},
 		{
 			"name": "pink",
 			"value": "e91e63"
 		},
 		{
-			"name": "lime",
-			"value": "cddc39"
-		},
-		{
-			"name": "light blue",
-			"value": "03a9f4"
-		},
-		{
-			"name": "blue",
-			"value": "2196f3"
-		},
-		{
-			"name": "deep orange",
-			"value": "ff5722"
-		},
-		{
-			"name": "orange",
-			"value": "ff9800"
-		},
-		{
-			"name": "red",
-			"value": "f44336"
-		},
-		{
-			"name": "blue grey",
-			"value": "607d8b"
-		},
-		{
 			"name": "purple",
 			"value": "9c27b0"
-		},
-		{
-			"name": "light green",
-			"value": "8bc34a"
 		},
 		{
 			"name": "deep purple",
 			"value": "673ab7"
 		},
 		{
+			"name": "indigo",
+			"value": "3f51b5"
+		},
+		{
+			"name": "blue",
+			"value": "2196f3"
+		},
+		{
+			"name": "light blue",
+			"value": "03a9f4"
+		},
+		{
+			"name": "cyan",
+			"value": "00bcd4"
+		},
+		{
+			"name": "teal",
+			"value": "009688"
+		},
+		{
 			"name": "green",
 			"value": "4caf50"
+		},
+		{
+			"name": "light green",
+			"value": "8bc34a"
+		},
+		{
+			"name": "lime",
+			"value": "cddc39"
 		},
 		{
 			"name": "yellow",
@@ -326,12 +310,24 @@
 			"value": "ffc107"
 		},
 		{
-			"name": "cyan",
-			"value": "00bcd4"
+			"name": "orange",
+			"value": "ff9800"
+		},
+		{
+			"name": "deep orange",
+			"value": "ff5722"
 		},
 		{
 			"name": "brown",
 			"value": "795548"
+		},
+		{
+			"name": "grey",
+			"value": "9e9e9e"
+		},
+		{
+			"name": "blue grey",
+			"value": "607d8b"
 		}
 	]
 }

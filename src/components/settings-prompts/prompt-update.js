@@ -8,7 +8,7 @@ class PromptUpdate extends Component {
 		super(props)
 		this.state = {
 			description: '',
-			type: '',
+			category: '',
 			image: '',
 		}
 		this.updatePrompt = this.updatePrompt.bind(this)
@@ -38,23 +38,23 @@ class PromptUpdate extends Component {
 	updatePrompt() {
 		this.setState({
 			description: this.props.prompt.description,
-			type: this.props.prompt.type,
+			category: this.props.prompt.category,
 			image: this.props.prompt.imageUrl,
 		})
 	}
 
 	handleSubmit(promptId) {
-		const { description, type, image } = this.state
+		const { description, category, image } = this.state
 		const { prompt } = this.props
 
 		const db = firebase.firestore()
 		db.collection('prompts')
 			.doc(promptId)
-			.set({ ...prompt, description, type, imageUrl: image })
+			.set({ ...prompt, description, category, imageUrl: image })
 
 		this.setState({
 			description: '',
-			type: '',
+			category: '',
 			image: '',
 		})
 
@@ -68,17 +68,17 @@ class PromptUpdate extends Component {
 	}
 
 	render() {
-		const { description, type, image } = this.state
+		const { description, category, image } = this.state
 		const { prompt, closeForm } = this.props
 
-		const haveChanged = description === prompt.description && type === prompt.type && image === prompt.imageUrl
+		const haveChanged = description === prompt.description && category === prompt.category && image === prompt.imageUrl
 
 		return (
 			<PromptForm
 				formName="Edit selected prompt"
 				closeForm={closeForm}
 				descriptionVal={description}
-				typeVal={type}
+				categoryVal={category}
 				imageUrl={image}
 				setValue={this.setValue}
 				onPrimarySubmit={() => this.handleSubmit(prompt.id)}

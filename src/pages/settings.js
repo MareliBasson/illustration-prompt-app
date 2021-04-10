@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import _ from 'lodash'
 import PageTemplate from 'components/page-template'
 import SettingsPrompts from 'components/settings-prompts'
-import SettingsTypes from 'components/settings-types'
+import SettingsCategories from 'components/settings-categories'
 import { tokens } from 'styles/variables'
 
 const Settings = () => {
-	const screens = ['prompts', 'types']
+	const screens = ['prompts', 'categories']
 	const [settingsScreen, setSettingsScreen] = React.useState('prompts')
 
 	return (
@@ -23,7 +23,7 @@ const Settings = () => {
 			</ScreenSwitcher>
 
 			{settingsScreen === 'prompts' && <SettingsPrompts />}
-			{settingsScreen === 'types' && <SettingsTypes />}
+			{settingsScreen === 'categories' && <SettingsCategories />}
 		</PageTemplate>
 	)
 }

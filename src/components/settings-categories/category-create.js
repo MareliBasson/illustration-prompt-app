@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { firebase } from 'firebaseConfig'
-import TypeForm from 'components/settings-types/type-form'
+import CategoryForm from 'components/settings-categories/category-form'
 
-const TypeCreate = ({ closeForm }) => {
+const CategoryCreate = ({ closeForm }) => {
 	const [name, setName] = useState('')
 	const [title, setTitle] = useState('')
 	const [color, setColor] = useState('')
@@ -11,7 +11,7 @@ const TypeCreate = ({ closeForm }) => {
 		const db = firebase.firestore()
 
 		if (title && name && color) {
-			db.collection('types').add({
+			db.collection('categories').add({
 				name,
 				title,
 				color,
@@ -26,8 +26,8 @@ const TypeCreate = ({ closeForm }) => {
 	}
 
 	return (
-		<TypeForm
-			formName="Create a new type"
+		<CategoryForm
+			formName="Create a new category"
 			closeForm={closeForm}
 			nameVal={name}
 			colorVal={color}
@@ -40,4 +40,4 @@ const TypeCreate = ({ closeForm }) => {
 		/>
 	)
 }
-export default TypeCreate
+export default CategoryCreate

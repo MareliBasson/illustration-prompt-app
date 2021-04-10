@@ -24,12 +24,12 @@ class PromptSelector extends Component {
 	componentDidMount() {
 		const db = firebase.firestore()
 
-		db.collection('types').onSnapshot((snapshot) => {
-			const typesData = []
-			snapshot.forEach((doc) => typesData.push(doc.data()))
+		db.collection('categories').onSnapshot((snapshot) => {
+			const categoriesData = []
+			snapshot.forEach((doc) => categoriesData.push(doc.data()))
 
 			this.setState({
-				types: typesData,
+				categories: categoriesData,
 			})
 		})
 
@@ -58,18 +58,18 @@ class PromptSelector extends Component {
 	}
 
 	setLists() {
-		const typeList = []
-		this.state.types.forEach((type) => {
-			if (type.name !== '') {
-				typeList.push(type.name)
+		const categoryList = []
+		this.state.categories.forEach((category) => {
+			if (category.name !== '') {
+				categoryList.push(category.name)
 			}
 		})
 
-		const typeObj = {}
-		typeList.forEach((type) => (typeObj[type] = _.filter(this.state.allPrompts, { type: type })))
+		const categoryObj = {}
+		categoryList.forEach((category) => (categoryObj[category] = _.filter(this.state.allPrompts, { category: category })))
 
 		this.setState({
-			...typeObj,
+			...categoryObj,
 		})
 	}
 
@@ -96,10 +96,10 @@ class PromptSelector extends Component {
 	getListStatus() {
 		const statusObj = {}
 
-		if (this.state.types) {
-			this.state.types.forEach((type) => {
-				if (this.state[type.name]) {
-					statusObj[type.name] = this.state[type.name].length
+		if (this.state.categories) {
+			this.state.categories.forEach((category) => {
+				if (this.state[category.name]) {
+					statusObj[category.name] = this.state[category.name].length
 				}
 			})
 		}
@@ -109,7 +109,7 @@ class PromptSelector extends Component {
 
 	removeCard(prompt) {
 		this.setState({
-			[prompt.type]: this.state[prompt.type].concat(prompt),
+			[prompt.category]: this.state[prompt.category].concat(prompt),
 			selection: this.state.selection.filter((val) => {
 				return val.id !== prompt.id
 			}),
@@ -117,15 +117,15 @@ class PromptSelector extends Component {
 	}
 
 	render() {
-		const { selection, types, colors } = this.state
+		const { selection, categories, colors } = this.state
 
 		return (
 			<div className="prompt-selector">
-				<PromptMenu onClick={this.onSelect} types={types} listStatus={this.getListStatus()} colors={colors} />
+				<PromptMenu onClick={this.onSelect} categories={categories} listStatus={this.getListStatus()} colors={colors} />
 
 				<div>
 					{selection.length > 0 && (
-						<PromptGrid selection={selection} removeCard={this.removeCard} types={types} colors={colors} />
+						<PromptGrid selection={selection} removeCard={this.removeCard} categories={categories} colors={colors} />
 					)}
 				</div>
 

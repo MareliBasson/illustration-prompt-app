@@ -11,21 +11,21 @@ const allCollectionsData = require('./collections-data.json')
 
 const buildObj = (data) => {
 	let promptArr = []
-	let typeArr = []
+	let categoryArr = []
 	let colorArr = []
 
 	data.promptCollections.forEach((collection) => {
 		collection.prompts.forEach((prompt) => {
 			promptArr.push({
-				type: collection.type,
+				category: collection.category,
 				description: prompt,
 				// imageUrl: '',
 			})
 		})
 
-		typeArr.push({
+		categoryArr.push({
 			color: collection.color,
-			name: collection.type,
+			name: collection.category,
 			title: collection.title,
 		})
 	})
@@ -37,7 +37,7 @@ const buildObj = (data) => {
 		})
 	})
 
-	return { prompts: promptArr, types: typeArr, colors: colorArr }
+	return { prompts: promptArr, categories: categoryArr, colors: colorArr }
 }
 
 firestoreService.restore(buildObj(allCollectionsData))
@@ -46,7 +46,7 @@ firestoreService.restore(buildObj(allCollectionsData))
 
 // Data structures
 // const obj = {
-//   prompts: [{ description: "", imageUrl: "", type: "" }],
+//   prompts: [{ description: "", category: "", imageUrl: "" }],
 //   colors: [{ name: "", value: "" }],
-//   types: [{ color: "", name: "", title: "" }],
+//   categories: [{ color: "", name: "", title: "" }],
 // };

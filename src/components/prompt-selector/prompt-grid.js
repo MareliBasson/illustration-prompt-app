@@ -4,13 +4,13 @@ import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 import { lighten } from 'polished'
 
-const PromptGrid = ({ selection, removeCard, types, colors }) => {
+const PromptGrid = ({ selection, removeCard, categories, colors }) => {
 	return (
 		<PromptGridWrapper>
 			{selection.map((prompt, index) => {
-				const typeObj = _.find(types, (type) => type.name === prompt.type)
+				const categoryObj = _.find(categories, (category) => category.name === prompt.category)
 
-				const colorObj = _.find(colors, (color) => color.name === typeObj.color)
+				const colorObj = _.find(colors, (color) => color.name === categoryObj.color)
 
 				return (
 					<PromptCard
@@ -28,7 +28,7 @@ const PromptGrid = ({ selection, removeCard, types, colors }) => {
 							<img src={prompt.imageUrl ? prompt.imageUrl : 'images/placeholder.png'} alt="" />
 						</div> */}
 						<CardTitle>{prompt.description}</CardTitle>
-						<CardCategory>{prompt.type}</CardCategory>
+						<CardCategory>{prompt.category}</CardCategory>
 					</PromptCard>
 				)
 			})}
@@ -58,7 +58,7 @@ const PromptCard = styled.div`
 	display: grid;
 	align-items: center;
 	grid-template-rows: 1fr 40px 30px;
-	grid-template-areas: 'description' 'type';
+	grid-template-areas: 'description' 'category';
 `
 const DeleteCard = styled.div`
 	position: absolute;
@@ -78,7 +78,7 @@ const CardTitle = styled.div`
 `
 	
 const CardCategory = styled.div`
-	grid-area: type;
+	grid-area: category;
 	font-size: 1rem;
 	text-transform: uppercase;
 	font-style: italic;

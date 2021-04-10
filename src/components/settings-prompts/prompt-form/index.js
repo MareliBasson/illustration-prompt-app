@@ -8,7 +8,7 @@ const PromptForm = ({
 	formName,
 	closeForm,
 	descriptionVal,
-	typeVal,
+	categoryVal,
 	setValue,
 	onPrimarySubmit,
 	disablePrimary,
@@ -18,16 +18,16 @@ const PromptForm = ({
 	secondaryBtnLabel,
 	imageUrl,
 }) => {
-	const [types, setTypes] = useState()
+	const [categories, setCategories] = useState()
 
 	useEffect(() => {
 		const db = firebase.firestore()
 
-		db.collection('types').onSnapshot((snapshot) => {
-			const typesData = []
-			snapshot.forEach((doc) => typesData.push(doc.data()))
+		db.collection('categories').onSnapshot((snapshot) => {
+			const categoriesData = []
+			snapshot.forEach((doc) => categoriesData.push(doc.data()))
 
-			setTypes(_.sortBy(typesData, 'name'))
+			setCategories(_.sortBy(categoriesData, 'name'))
 		})
 	})
 
@@ -52,21 +52,21 @@ const PromptForm = ({
 							placeholder="Description"
 						/>
 					</div>
-					<div className="type">
-						<h4>Type:</h4>
+					<div className="category">
+						<h4>Category:</h4>
 						<div className="select-wrapper">
 							<select
-								name="type"
+								name="category"
 								id=""
 								onChange={(e) => {
-									setValue(e.target.value, 'type')
+									setValue(e.target.value, 'category')
 								}}
-								value={typeVal}
+								value={categoryVal}
 							>
-								<option value="default">Select Type</option>
-								{types?.map((type) => (
-									<option key={type.name} value={type.name}>
-										{type.name}
+								<option value="default">Select category</option>
+								{categories?.map((category) => (
+									<option key={category.name} value={category.name}>
+										{category.name}
 									</option>
 								))}
 							</select>

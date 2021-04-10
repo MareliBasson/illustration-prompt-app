@@ -1,6 +1,6 @@
 @import 'styles/_variables.scss';
 
-.type-filters {
+.category-filters {
 	margin-bottom: 40px;
 	display: grid;
 	grid-template-columns: auto auto;
@@ -17,7 +17,7 @@
 	}
 }
 
-.type-list {
+.category-list {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 60px;
@@ -27,7 +27,7 @@
 		flex-direction: column-reverse;
 	}
 
-	.type {
+	.category {
 		display: grid;
 		grid-template-columns: 2fr 1fr 1fr;
 		padding: 10px 10px;
@@ -63,11 +63,11 @@
 		}
 	}
 
-	.type-actions {
+	.category-actions {
 		position: sticky;
 		top: 20px;
 
-		.btn-create-type {
+		.btn-create-category {
 			border: 2px solid $colorGreen;
 			border-radius: 5px;
 			display: flex;

@@ -9,14 +9,14 @@ firestoreService.initializeApp(serviceAccount, databaseURL)
 
 // function download(content, fileName, contentType) {
 //   var a = document.createElement("a");
-//   var file = new Blob([content], { type: contentType });
+//   var file = new Blob([content], { categories: contentType });
 //   a.href = URL.createObjectURL(file);
 //   a.download = fileName;
 //   a.click();
 // }
 // download(jsonData, "json.txt", "text/plain");
 
-firestoreService.backup(['prompts', 'colors', 'types']).then((collections) => {
+firestoreService.backup(['prompts', 'colors', 'categories']).then((collections) => {
 	console.log(JSON.stringify(collections))
 })
 

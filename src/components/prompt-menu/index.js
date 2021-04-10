@@ -2,25 +2,25 @@ import React from 'react'
 import _ from 'lodash'
 import './prompt-menu.css'
 
-const PromptMenu = ({ onClick, types, listStatus, colors }) => {
-	const sortedTypesList = _.sortBy(types, 'title')
+const PromptMenu = ({ onClick, categories, listStatus, colors }) => {
+	const sortedCategoriesList = _.sortBy(categories, 'title')
 
 	return (
 		<div className="prompt-menu">
-			{types &&
-				sortedTypesList.map((type) => {
-					const colorObj = _.find(colors, (color) => color.name === type.color)
+			{categories &&
+				sortedCategoriesList.map((category) => {
+					const colorObj = _.find(colors, (color) => color.name === category.color)
 
 					return (
 						<button
-							key={type.name}
-							value={type.name}
+							key={category.name}
+							value={category.name}
 							onClick={onClick}
-							disabled={listStatus && listStatus[type.name] === 0 ? true : false}
-							className={type.name}
+							disabled={listStatus && listStatus[category.name] === 0 ? true : false}
+							className={category.name}
 							style={{ backgroundColor: `#${colorObj?.value}` }}
 						>
-							{type.title}
+							{category.title}
 						</button>
 					)
 				})}

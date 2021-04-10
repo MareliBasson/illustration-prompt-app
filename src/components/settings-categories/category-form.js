@@ -5,7 +5,7 @@ import { firebase } from 'firebaseConfig'
 
 import { tokens } from 'styles/variables'
 
-const TypeForm = ({
+const CategoryForm = ({
 	formName,
 	closeForm,
 	nameVal,
@@ -37,8 +37,8 @@ const TypeForm = ({
 	})
 
 	return (
-		<TypeFormContainer>
-			<TypeFormWrapper>
+		<CategoryFormContainer>
+			<CategoryFormWrapper>
 				<FormHeading>
 					<h3>{formName}</h3>
 					<button onClick={() => closeForm()} className="btn btn-icon">
@@ -114,14 +114,14 @@ const TypeForm = ({
 						{primaryBtnLabel}
 					</button>
 				</FormBtns>
-			</TypeFormWrapper>
-		</TypeFormContainer>
+			</CategoryFormWrapper>
+		</CategoryFormContainer>
 	)
 }
 
-export default TypeForm
+export default CategoryForm
 
-const TypeFormContainer = styled.div`
+const CategoryFormContainer = styled.div`
 	position: relative;
 	z-index: ${tokens.zPromptForm};
 
@@ -137,7 +137,7 @@ const TypeFormContainer = styled.div`
 		align-items: center;
 	}
 `
-const TypeFormWrapper = styled.div`
+const CategoryFormWrapper = styled.div`
 	width: 100%;
 	height: ${tokens.actionHeight};
 	max-height: 90vh;

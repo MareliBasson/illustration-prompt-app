@@ -1,38 +1,38 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
-import TypeCreate from './type-create'
-import TypeUpdate from './type-update'
-import './settings-types.css'
+import CategoryCreate from './category-create'
+import CategoryUpdate from './category-update'
+import './settings-categories.css'
 
-class SettingsTypes extends Component {
+class SettingsCategories extends Component {
 	constructor(props) {
 		super(props)
 
 		this.state = {
-			types: [],
+			categories: [],
 			colors: [],
 			editedList: [],
-			selectedType: {},
+			selectedCategories: {},
 			showCreateForm: false,
 			showCreateBtn: true,
 		}
 
 		this.onDelete = this.onDelete.bind(this)
-		this.selectType = this.selectType.bind(this)
+		this.selectCategory = this.selectCategory.bind(this)
 		this.closeForm = this.closeForm.bind(this)
 		this.openCreateForm = this.openCreateForm.bind(this)
 	}
 
 	componentDidMount() {
 		const db = firebase.firestore()
-		db.collection('types').onSnapshot((snapshot) => {
-			const typesData = []
-			snapshot.forEach((doc) => typesData.push({ ...doc.data(), id: doc.id }))
+		db.collection('categories').onSnapshot((snapshot) => {
+			const categoriesData = []
+			snapshot.forEach((doc) => categoriesData.push({ ...doc.data(), id: doc.id }))
 
 			this.setState({
-				types: typesData,
-				editedList: _.sortBy(typesData, 'title'),
+				categories: categoriesData,
+				editedList: _.sortBy(categoriesData, 'title'),
 			})
 		})
 
@@ -46,20 +46,20 @@ class SettingsTypes extends Component {
 		})
 	}
 
-	onDelete(e, typeId) {
+	onDelete(e, categoryId) {
 		e.stopPropagation()
-		if (window.confirm('Are you sure you want to delete this type?')) {
+		if (window.confirm('Are you sure you want to delete this category?')) {
 			const db = firebase.firestore()
-			db.collection('types').doc(typeId).delete()
+			db.collection('categories').doc(categoryId).delete()
 		}
 	}
 
-	selectType(type) {
-		const { selectedType } = this.state
+	selectCategory(category) {
+		const { selectedCategory } = this.state
 
-		if (_.isEmpty(selectedType) || !_.isEqual(type, selectedType)) {
+		if (_.isEmpty(selectedCategory) || !_.isEqual(category, selectedCategory)) {
 			this.setState({
-				selectedType: type,
+				selectedCategory: category,
 				showCreateBtn: false,
 				showCreateForm: false,
 			})
@@ -68,7 +68,7 @@ class SettingsTypes extends Component {
 
 	closeForm() {
 		this.setState({
-			selectedType: {},
+			selectedCategory: {},
 			showCreateForm: false,
 			showCreateBtn: true,
 		})
@@ -88,13 +88,13 @@ class SettingsTypes extends Component {
 	}
 
 	render() {
-		const { editedList, selectedType, showCreateForm, showCreateBtn, colors } = this.state
+		const { editedList, selectedCategory, showCreateForm, showCreateBtn, colors } = this.state
 
 		return (
 			<>
-				<div className="type-list">
+				<div className="category-list">
 					<div className="column left">
-						<div className="type-filters">
+						<div className="category-filters">
 							<div className="sorting">
 								Sort by:
 								<div className="btn btn-primary btn-in-form" onClick={() => this.handleSort('title')}>
@@ -108,43 +108,43 @@ class SettingsTypes extends Component {
 								</div>
 							</div>
 						</div>
-						{editedList.map((type) => {
-							const colorObj = _.find(colors, (color) => color.name === type.color)
+						{editedList.map((category) => {
+							const colorObj = _.find(colors, (color) => color.name === category.color)
 
 							return (
 								<div
-									key={type.id}
-									className={`type ${_.isEqual(type, selectedType) ? 'selected' : ''}`}
+									key={category.id}
+									className={`category ${_.isEqual(category, selectedCategory) ? 'selected' : ''}`}
 									onClick={() => {
-										this.selectType(type)
+										this.selectCategory(category)
 									}}
 								>
-									<div className="title">{type.title}</div>
-									<div className="name">{type.name}</div>
+									<div className="title">{category.title}</div>
+									<div className="name">{category.name}</div>
 									<div className="color">
-										{type.color} <span style={{ backgroundColor: `#${colorObj?.value}` }}></span>
+										{category.color} <span style={{ backgroundColor: `#${colorObj?.value}` }}></span>
 									</div>
 								</div>
 							)
 						})}
 					</div>
 					<div className="column right">
-						<div className="type-actions">
+						<div className="category-actions">
 							{showCreateBtn && (
 								<div
 									onClick={() => {
 										this.openCreateForm()
 									}}
-									className="btn-create-type"
+									className="btn-create-category"
 								>
 									<i className="fa fa-plus"></i>
-									<h3>Create Type</h3>
+									<h3>Create Category</h3>
 								</div>
 							)}
 
-							{showCreateForm && <TypeCreate closeForm={this.closeForm} />}
+							{showCreateForm && <CategoryCreate closeForm={this.closeForm} />}
 
-							{!_.isEmpty(selectedType) && <TypeUpdate type={selectedType} closeForm={this.closeForm} />}
+							{!_.isEmpty(selectedCategory) && <CategoryUpdate category={selectedCategory} closeForm={this.closeForm} />}
 						</div>
 					</div>
 				</div>
@@ -153,4 +153,4 @@ class SettingsTypes extends Component {
 	}
 }
 
-export default SettingsTypes
+export default SettingsCategories

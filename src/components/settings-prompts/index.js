@@ -11,10 +11,10 @@ class SettingsPrompts extends Component {
 
 		this.state = {
 			prompts: [],
-			types: [],
+			categories: [],
 			editedList: [],
 			newPromptName: '',
-			newType: '',
+			newCategories: '',
 			selectedPrompt: {},
 			showCreateForm: false,
 			showCreateBtn: true,
@@ -34,16 +34,16 @@ class SettingsPrompts extends Component {
 
 			this.setState({
 				prompts: promptsData,
-				editedList: _.sortBy(promptsData, ['type', 'description']),
+				editedList: _.sortBy(promptsData, ['category', 'description']),
 			})
 		})
 
-		db.collection('types').onSnapshot((snapshot) => {
-			const typesData = []
-			snapshot.forEach((doc) => typesData.push(doc.data()))
+		db.collection('categories').onSnapshot((snapshot) => {
+			const categoriesData = []
+			snapshot.forEach((doc) => categoriesData.push(doc.data()))
 
 			this.setState({
-				types: _.sortBy(typesData, 'name'),
+				categories: _.sortBy(categoriesData, 'name'),
 			})
 		})
 	}
@@ -92,12 +92,12 @@ class SettingsPrompts extends Component {
 	handleFilter(e) {
 		this.setState({
 			editedList:
-				e.target.value === 'all' ? this.state.prompts : _.filter(this.state.prompts, ['type', e.target.value]),
+				e.target.value === 'all' ? this.state.prompts : _.filter(this.state.prompts, ['category', e.target.value]),
 		})
 	}
 
 	render() {
-		const { editedList, types, selectedPrompt, showCreateForm, showCreateBtn } = this.state
+		const { editedList, categories, selectedPrompt, showCreateForm, showCreateBtn } = this.state
 
 		return (
 			<>
@@ -105,13 +105,13 @@ class SettingsPrompts extends Component {
 					<div className="column left">
 						<div className="prompt-filters">
 							<div className="filter-section filtering">
-								Filter by type:{' '}
+								Filter by category:{' '}
 								<div className="select-wrapper">
 									<select name="" id="" onChange={(e) => this.handleFilter(e)}>
 										<option value="all">All Prompts</option>
-										{types.map((type) => (
-											<option key={type.name} value={type.name}>
-												{type.name}
+										{categories.map((category) => (
+											<option key={category.name} value={category.name}>
+												{category.name}
 											</option>
 										))}
 									</select>
@@ -127,9 +127,9 @@ class SettingsPrompts extends Component {
 								</div>
 								<div
 									className="btn btn-primary btn-in-form"
-									onClick={() => this.handleSort(['type', 'description'])}
+									onClick={() => this.handleSort(['category', 'description'])}
 								>
-									Type
+									Category
 								</div>
 							</div>
 						</div>
@@ -143,7 +143,7 @@ class SettingsPrompts extends Component {
 							>
 								<div className="description">{prompt.description}</div>
 								<div className="image">{prompt.imageUrl && <i className="fa fa-file-image-o"></i>}</div>
-								<div className="type">{prompt.type}</div>
+								<div className="category">{prompt.category}</div>
 								{/* <div className="options">
 									<button
 										onClick={(e) => {

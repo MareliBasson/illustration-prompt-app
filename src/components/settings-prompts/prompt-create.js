@@ -7,7 +7,7 @@ class PromptCreate extends Component {
 		super(props)
 		this.state = {
 			description: '',
-			type: '',
+			category: '',
 			image: '',
 		}
 
@@ -16,20 +16,20 @@ class PromptCreate extends Component {
 	}
 
 	handleCreate() {
-		const { description, type, image } = this.state
+		const { description, category, image } = this.state
 		const db = firebase.firestore()
 
-		if (description && type) {
+		if (description && category) {
 			db.collection('prompts').add({
 				description: description,
-				type: type,
+				category: category,
 				imageUrl: image ? image : '',
 			})
 
 			this.setState(
 				{
 					description: '',
-					type: '',
+					category: '',
 					image: '',
 				},
 				() => {
@@ -46,7 +46,7 @@ class PromptCreate extends Component {
 	}
 
 	render() {
-		const { description, type } = this.state
+		const { description, category } = this.state
 		const { closeForm } = this.props
 
 		return (
@@ -54,10 +54,10 @@ class PromptCreate extends Component {
 				formName="Create a new prompt"
 				closeForm={closeForm}
 				descriptionVal={description}
-				typeVal={type}
+				categoryVal={category}
 				setValue={this.setValue}
 				onPrimarySubmit={() => this.handleCreate()}
-				disablePrimary={!description || !type}
+				disablePrimary={!description || !category}
 				primaryBtnLabel="Create"
 			/>
 		)
