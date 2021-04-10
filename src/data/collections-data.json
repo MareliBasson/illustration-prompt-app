@@ -1,44 +1,62 @@
 {
 	"promptCollections": [
 		{
-			"type": "subject",
-			"title": "Subject",
+			"type": "humanoid",
+			"title": "Humanoid",
 			"color": "pink",
-			"prompts": ["Dog", "Lady", "Hoepoe", "Cat"]
+			"prompts": [ 
+				"Boy",
+				"Girl", 
+				"Lady", 
+				"Man", 
+				"Princess"
+			]
 		},
 		{
 			"type": "details",
-			"title": "Details",
+			"title": "What to add",
 			"color": "cyan",
-			"prompts": ["add plants", "add florals", "add dots", "add geometrics"]
-		},
-		{
-			"type": "weird",
-			"title": "Make it weird",
-			"color": "yellow",
 			"prompts": [
-				"add crazy hair",
-				"add a third eye",
-				"add wings",
-				"add lots of freckles",
-				"add fishnets",
-				"add tattoos",
-				"make it sexy",
-				"add nipple tassles",
-				"add piercings"
+				"flowers", 
+				"geometrics",
+				"plants"
 			]
 		},
 		{
 			"type": "feeling",
-			"title": "What's the vibe?",
+			"title": "Expressions",
 			"color": "deep purple",
-			"prompts": ["sad", "dubious", "annoyed", "happy", "dreamy", "anger", "restless"]
+			"prompts": [
+				"anger", 
+				"annoyed", 
+				"dreamy", 
+				"dubious", 
+				"happy", 
+				"restless",
+				"sad"
+			]
 		},
 		{
 			"type": "accessory",
 			"title": "Accessories",
 			"color": "orange",
-			"prompts": ["add boots", "add bow", "add spectacles", "add necklace", "add a hat"]
+			"prompts": [
+				"boots", 
+				"bow", 
+				"chest harness",
+				"choker/necklace",
+				"fishnets",
+				"garter belt",
+				"hat",
+				"nipple tassles",
+				"piercings",
+				"ruff",
+				"scarf",
+				"spectacles", 
+				"tattoos",
+				"thorn/flower crown"
+
+			]
 		},
 		{
 			"type": "style",
@@ -59,29 +77,44 @@
 			"title": "Animals",
 			"color": "",
 			"prompts": [
-				"snakes",
-				"crow",
-				"cat",
-				"fox",
 				"bird",
-				"octopus",
-				"platypus",
-				"lizards",
+				"cat",
+				"crow",
+				"dog",
+				"eagle",
+				"ferret",
+				"fox",
 				"frogs",
 				"goat",
+				"hairless cat",
+				"hoepoe",
+				"ibis",
+				"lizards",
+				"mystical creature",
+				"octopus",
+				"platypus",
 				"raven",
 				"scorpion",
-				"ferret",
-				"mystical creature",
-				"hairless cat",
-				"eagle"
+				"snakes"
 			]
 		},
 		{
 			"type": "insects",
 			"title": "Insects",
 			"color": "",
-			"prompts": ["dragon fly", "lady bug", "millipede", "beetle", "centipede", "butterfly", "moth", "cicada"]
+			"prompts": [
+				"bee",
+				"beetle", 
+				"butterfly", 
+				"centipede", 
+				"cicada",
+				"dragon fly", 
+				"lady bug", 
+				"millipede", 
+				"moth", 
+				"scorpion", 
+				"spider"
+			]
 		},
 		{
 			"type": "plants",
@@ -139,6 +172,7 @@
 				"large face tattoo",
 				"freckles",
 				"piercings",
+				"crazy hair",
 				"horns",
 				"plant growth",
 				"mask",
@@ -182,18 +216,23 @@
 				"crescent moon",
 				"bandaids",
 				"bones",
-				"choker/necklace",
 				"feathers",
 				"barbed wire",
-				"fire",
-				"thorn/flower crown"
+				"fire"
 			]
 		},
 		{
 			"type": "weapons",
 			"title": "Weapon",
 			"color": "",
-			"prompts": ["staff", "bow and arrow", "axe", "sci-fi flail/gun", "dagger", "knife"]
+			"prompts": [
+				"staff", 
+				"bow and arrow", 
+				"axe", 
+				"sci-fi flail/gun", 
+				"dagger", 
+				"knife"
+			]
 		},
 		{
 			"type": "color-scheme",

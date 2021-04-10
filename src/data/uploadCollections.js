@@ -11,15 +11,15 @@ const allCollectionsData = require('./collections-data.json')
 
 const buildObj = (data) => {
 	let promptArr = []
-
 	let typeArr = []
+	let colorArr = []
 
 	data.promptCollections.forEach((collection) => {
 		collection.prompts.forEach((prompt) => {
 			promptArr.push({
 				type: collection.type,
 				description: prompt,
-				imageUrl: '',
+				// imageUrl: '',
 			})
 		})
 
@@ -29,8 +29,6 @@ const buildObj = (data) => {
 			title: collection.title,
 		})
 	})
-
-	let colorArr = []
 
 	data.colors.forEach((color) => {
 		colorArr.push({
