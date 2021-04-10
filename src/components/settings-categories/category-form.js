@@ -31,7 +31,7 @@ const CategoryForm = ({
 			snapshot.forEach((doc) => colorsData.push(doc.data()))
 
 			if (_.isEmpty(colors)) {
-				setColors(_.sortBy(colorsData, 'name'))
+				setColors(colorsData)
 			}
 		})
 	})

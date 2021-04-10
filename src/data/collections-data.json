@@ -13,16 +13,6 @@
 			]
 		},
 		{
-			"category": "details",
-			"title": "What to add",
-			"color": "cyan",
-			"prompts": [
-				"flowers", 
-				"geometrics",
-				"plants"
-			]
-		},
-		{
 			"category": "feeling",
 			"title": "Expressions",
 			"color": "deep purple",
@@ -34,6 +24,20 @@
 				"happy", 
 				"restless",
 				"sad"
+			]
+		},
+		{
+			"category": "clothing",
+			"title": "Clothing",
+			"color": "orange",
+			"prompts": [
+				"period costume",
+				"dominatrix",
+				"cowboy",
+				"long coat",
+				"tight dress",
+				"feminine outfit" 
+
 			]
 		},
 		{
@@ -215,6 +219,7 @@
 				"geometric stuff",
 				"crescent moon",
 				"bandaids",
+				"plants/flowers",
 				"bones",
 				"feathers",
 				"barbed wire",
