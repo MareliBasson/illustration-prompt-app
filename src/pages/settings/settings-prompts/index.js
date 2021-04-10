@@ -142,7 +142,7 @@ class SettingsPrompts extends Component {
 								}}
 							>
 								<div className="description">{prompt.description}</div>
-								<div className="image">{prompt.imageUrl && <i className="fa fa-file-image-o"></i>}</div>
+								{/* <div className="image">{prompt.imageUrl && <i className="fa fa-file-image-o"></i>}</div> */}
 								<div className="category">{prompt.category}</div>
 								{/* <div className="options">
 									<button

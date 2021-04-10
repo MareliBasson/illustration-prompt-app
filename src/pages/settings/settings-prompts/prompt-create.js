@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
-import PromptForm from './prompt-form'
+import { PromptForm } from './prompt-form'
 
 class PromptCreate extends Component {
 	constructor(props) {
@@ -23,7 +23,7 @@ class PromptCreate extends Component {
 			db.collection('prompts').add({
 				description: description,
 				category: category,
-				imageUrl: image ? image : '',
+				// imageUrl: image ? image : '',
 			})
 
 			this.setState(

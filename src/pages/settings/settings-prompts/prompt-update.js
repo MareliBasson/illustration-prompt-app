@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
-import PromptForm from './prompt-form'
+import { PromptForm } from './prompt-form'
 
 class PromptUpdate extends Component {
 	constructor(props) {
@@ -39,7 +39,7 @@ class PromptUpdate extends Component {
 		this.setState({
 			description: this.props.prompt.description,
 			category: this.props.prompt.category,
-			image: this.props.prompt.imageUrl,
+			// image: this.props.prompt.imageUrl,
 		})
 	}
 
@@ -50,7 +50,12 @@ class PromptUpdate extends Component {
 		const db = firebase.firestore()
 		db.collection('prompts')
 			.doc(promptId)
-			.set({ ...prompt, description, category, imageUrl: image })
+			.set({
+				...prompt,
+				description,
+				category
+				// imageUrl: image
+			})
 
 		this.setState({
 			description: '',
@@ -71,7 +76,8 @@ class PromptUpdate extends Component {
 		const { description, category, image } = this.state
 		const { prompt, closeForm } = this.props
 
-		const haveChanged = description === prompt.description && category === prompt.category && image === prompt.imageUrl
+		const haveChanged = description === prompt.description && category === prompt.category
+			// && image === prompt.imageUrl
 
 		return (
 			<PromptForm
@@ -79,7 +85,7 @@ class PromptUpdate extends Component {
 				closeForm={closeForm}
 				descriptionVal={description}
 				categoryVal={category}
-				imageUrl={image}
+				// imageUrl={image}
 				setValue={this.setValue}
 				onPrimarySubmit={() => this.handleSubmit(prompt.id)}
 				disablePrimary={haveChanged}

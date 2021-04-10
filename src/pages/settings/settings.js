@@ -4,7 +4,7 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
-import {PageTemplate} from 'pages/components/page-template'
+import { PageTemplate } from 'pages/components/page-template'
 import SettingsPrompts from 'pages/settings/settings-prompts'
 import SettingsCategories from 'pages/settings/settings-categories'
 
