@@ -1,81 +1,93 @@
-import React from 'react'
-import _ from 'lodash'
+import React from "react";
+import _ from "lodash";
 
-import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import styled from "styled-components";
+import { tokens } from "styles/variables";
 
-export const PromptSelectorMenu = ({ onClick, categories, listStatus, colors }) => {
-	// Enable to sort prompt buttons alphabetically
-	// const sortedCategoriesList = _.sortBy(categories, 'title')
+export const PromptSelectorMenu = ({
+  onClick,
+  categories,
+  listStatus,
+  colors,
+}) => {
+  // Enable to sort prompt buttons alphabetically
+  // const sortedCategoriesList = _.sortBy(categories, 'title')
 
-	return (
-		<SelectorMenuWrapper>
-			{categories &&
-				categories.map((category) => {
-					const colorObj = _.find(colors, (color) => color.name === category.color)
+  return (
+    <SelectorMenuWrapper>
+      {categories &&
+        categories.map((category) => {
+          const colorObj = _.find(
+            colors,
+            (color) => color.name === category.color
+          );
 
-					return (
-						<PromptButton
-							key={category.name}
-							value={category.name}
-							onClick={onClick}
-							disabled={listStatus && listStatus[category.name] === 0 ? true : false}
-							$color={colorObj?.value}
-						>
-							{category.title}
-						</PromptButton>
-					)
-				})}
-		</SelectorMenuWrapper>
-	)
-}
+          return (
+            <PromptButton
+              key={category.name}
+              value={category.name}
+              onClick={onClick}
+              disabled={
+                listStatus && listStatus[category.name] === 0 ? true : false
+              }
+              $color={colorObj?.value}
+            >
+              {category.title}
+            </PromptButton>
+          );
+        })}
+    </SelectorMenuWrapper>
+  );
+};
 
 const SelectorMenuWrapper = styled.div`
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	border-bottom: 1px solid white;
-	padding-bottom: 20px;
-	margin-bottom: 20px;
-`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid white;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+`;
 const PromptButton = styled.button`
-	background: ${(props) => props.$color || "#00bcd4"};
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border: none;
-	border-radius: 100%;
-	box-sizing: border-box;
-	width: 80px;
-	height: 80px;
-	color: white;
-	line-height: 1.2em;
-	padding: 2px 10px 0px;
-	margin: 0px 10px 10px;
-	cursor: pointer;
-	outline: none;
-	transition: transform ease-out 200ms;
+  background: ${(props) => props.$color || "#00bcd4"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 100%;
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  color: white;
+  line-height: 1.2em;
+  padding: 2px 10px 0px;
+  margin: 0px 10px 10px;
+  cursor: pointer;
+  outline: none;
+  transition: transform ease-out 200ms;
 
-	&:hover {
-		transform: scale(1.1) translate3d(0, 0, 0);
-	}
+  &:hover {
+    transform: scale(1.1) translate3d(0, 0, 0);
+  }
 
-	&:disabled {
-		background-color: ${tokens.colorGrey};
-		opacity: 0.6;
+  &:disabled {
+    background-color: ${tokens.colorGrey};
+    opacity: 0.6;
 
-		&:hover {
-			transform: scale(1) translate3d(0, 0, 0);
-			color: white;
-		}
-	}
-`
+    &:hover {
+      transform: scale(1) translate3d(0, 0, 0);
+      color: white;
+    }
+  }
+`;
 
-
-{/* Gooey Menu Test */}
-{/* <nav className="gooey-menu">
+{
+  /* Gooey Menu Test */
+}
+{
+  /* <nav className="gooey-menu">
 		<input type="checkbox" className="menu-open" name="menu-open" id="menu-open" />
 		<label className="menu-open-button" htmlFor="menu-open">
 			Prompt Me!
@@ -95,9 +107,13 @@ const PromptButton = styled.button`
 					</button>
 				)
 			})}
-	</nav> */}
-{/* <!-- filters --> */}
-{/* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+	</nav> */
+}
+{
+  /* <!-- filters --> */
+}
+{
+  /* <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
 		<defs>
 			<filter id="shadowed-goo">
 				<feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="10" />
@@ -119,7 +135,8 @@ const PromptButton = styled.button`
 				<feComposite in2="goo" in="SourceGraphic" result="mix" />
 			</filter>
 		</defs>
-	</svg> */}
+	</svg> */
+}
 
 // .prompt-menu {
 // 	//vars
