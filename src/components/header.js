@@ -1,8 +1,8 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import Menu from 'components/menu'
 
-const Header = ({ pageHead }) => {
+export const Header = ({ pageHead }) => {
 	return (
 		<HeaderWrapper>
 			<div className="container">
@@ -37,4 +37,60 @@ const Title = styled.div`
 	align-items: center;
 `
 
-export default Header
+const menuItems = [
+	{
+		icon: "home",
+		path: "/"
+	},
+	{
+		icon: "cog",
+		path: "/settings"
+	}
+]
+
+const Menu = () => {
+	return (
+		<MenuWrapper className="menu">
+			{menuItems.map((item) => (
+				<MenuLink activeClassName="active" exact to={item.path}>
+					<i className={`fa fa-${item.icon}`} />
+				</MenuLink>
+			))}
+		</MenuWrapper>
+	)
+}
+
+const MenuWrapper = styled.div`
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+`
+const MenuLink = styled(NavLink)`
+	color: white;
+	padding: 7px 15px;
+	margin-left: 20px;
+	font-weight: 300;
+	font-size: 1rem;
+	border-radius: 15px;
+
+	&:hover,
+	&:visited,
+	&:active,
+	&:focus {
+		text-decoration: none;
+		outline: none;
+		color: white;
+	}
+
+	&:hover {
+		text-decoration: none;
+		color: #ff0000;
+	}
+
+	&:active,
+	&.active {
+		background-color: rgba(255, 255, 255, 0.3);
+	}
+`
+
+

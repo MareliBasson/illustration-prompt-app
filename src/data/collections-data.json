@@ -9,7 +9,25 @@
 				"Girl", 
 				"Lady", 
 				"Man", 
-				"Princess"
+				"Princess",
+				"Fairy"
+			]
+		},
+		{
+			"category": "mystical",
+			"title": "Mystical creatures",
+			"color": "pink",
+			"prompts": [ 
+				"Elf",
+				"Fae",
+				"Fairy",
+				"Faun",
+				"Goblin",
+				"Mermaid",
+				"Orc",
+				"Tauren",
+				"Vampire",
+				"Werewolf"
 			]
 		},
 		{
@@ -31,12 +49,19 @@
 			"title": "Clothing",
 			"color": "orange",
 			"prompts": [
-				"period costume",
-				"dominatrix",
-				"cowboy",
-				"long coat",
-				"tight dress",
-				"feminine outfit" 
+				"armor",
+				"bodysuit",
+				"edwardian costume",
+				"lingerie/underwear",
+				"lolita dress",
+				"maid dress",
+				"nun's habit",
+				"police uniform",
+				"school uniform",
+				"suit",
+				"swim wear",
+				"victorian costume",
+				"wedding dress"
 
 			]
 		},
@@ -49,17 +74,20 @@
 				"bow", 
 				"chest harness",
 				"choker/necklace",
+				"crown",
+				"eye patch",
 				"fishnets",
 				"garter belt",
 				"hat",
-				"nipple tassles",
+				"headphones",
+				"nipple tassels",
 				"piercings",
 				"ruff",
 				"scarf",
 				"spectacles", 
 				"tattoos",
-				"thorn/flower crown"
-
+				"thorn/flower crown",
+				"tiara"
 			]
 		},
 		{
@@ -67,13 +95,13 @@
 			"title": "What's the style?",
 			"color": "blue",
 			"prompts": [
+				"Add patterns",
+				"Add something unexpected",
+				"Create hybrids",
 				"Play with scale",
 				"Start with a random shape",
 				"Swop things around",
-				"Add patterns",
-				"Use an unusual colour",
-				"Add something unexpected",
-				"Create hybrids"
+				"Use an unusual colour"
 			]
 		},
 		{
@@ -125,21 +153,21 @@
 			"title": "Plants",
 			"color": "",
 			"prompts": [
-				"wisteria flowers",
-				"fungi",
-				"phothos",
-				"ivy",
-				"poisonous plants",
-				"non-green monstera leaves",
-				"big leaf plants",
-				"tiger lillies",
 				"aloe",
-				"moss",
-				"fern fronds",
-				"monsters",
-				"raspberries",
+				"big leaf plants",
 				"cherries",
-				"nightshade"
+				"fern fronds",
+				"fungi",
+				"ivy",
+				"monsters",
+				"moss",
+				"nightshade",
+				"non-green monstera leaves",
+				"phothos",
+				"poisonous plants",
+				"raspberries",
+				"tiger lillies",
+				"wisteria flowers"
 			]
 		},
 		{
@@ -147,17 +175,17 @@
 			"title": "Eyes",
 			"color": "",
 			"prompts": [
-				"lots of eyes",
-				"exaggerated lashes",
-				"third eye",
 				"bloody eyes",
 				"bloody tears",
-				"multiple pupils",
-				"red eyes",
-				"one white eye",
+				"exaggerated lashes",
+				"goat pupils",
 				"heterochromia",
+				"lots of eyes",
+				"multiple pupils",
+				"one white eye",
+				"red eyes",
 				"slitted pupils",
-				"goat pupils"
+				"third eye"
 			]
 		},
 		{
@@ -165,25 +193,25 @@
 			"title": "Head",
 			"color": "",
 			"prompts": [
-				"brains",
-				"white hair",
-				"fangs",
-				"vitiligo",
-				"thorns",
-				"split tongue",
-				"broken horn",
 				"blood",
-				"large face tattoo",
-				"freckles",
-				"piercings",
-				"crazy hair",
-				"horns",
-				"plant growth",
-				"mask",
-				"scars",
+				"brains",
+				"broken horn",
 				"busted lip",
+				"crazy hair",
+				"fangs",
+				"freckles",
+				"hair clips",
+				"horns",
+				"large face tattoo",
+				"mask",
+				"piercings",
+				"plant growth",
+				"scars",
 				"smile",
-				"hair clips"
+				"split tongue",
+				"thorns",
+				"vitiligo",
+				"white hair"
 			]
 		},
 		{
@@ -191,19 +219,19 @@
 			"title": "Body",
 			"color": "",
 			"prompts": [
-				"shark tattoo",
-				"scars",
-				"vitiligo",
-				"thorns",
-				"neck bandages",
-				"eyes",
-				"plant growth",
-				"bruises",
 				"blood",
-				"wings",
 				"blue skin",
+				"bruises",
+				"eyes",
+				"neck bandages",
+				"plant growth",
+				"scars",
+				"shark tattoo",
+				"stitches",
 				"tattoos",
-				"stitches"
+				"thorns",
+				"vitiligo",
+				"wings"
 			]
 		},
 		{
@@ -211,32 +239,33 @@
 			"title": "Extras",
 			"color": "",
 			"prompts": [
-				"blood bag",
-				"pirate ship",
-				"moon",
-				"plague dr mask",
-				"burning crown",
-				"geometric stuff",
-				"crescent moon",
-				"bandaids",
-				"plants/flowers",
-				"bones",
-				"feathers",
+				"band-aids",
 				"barbed wire",
-				"fire"
+				"blood bag",
+				"bones",
+				"burning crown",
+				"crescent moon",
+				"feathers",
+				"fire",
+				"geometric stuff",
+				"moon",
+				"pirate ship",
+				"plague dr mask",
+				"plants/flowers",
+				"sun"
 			]
 		},
 		{
-			"category": "weapons",
+			"category": "weapon",
 			"title": "Weapon",
 			"color": "",
 			"prompts": [
-				"staff", 
-				"bow and arrow", 
 				"axe", 
-				"sci-fi flail/gun", 
+				"bow and arrow", 
 				"dagger", 
-				"knife"
+				"knife",
+				"sci-fi flail/gun", 
+				"staff"
 			]
 		},
 		{
@@ -244,16 +273,16 @@
 			"title": "Color scheme",
 			"color": "",
 			"prompts": [
-				"payne's grey",
-				"red",
-				"green",
-				"purple",
-				"dramatic lighting",
-				"light colors",
-				"prussian blue",
 				"dark red",
-				"sage green",
-				"muted colors"
+				"dramatic lighting",
+				"green",
+				"light colors",
+				"muted colors",
+				"payne's grey",
+				"prussian blue",
+				"purple",
+				"red",
+				"sage green"
 			]
 		}
 	],

@@ -1,8 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
-import Header from 'components/header'
 
-const PageTemplate = ({ children, pageHead }) => {
+import { Header } from 'components/header'
+
+import styled from 'styled-components'
+
+export const PageTemplate = ({ children, pageHead }) => {
 	return (
 		<Page>
 			<Header heading={pageHead} />
@@ -29,4 +31,5 @@ const PageContent = styled.div`
 	}
 `
 
-export default PageTemplate
+
+

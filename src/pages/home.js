@@ -1,8 +1,8 @@
 import React from 'react'
-import PageTemplate from 'components/page-template'
-import PromptSelector from 'components/prompt-selector'
+import {PageTemplate} from 'components/page-template'
+import PromptSelector from 'components/prompt-selector/prompt-selector'
 
-const HomePage = () => {
+export const HomePage = () => {
 	return (
 		<PageTemplate pageHead="">
 			<PromptSelector />
@@ -10,4 +10,3 @@ const HomePage = () => {
 	)
 }
 
-export default HomePage

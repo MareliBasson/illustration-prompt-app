@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import _ from 'lodash'
-import PageTemplate from 'components/page-template'
+import {PageTemplate} from 'components/page-template'
 import SettingsPrompts from 'components/settings-prompts'
 import SettingsCategories from 'components/settings-categories'
 import { tokens } from 'styles/variables'
 
-const Settings = () => {
+export const Settings = () => {
 	const screens = ['prompts', 'categories']
 	const [settingsScreen, setSettingsScreen] = React.useState('prompts')
 
@@ -27,8 +27,6 @@ const Settings = () => {
 		</PageTemplate>
 	)
 }
-
-export default Settings
 
 const ScreenSwitcher = styled.div`
 	display: flex;

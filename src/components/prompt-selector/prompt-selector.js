@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
+
 import PromptMenu from 'components/prompt-menu'
 import PromptGrid from './prompt-grid'
-import './prompt-selector.css'
+import styled from 'styled-components'
+import { tokens } from 'styles/variables'
 
 class PromptSelector extends Component {
 	constructor(props) {
@@ -120,7 +122,7 @@ class PromptSelector extends Component {
 		const { selection, categories, colors } = this.state
 
 		return (
-			<div className="prompt-selector">
+			<div>
 				<PromptMenu onClick={this.onSelect} categories={categories} listStatus={this.getListStatus()} colors={colors} />
 
 				<div>
@@ -129,12 +131,43 @@ class PromptSelector extends Component {
 					)}
 				</div>
 
-				<div onClick={this.clear} className="clear-prompts">
+				<ClearPrompts onClick={this.clear}>
 					<i className="fa fa-trash"></i> <span>Clear Selection</span>
-				</div>
+				</ClearPrompts>
 			</div>
 		)
 	}
 }
+
+const ClearPrompts = styled.div`
+		position: fixed;
+		right: -126px;
+		width: 180px;
+		height: 80px;
+		top: 45%;
+		background-color: ${tokens.colorRed};
+		border-radius: 80px 0% 0 80px;
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		text-align: right;
+		padding: 10px 10px 10px 20px;
+		transition: right 0.2s ease;
+		cursor: pointer;
+		box-sizing: border-box;
+
+		i {
+			font-size: 26px;
+			margin-right: 26px;
+		}
+		span {
+			font-size: 1.2rem;
+		}
+		&:hover {
+			right: 0px;
+			transition: right 0.2s ease;
+		}
+
+`
 
 export default PromptSelector
