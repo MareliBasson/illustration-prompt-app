@@ -4,12 +4,12 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
-export const PromptMenu = ({ onClick, categories, listStatus, colors }) => {
+export const PromptSelectorMenu = ({ onClick, categories, listStatus, colors }) => {
 	// Enable to sort prompt buttons alphabetically
 	// const sortedCategoriesList = _.sortBy(categories, 'title')
 
 	return (
-		<PromptMenuWrapper>
+		<SelectorMenuWrapper>
 			{categories &&
 				categories.map((category) => {
 					const colorObj = _.find(colors, (color) => color.name === category.color)
@@ -26,11 +26,11 @@ export const PromptMenu = ({ onClick, categories, listStatus, colors }) => {
 						</PromptButton>
 					)
 				})}
-		</PromptMenuWrapper>
+		</SelectorMenuWrapper>
 	)
 }
 
-const PromptMenuWrapper = styled.div`
+const SelectorMenuWrapper = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
