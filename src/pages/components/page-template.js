@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Header } from 'components/header'
+import { Header } from 'pages/components/header'
 
 import styled from 'styled-components'
 

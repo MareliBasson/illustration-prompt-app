@@ -5,7 +5,7 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
-import { PromptSelectorMenu } from 'components/prompt-selector-menu'
+import { PromptSelectorMenu } from 'pages/home/prompt-selector-menu'
 
 export class PromptSelector extends Component {
 	constructor(props) {

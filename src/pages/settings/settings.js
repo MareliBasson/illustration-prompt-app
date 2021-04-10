@@ -4,9 +4,9 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
-import {PageTemplate} from 'components/page-template'
-import SettingsPrompts from 'components/settings-prompts'
-import SettingsCategories from 'components/settings-categories'
+import {PageTemplate} from 'pages/components/page-template'
+import SettingsPrompts from 'pages/settings/settings-prompts'
+import SettingsCategories from 'pages/settings/settings-categories'
 
 export const Settings = () => {
 	const screens = ['prompts', 'categories']

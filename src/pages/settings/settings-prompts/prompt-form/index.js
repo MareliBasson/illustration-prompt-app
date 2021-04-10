@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
-import ImageUploader from 'components/image-uploader'
+import ImageUploader from 'pages/components/image-uploader'
 import './prompt-form.css'
 
 const PromptForm = ({
