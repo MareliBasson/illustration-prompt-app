@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
+
+import styled, { css } from 'styled-components'
+import { tokens } from 'styles/variables'
+
 import PromptCreate from './prompt-create'
 import PromptUpdate from './prompt-update'
-import './settings-prompts.css'
 
-class SettingsPrompts extends Component {
+export class SettingsPrompts extends Component {
 	constructor(props) {
 		super(props)
 
@@ -101,9 +104,9 @@ class SettingsPrompts extends Component {
 
 		return (
 			<>
-				<div className="prompt-list">
+				<PromptList className="prompt-list">
 					<div className="column left">
-						<div className="prompt-filters">
+						<PromptFilters className="prompt-filters">
 							<div className="filter-section filtering">
 								Filter by category:{' '}
 								<div className="select-wrapper">
@@ -132,14 +135,15 @@ class SettingsPrompts extends Component {
 									Category
 								</div>
 							</div>
-						</div>
+						</PromptFilters>
 						{editedList.map((prompt) => (
-							<div
+							<Prompt
 								key={prompt.id}
-								className={`prompt ${_.isEqual(prompt, selectedPrompt) ? 'selected' : ''}`}
+								// className={`prompt ${_.isEqual(prompt, selectedPrompt) ? 'selected' : ''}`}
 								onClick={() => {
 									this.selectPrompt(prompt)
 								}}
+								$selected={_.isEqual(prompt, selectedPrompt)}
 							>
 								<div className="description">{prompt.description}</div>
 								{/* <div className="image">{prompt.imageUrl && <i className="fa fa-file-image-o"></i>}</div> */}
@@ -154,13 +158,13 @@ class SettingsPrompts extends Component {
 										<i className="fa fa-trash"></i>
 									</button>
 								</div> */}
-							</div>
+							</Prompt>
 						))}
 					</div>
 					<div className="column right">
-						<div className="prompt-actions">
+						<PromptActions className="prompt-actions">
 							{showCreateBtn && (
-								<div
+								<CreatePromptButton
 									onClick={() => {
 										this.openCreateForm()
 									}}
@@ -168,7 +172,7 @@ class SettingsPrompts extends Component {
 								>
 									<i className="fa fa-plus"></i>
 									<h3>Create Prompt</h3>
-								</div>
+								</CreatePromptButton>
 							)}
 
 							{showCreateForm && <PromptCreate closeForm={this.closeForm} />}
@@ -176,12 +180,124 @@ class SettingsPrompts extends Component {
 							{!_.isEmpty(selectedPrompt) && (
 								<PromptUpdate prompt={selectedPrompt} closeForm={this.closeForm} />
 							)}
-						</div>
+						</PromptActions>
 					</div>
-				</div>
+				</PromptList>
 			</>
 		)
 	}
 }
 
-export default SettingsPrompts
+const PromptFilters = styled.div`
+  margin-bottom: 40px;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 20px;
+
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  .btn,
+  .select-wrapper {
+    margin-left: 10px;
+  }
+`
+const PromptList = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 60px;
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+`
+const Prompt = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 1fr 50px;
+    padding: 10px 10px;
+    cursor: pointer;
+
+    .category {
+      text-align: right;
+    }
+
+    .options {
+      opacity: 0;
+      text-align: right;
+
+      @media (max-width: 768px) {
+        opacity: 1;
+      }
+    }
+
+	${(props) => props.$selected && css`
+      background-color: rgba(${tokens.colorGreen}, 0.3);
+
+      .options {
+        opacity: 1;
+      }
+	`}
+
+    &:hover {
+      background-color: rgba(${tokens.colorGreen}, 0.3);
+
+      .options {
+        opacity: 1;
+      }
+    }
+`
+const PromptActions = styled.div`
+    position: sticky;
+    top: 20px;
+`
+const CreatePromptButton = styled.div`border: 2px solid ${tokens.colorGreen};
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-align: center;
+      height: 150px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+
+      i {
+        margin-bottom: 10px;
+        font-size: 40px;
+      }
+
+      &:hover {
+        background-color: rgba(${tokens.colorGreen}, 0.3);
+      }
+
+      @media (max-width: 768px) {
+        flex-direction: row;
+        height: auto;
+        padding: 10px;
+
+        h3 {
+          line-height: 1.3em;
+        }
+        i {
+          margin: 0px 10px 0px 0px;
+          font-size: 20px;
+        }
+      }
+`
+
+// .prompt-list {
+
+//   .prompt {
+//   }
+
+//   .prompt-actions {
+
+//     .btn-create-prompt {
+      
+//     }
+//   }
+// }

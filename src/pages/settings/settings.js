@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
 import { PageTemplate } from 'pages/components/page-template'
-import SettingsPrompts from 'pages/settings/settings-prompts'
-import SettingsCategories from 'pages/settings/settings-categories'
+import { SettingsPrompts }  from 'pages/settings/prompt-settings'
+import SettingsCategories from 'pages/settings/settings-categories/category-settings'
 
 export const Settings = () => {
 	const screens = ['prompts', 'categories']
