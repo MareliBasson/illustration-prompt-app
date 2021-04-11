@@ -5,18 +5,18 @@ import { tokens } from 'styles/variables'
 
 export const CreateButton = ({ label, onClick }) => {
 	return (
-		<CreateButton
+		<CreateButtonWrapper
 			onClick={() => {
 				onClick()
 			}}
 		>
 			<i className='fa fa-plus'></i>
 			<h3>Create {label}</h3>
-		</CreateButton>
+		</CreateButtonWrapper>
 	)
 }
 
-const CreateButton = styled.div`
+const CreateButtonWrapper = styled.div`
 	border: 2px solid ${tokens.colorGreen};
 	border-radius: 5px;
 	display: flex;
