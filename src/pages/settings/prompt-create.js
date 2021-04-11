@@ -13,14 +13,14 @@ export const PromptCreate = ({ closeForm }) => {
 
 		if (description && category) {
 			db.collection('prompts').add({
-				description: description,
-				category: category,
+				description,
+				category,
 				// imageUrl: image ? image : '',
 			})
 
 			setCategory(category)
 			setDescription(description)
-			setImage(image)
+			// setImage(image)
 
 			closeForm()
 		}

@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useCallback, useRef } from 'react'
+import React from 'react'
 import _ from 'lodash'
 import { firebase } from 'firebaseConfig'
 
 import { CategoryForm } from 'pages/settings/category-form'
 
 export const CategoryUpdate = ({ category, closeForm }) => {
-	const [name, setName] = useState('')
-	const [title, setTitle] = useState('')
-	const [color, setColor] = useState('')
+	const [name, setName] = React.useState('')
+	const [title, setTitle] = React.useState('')
+	const [color, setColor] = React.useState('')
 
 	const usePrevious = (value) => {
-		const ref = useRef()
-		useEffect(() => {
+		const ref = React.useRef()
+		React.useEffect(() => {
 			ref.current = value
 		})
 		return ref.current
@@ -19,7 +19,7 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 
 	const prevCategory = usePrevious(category)
 
-	const updateCategory = useCallback(() => {
+	const updateCategory = React.useCallback(() => {
 		if (!_.isEqual(prevCategory, category)) {
 			setName(category.name)
 			setTitle(category.title)
@@ -31,7 +31,7 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 		}
 	}, [category, prevCategory, name, title, color])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		updateCategory()
 	}, [updateCategory])
 

@@ -10,7 +10,7 @@ import { SettingsCategories } from 'pages/settings/category-settings'
 
 export const Settings = () => {
 	const screens = ['prompts', 'categories']
-	const [settingsScreen, setSettingsScreen] = React.useState('categories')
+	const [settingsScreen, setSettingsScreen] = React.useState('prompts')
 
 	return (
 		<PageTemplate pageHead=''>

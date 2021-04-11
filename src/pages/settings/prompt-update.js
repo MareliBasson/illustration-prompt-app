@@ -10,7 +10,7 @@ export class PromptUpdate extends Component {
 		this.state = {
 			description: '',
 			category: '',
-			image: '',
+			// image: '',
 		}
 		this.updatePrompt = this.updatePrompt.bind(this)
 		this.handleSubmit = this.handleSubmit.bind(this)
@@ -45,7 +45,11 @@ export class PromptUpdate extends Component {
 	}
 
 	handleSubmit(promptId) {
-		const { description, category, image } = this.state
+		const {
+			description,
+			category,
+			// image
+		} = this.state
 		const { prompt } = this.props
 
 		const db = firebase.firestore()
@@ -61,20 +65,24 @@ export class PromptUpdate extends Component {
 		this.setState({
 			description: '',
 			category: '',
-			image: '',
+			// image: '',
 		})
 
 		this.props.closeForm()
 	}
 
-	setValue(value, prop) {
+	setValue(prop, value) {
 		this.setState({
 			[prop]: value,
 		})
 	}
 
 	render() {
-		const { description, category, image } = this.state
+		const {
+			description,
+			category,
+			// image
+		} = this.state
 		const { prompt, closeForm } = this.props
 
 		const haveChanged =

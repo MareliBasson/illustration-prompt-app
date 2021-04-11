@@ -56,7 +56,6 @@ export const CategoryForm = ({
 							type='text'
 							value={nameVal}
 							onChange={(e) => {
-								console.log('name changed')
 								setName(e.target.value)
 							}}
 							placeholder='Name'
