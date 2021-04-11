@@ -6,8 +6,8 @@ import { Settings } from 'pages/settings/settings.js'
 const Routes = () => (
 	<Router>
 		<React.Fragment>
-			<Route exact path="/" component={HomePage} />
-			<Route path="/settings" component={Settings} />
+			<Route exact path='/' component={HomePage} />
+			<Route path='/settings' component={Settings} />
 		</React.Fragment>
 	</Router>
 )

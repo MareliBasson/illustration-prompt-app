@@ -16,8 +16,10 @@ firestoreService.initializeApp(serviceAccount, databaseURL)
 // }
 // download(jsonData, "json.txt", "text/plain");
 
-firestoreService.backup(['prompts', 'colors', 'categories']).then((collections) => {
-	console.log(JSON.stringify(collections))
-})
+firestoreService
+	.backup(['prompts', 'colors', 'categories'])
+	.then((collections) => {
+		console.log(JSON.stringify(collections))
+	})
 
 // to run script: $node exportData

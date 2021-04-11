@@ -45,7 +45,6 @@ firestoreService.restore(buildObj(allCollectionsData))
 
 // to run script: $node uploadCollections
 
-
 // Data structures
 // const obj = {
 //   prompts: [{ description: "", category: "", imageUrl: "" }],

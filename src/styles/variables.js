@@ -24,7 +24,7 @@ export const tokens = {
 	fontPrimary: "'Open Sans Condensed', sans-serif",
 
 	actionHeight: 'auto',
-	previewHeight: "250px",
+	previewHeight: '250px',
 
 	zSelect: '4',
 	zPromptForm: '10',

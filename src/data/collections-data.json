@@ -4,20 +4,22 @@
 			"category": "humanoid",
 			"title": "Humanoid",
 			"color": "pink",
-			"prompts": [ 
+			"prompts": [
 				"Boy",
-				"Girl", 
-				"Lady", 
-				"Man", 
+				"Girl",
+				"Lady",
+				"Man",
 				"Princess",
-				"Fairy"
+				"Fairy",
+				"Villain",
+				"Warrior"
 			]
 		},
 		{
 			"category": "mystical",
 			"title": "Mystical creatures",
 			"color": "pink",
-			"prompts": [ 
+			"prompts": [
 				"Elf",
 				"Fae",
 				"Fairy",
@@ -62,15 +64,15 @@
 			"color": "",
 			"prompts": [
 				"bee",
-				"beetle", 
-				"butterfly", 
-				"centipede", 
+				"beetle",
+				"butterfly",
+				"centipede",
 				"cicada",
-				"dragon fly", 
-				"lady bug", 
-				"millipede", 
-				"moth", 
-				"scorpion", 
+				"dragon fly",
+				"lady bug",
+				"millipede",
+				"moth",
+				"scorpion",
 				"spider"
 			]
 		},
@@ -163,8 +165,8 @@
 			"title": "Accessories",
 			"color": "orange",
 			"prompts": [
-				"boots", 
-				"bow", 
+				"boots",
+				"bow",
 				"chest harness",
 				"choker/necklace",
 				"crown",
@@ -177,7 +179,7 @@
 				"piercings",
 				"ruff",
 				"scarf",
-				"spectacles", 
+				"spectacles",
 				"tattoos",
 				"thorn/flower crown",
 				"tiara"
@@ -231,11 +233,11 @@
 			"title": "Weapon",
 			"color": "",
 			"prompts": [
-				"axe", 
-				"bow and arrow", 
-				"dagger", 
+				"axe",
+				"bow and arrow",
+				"dagger",
 				"knife",
-				"sci-fi flail/gun", 
+				"sci-fi flail/gun",
 				"staff"
 			]
 		},
@@ -244,11 +246,11 @@
 			"title": "Expressions",
 			"color": "deep purple",
 			"prompts": [
-				"anger", 
-				"annoyed", 
-				"dreamy", 
-				"dubious", 
-				"happy", 
+				"anger",
+				"annoyed",
+				"dreamy",
+				"dubious",
+				"happy",
 				"restless",
 				"sad"
 			]
