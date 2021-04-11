@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
+
+import styled, { css } from 'styled-components'
+import { tokens } from 'styles/variables'
+
 import CategoryCreate from './category-create'
 import CategoryUpdate from './category-update'
-import './settings-categories.css'
 
-class SettingsCategories extends Component {
+export class SettingsCategories extends Component {
 	constructor(props) {
 		super(props)
 
@@ -103,9 +106,9 @@ class SettingsCategories extends Component {
 
 		return (
 			<>
-				<div className='category-list'>
+				<CategoryList>
 					<div className='column left'>
-						<div className='category-filters'>
+						<CategoryFilters>
 							<div className='sorting'>
 								Sort by:
 								<div
@@ -127,7 +130,7 @@ class SettingsCategories extends Component {
 									Color
 								</div>
 							</div>
-						</div>
+						</CategoryFilters>
 						{editedList.map((category) => {
 							const colorObj = _.find(
 								colors,
@@ -135,13 +138,12 @@ class SettingsCategories extends Component {
 							)
 
 							return (
-								<div
+								<Category
 									key={category.id}
-									className={`category ${
-										_.isEqual(category, selectedCategory)
-											? 'selected'
-											: ''
-									}`}
+									$selected={_.isEqual(
+										category,
+										selectedCategory
+									)}
 									onClick={() => {
 										this.selectCategory(category)
 									}}
@@ -159,14 +161,14 @@ class SettingsCategories extends Component {
 											}}
 										></span>
 									</div>
-								</div>
+								</Category>
 							)
 						})}
 					</div>
 					<div className='column right'>
-						<div className='category-actions'>
+						<CategoryActions className='category-actions'>
 							{showCreateBtn && (
-								<div
+								<CreateCategoryButton
 									onClick={() => {
 										this.openCreateForm()
 									}}
@@ -174,7 +176,7 @@ class SettingsCategories extends Component {
 								>
 									<i className='fa fa-plus'></i>
 									<h3>Create Category</h3>
-								</div>
+								</CreateCategoryButton>
 							)}
 
 							{showCreateForm && (
@@ -187,12 +189,116 @@ class SettingsCategories extends Component {
 									closeForm={this.closeForm}
 								/>
 							)}
-						</div>
+						</CategoryActions>
 					</div>
-				</div>
+				</CategoryList>
 			</>
 		)
 	}
 }
+const CategoryList = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 60px;
 
-export default SettingsCategories
+	@media (max-width: 768px) {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+`
+const CategoryFilters = styled.div`
+	margin-bottom: 40px;
+	display: grid;
+	grid-template-columns: auto auto;
+	column-gap: 20px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+		row-gap: 20px;
+	}
+
+	.btn,
+	.select-wrapper {
+		margin-left: 10px;
+	}
+`
+const Category = styled.div`
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	padding: 10px 10px;
+	cursor: pointer;
+
+	.title {
+		white-space: nowrap;
+	}
+
+	.name {
+		white-space: nowrap;
+	}
+
+	.color {
+		white-space: nowrap;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+
+		span {
+			display: inline-block;
+			min-width: 20px;
+			min-height: 20px;
+			border-radius: 100%;
+			margin-left: 10px;
+			flex: 0;
+		}
+	}
+
+	&:hover {
+		background-color: rgba(${tokens.colorGreen}, 0.3);
+	}
+
+	${(props) =>
+		props.$selected &&
+		css`
+			background-color: rgba(${tokens.colorGreen}, 0.3);
+		`}
+`
+const CategoryActions = styled.div`
+	position: sticky;
+	top: 20px;
+`
+const CreateCategoryButton = styled.div`
+	border: 2px solid ${tokens.colorGreen};
+	border-radius: 5px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	text-align: center;
+	height: 150px;
+	box-sizing: border-box;
+	margin-bottom: 20px;
+
+	i {
+		margin-bottom: 10px;
+		font-size: 40px;
+	}
+
+	&:hover {
+		background-color: rgba(${tokens.colorGreen}, 0.3);
+	}
+
+	@media (max-width: 768px) {
+		flex-direction: row;
+		height: auto;
+		padding: 10px;
+
+		h3 {
+			line-height: 1.3em;
+		}
+		i {
+			margin: 0px 10px 0px 0px;
+			font-size: 20px;
+		}
+	}
+`

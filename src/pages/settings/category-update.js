@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import _ from 'lodash'
 import { firebase } from 'firebaseConfig'
-import CategoryForm from 'pages/settings/settings-categories/category-form'
+import CategoryForm from 'pages/settings/category-form'
 
 const CategoryUpdate = ({ category, closeForm }) => {
 	const [name, setName] = useState('')

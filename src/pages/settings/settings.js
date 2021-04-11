@@ -6,7 +6,7 @@ import { tokens } from 'styles/variables'
 
 import { PageTemplate } from 'pages/components/page-template'
 import { SettingsPrompts } from 'pages/settings/prompt-settings'
-import SettingsCategories from 'pages/settings/settings-categories/category-settings'
+import { SettingsCategories } from 'pages/settings/category-settings'
 
 export const Settings = () => {
 	const screens = ['prompts', 'categories']

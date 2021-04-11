@@ -224,6 +224,16 @@ export class SettingsPrompts extends Component {
 	}
 }
 
+const PromptList = styled.div`
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	column-gap: 60px;
+
+	@media (max-width: 768px) {
+		display: flex;
+		flex-direction: column-reverse;
+	}
+`
 const PromptFilters = styled.div`
 	margin-bottom: 40px;
 	display: grid;
@@ -238,16 +248,6 @@ const PromptFilters = styled.div`
 	.btn,
 	.select-wrapper {
 		margin-left: 10px;
-	}
-`
-const PromptList = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 60px;
-
-	@media (max-width: 768px) {
-		display: flex;
-		flex-direction: column-reverse;
 	}
 `
 const Prompt = styled.div`

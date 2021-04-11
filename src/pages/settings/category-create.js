@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { firebase } from 'firebaseConfig'
-import CategoryForm from 'pages/settings/settings-categories/category-form'
+import CategoryForm from 'pages/settings/category-form'
 
 const CategoryCreate = ({ closeForm }) => {
 	const [name, setName] = useState('')
