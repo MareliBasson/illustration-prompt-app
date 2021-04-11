@@ -3,10 +3,11 @@ import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
 import styled, { css } from 'styled-components'
-import { tokens } from 'styles/variables'
 
 import { PromptCreate } from './prompt-create'
 import { PromptUpdate } from './prompt-update'
+import { CreateButton } from './create-button'
+import { SettingsList, SettingsActions } from 'styles/styles'
 
 export const SettingsPrompts = () => {
 	const [prompts, setPrompts] = React.useState([])
@@ -70,9 +71,9 @@ export const SettingsPrompts = () => {
 
 	return (
 		<>
-			<PromptList className='prompt-list'>
+			<SettingsList>
 				<div className='column left'>
-					<PromptFilters className='prompt-filters'>
+					<PromptFilters>
 						<div className='filter-section filtering'>
 							Filter by category:{' '}
 							<div className='select-wrapper'>
@@ -128,17 +129,14 @@ export const SettingsPrompts = () => {
 					))}
 				</div>
 				<div className='column right'>
-					<PromptActions className='prompt-actions'>
+					<SettingsActions>
 						{showCreateBtn && (
-							<CreatePromptButton
+							<CreateButton
 								onClick={() => {
 									openCreateForm()
 								}}
-								className='btn-create-prompt'
-							>
-								<i className='fa fa-plus'></i>
-								<h3>Create Prompt</h3>
-							</CreatePromptButton>
+								label='Prompt'
+							/>
 						)}
 
 						{showCreateForm && (
@@ -151,23 +149,13 @@ export const SettingsPrompts = () => {
 								closeForm={closeForm}
 							/>
 						)}
-					</PromptActions>
+					</SettingsActions>
 				</div>
-			</PromptList>
+			</SettingsList>
 		</>
 	)
 }
 
-const PromptList = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 60px;
-
-	@media (max-width: 768px) {
-		display: flex;
-		flex-direction: column-reverse;
-	}
-`
 const PromptFilters = styled.div`
 	margin-bottom: 40px;
 	display: grid;
@@ -206,7 +194,7 @@ const Prompt = styled.div`
 	${(props) =>
 		props.$selected &&
 		css`
-			background-color: rgba(${tokens.colorGreen}, 0.3);
+			background-color: rgba(0, 0, 0, 0.3);
 
 			.options {
 				opacity: 1;
@@ -214,50 +202,10 @@ const Prompt = styled.div`
 		`}
 
 	&:hover {
-		background-color: rgba(${tokens.colorGreen}, 0.3);
+		background-color: rgba(0, 0, 0, 0.3);
 
 		.options {
 			opacity: 1;
-		}
-	}
-`
-const PromptActions = styled.div`
-	position: sticky;
-	top: 20px;
-`
-const CreatePromptButton = styled.div`
-	border: 2px solid ${tokens.colorGreen};
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	text-align: center;
-	height: 150px;
-	box-sizing: border-box;
-	margin-bottom: 20px;
-
-	i {
-		margin-bottom: 10px;
-		font-size: 40px;
-	}
-
-	&:hover {
-		background-color: rgba(${tokens.colorGreen}, 0.3);
-	}
-
-	@media (max-width: 768px) {
-		flex-direction: row;
-		height: auto;
-		padding: 10px;
-
-		h3 {
-			line-height: 1.3em;
-		}
-		i {
-			margin: 0px 10px 0px 0px;
-			font-size: 20px;
 		}
 	}
 `

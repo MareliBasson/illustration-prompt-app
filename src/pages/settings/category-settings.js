@@ -3,13 +3,15 @@ import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
 import styled, { css } from 'styled-components'
-import { tokens } from 'styles/variables'
 
 import { CategoryCreate } from './category-create'
 import { CategoryUpdate } from './category-update'
+import { CreateButton } from './create-button'
+import { SettingsList, SettingsActions } from 'styles/styles'
 
 export const SettingsCategories = () => {
 	const [categories, setCategories] = React.useState([])
+	const [editedList, setEditedList] = React.useState([])
 	const [colors, setColors] = React.useState([])
 	const [selectedCategory, setSelectedCategory] = React.useState({})
 	const [showCreateForm, setShowCreateForm] = React.useState(false)
@@ -25,6 +27,7 @@ export const SettingsCategories = () => {
 			)
 
 			setCategories(categoriesData)
+			setEditedList(categoriesData)
 		})
 
 		db.collection('colors').onSnapshot((snapshot) => {
@@ -58,37 +61,28 @@ export const SettingsCategories = () => {
 	}
 
 	const handleSort = (prop) => {
-		setCategories(_.sortBy(categories, prop))
+		setEditedList(_.sortBy(categories, prop))
 	}
+
+	const clearSort = () => {
+		setEditedList(categories)
+	}
+
+	const SortOptions = ['title', 'name']
 
 	return (
 		<>
-			<CategoryList>
+			<SettingsList>
 				<div className='column left'>
 					<CategoryFilters>
 						<div className='sorting'>
-							Sort by:
-							<div
-								className='btn btn-primary btn-in-form'
-								onClick={() => handleSort('title')}
-							>
-								Title
-							</div>
-							<div
-								className='btn btn-primary btn-in-form'
-								onClick={() => handleSort('name')}
-							>
-								Name
-							</div>
-							<div
-								className='btn btn-primary btn-in-form'
-								onClick={() => handleSort('color')}
-							>
-								Color
-							</div>
+							<button onClick={() => handleSort('title')}>
+								Sort alphabetically
+							</button>
 						</div>
+						<button onClick={clearSort}>Clear sorting</button>
 					</CategoryFilters>
-					{categories.map((category) => {
+					{editedList.map((category) => {
 						const colorObj = _.find(
 							colors,
 							(color) => color.name === category.color
@@ -108,7 +102,6 @@ export const SettingsCategories = () => {
 								<div className='title'>{category.title}</div>
 								<div className='name'>{category.name}</div>
 								<div className='color'>
-									{category.color}{' '}
 									<span
 										style={{
 											backgroundColor: colorObj?.value,
@@ -120,17 +113,14 @@ export const SettingsCategories = () => {
 					})}
 				</div>
 				<div className='column right'>
-					<CategoryActions className='category-actions'>
+					<SettingsActions>
 						{showCreateBtn && (
-							<CreateCategoryButton
+							<CreateButton
 								onClick={() => {
 									openCreateForm()
 								}}
-								className='btn-create-category'
-							>
-								<i className='fa fa-plus'></i>
-								<h3>Create Category</h3>
-							</CreateCategoryButton>
+								label='Category'
+							/>
 						)}
 
 						{showCreateForm && (
@@ -143,23 +133,13 @@ export const SettingsCategories = () => {
 								closeForm={closeForm}
 							/>
 						)}
-					</CategoryActions>
+					</SettingsActions>
 				</div>
-			</CategoryList>
+			</SettingsList>
 		</>
 	)
 }
 
-const CategoryList = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	column-gap: 60px;
-
-	@media (max-width: 768px) {
-		display: flex;
-		flex-direction: column-reverse;
-	}
-`
 const CategoryFilters = styled.div`
 	margin-bottom: 40px;
 	display: grid;
@@ -207,52 +187,12 @@ const Category = styled.div`
 	}
 
 	&:hover {
-		background-color: rgba(${tokens.colorGreen}, 0.3);
+		background-color: rgba(0, 0, 0, 0.3);
 	}
 
 	${(props) =>
 		props.$selected &&
 		css`
-			background-color: rgba(${tokens.colorGreen}, 0.3);
+			background-color: rgba(0, 0, 0, 0.3);
 		`}
-`
-const CategoryActions = styled.div`
-	position: sticky;
-	top: 20px;
-`
-const CreateCategoryButton = styled.div`
-	border: 2px solid ${tokens.colorGreen};
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	text-align: center;
-	height: 150px;
-	box-sizing: border-box;
-	margin-bottom: 20px;
-
-	i {
-		margin-bottom: 10px;
-		font-size: 40px;
-	}
-
-	&:hover {
-		background-color: rgba(${tokens.colorGreen}, 0.3);
-	}
-
-	@media (max-width: 768px) {
-		flex-direction: row;
-		height: auto;
-		padding: 10px;
-
-		h3 {
-			line-height: 1.3em;
-		}
-		i {
-			margin: 0px 10px 0px 0px;
-			font-size: 20px;
-		}
-	}
 `
