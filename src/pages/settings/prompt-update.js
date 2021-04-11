@@ -1,58 +1,34 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
 import { PromptForm } from './prompt-form'
 
-export class PromptUpdate extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			description: '',
-			category: '',
-			// image: '',
-		}
-		this.updatePrompt = this.updatePrompt.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.onDelete = this.onDelete.bind(this)
-		this.setValue = this.setValue.bind(this)
-	}
+export const PromptUpdate = ({ closeForm, prompt }) => {
+	const [description, setDescription] = React.useState('')
+	const [category, setCategory] = React.useState('')
 
-	componentDidMount() {
-		this.updatePrompt()
-	}
+	React.useEffect(() => {
+		updatePrompt()
+	}, [prompt])
 
-	componentDidUpdate(prevProps) {
-		if (!_.isEqual(prevProps.prompt, this.props.prompt)) {
-			this.updatePrompt()
-		}
-	}
-
-	onDelete(e, promptId) {
+	const onDelete = (e, promptId) => {
 		e.stopPropagation()
+
 		if (window.confirm('Are you sure you want to delete this prompt?')) {
 			const db = firebase.firestore()
 			db.collection('prompts').doc(promptId).delete()
 		}
 	}
 
-	updatePrompt() {
-		this.setState({
-			description: this.props.prompt.description,
-			category: this.props.prompt.category,
-			// image: this.props.prompt.imageUrl,
-		})
+	const updatePrompt = () => {
+		setDescription(prompt.description)
+		setCategory(prompt.category)
 	}
 
-	handleSubmit(promptId) {
-		const {
-			description,
-			category,
-			// image
-		} = this.state
-		const { prompt } = this.props
-
+	const handleSubmit = (promptId) => {
 		const db = firebase.firestore()
+
 		db.collection('prompts')
 			.doc(promptId)
 			.set({
@@ -62,47 +38,40 @@ export class PromptUpdate extends Component {
 				// imageUrl: image
 			})
 
-		this.setState({
-			description: '',
-			category: '',
-			// image: '',
-		})
+		setDescription('')
+		setCategory('')
 
-		this.props.closeForm()
+		closeForm()
 	}
 
-	setValue(prop, value) {
-		this.setState({
-			[prop]: value,
-		})
+	const setValue = (prop, value) => {
+		switch (prop) {
+			case 'description':
+				setDescription(value)
+				break
+			case 'category':
+				setCategory(value)
+				break
+		}
 	}
 
-	render() {
-		const {
-			description,
-			category,
-			// image
-		} = this.state
-		const { prompt, closeForm } = this.props
+	const haveChanged =
+		description === prompt.description && category === prompt.category
+	// && image === prompt.imageUrl
 
-		const haveChanged =
-			description === prompt.description && category === prompt.category
-		// && image === prompt.imageUrl
-
-		return (
-			<PromptForm
-				formName='Edit selected prompt'
-				closeForm={closeForm}
-				descriptionVal={description}
-				categoryVal={category}
-				// imageUrl={image}
-				setValue={this.setValue}
-				onPrimarySubmit={() => this.handleSubmit(prompt.id)}
-				disablePrimary={haveChanged}
-				primaryBtnLabel='Apply Changes'
-				onSecondarySubmit={(e) => this.onDelete(e, prompt.id)}
-				secondaryBtnLabel='Delete Prompt'
-			/>
-		)
-	}
+	return (
+		<PromptForm
+			formName='Edit selected prompt'
+			closeForm={closeForm}
+			descriptionVal={description}
+			categoryVal={category}
+			// imageUrl={image}
+			setValue={setValue}
+			onPrimarySubmit={() => handleSubmit(prompt.id)}
+			disablePrimary={haveChanged}
+			primaryBtnLabel='Apply Changes'
+			onSecondarySubmit={(e) => onDelete(e, prompt.id)}
+			secondaryBtnLabel='Delete Prompt'
+		/>
+	)
 }

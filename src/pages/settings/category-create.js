@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
 import { CategoryForm } from 'pages/settings/category-form'
 
 export const CategoryCreate = ({ closeForm }) => {
-	const [name, setName] = useState('')
-	const [title, setTitle] = useState('')
-	const [color, setColor] = useState('')
+	const [name, setName] = React.useState('')
+	const [title, setTitle] = React.useState('')
+	const [color, setColor] = React.useState('')
 
 	const handleCreate = () => {
 		const db = firebase.firestore()

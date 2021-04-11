@@ -9,31 +9,15 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 	const [title, setTitle] = React.useState('')
 	const [color, setColor] = React.useState('')
 
-	const usePrevious = (value) => {
-		const ref = React.useRef()
-		React.useEffect(() => {
-			ref.current = value
-		})
-		return ref.current
-	}
-
-	const prevCategory = usePrevious(category)
-
-	const updateCategory = React.useCallback(() => {
-		if (!_.isEqual(prevCategory, category)) {
-			setName(category.name)
-			setTitle(category.title)
-			setColor(category.color)
-		} else {
-			setName(name)
-			setTitle(title)
-			setColor(color)
-		}
-	}, [category, prevCategory, name, title, color])
-
 	React.useEffect(() => {
 		updateCategory()
-	}, [updateCategory])
+	}, [category])
+
+	const updateCategory = () => {
+		setName(category.name)
+		setTitle(category.title)
+		setColor(category.color)
+	}
 
 	const onDelete = (e, categoryId) => {
 		e.stopPropagation()
