@@ -5,8 +5,8 @@ import _ from 'lodash'
 import styled, { css } from 'styled-components'
 import { tokens } from 'styles/variables'
 
-import PromptCreate from './prompt-create'
-import PromptUpdate from './prompt-update'
+import { PromptCreate } from './prompt-create'
+import { PromptUpdate } from './prompt-update'
 
 export class SettingsPrompts extends Component {
 	constructor(props) {

@@ -53,7 +53,7 @@ export const PromptForm = ({
 							type='text'
 							value={descriptionVal}
 							onChange={(e) => {
-								setValue(e.target.value, 'description')
+								setValue('description', e.target.value)
 							}}
 							placeholder='Description'
 						/>
@@ -65,7 +65,7 @@ export const PromptForm = ({
 								name='category'
 								id=''
 								onChange={(e) => {
-									setValue(e.target.value, 'category')
+									setValue('category', e.target.value)
 								}}
 								value={categoryVal}
 							>

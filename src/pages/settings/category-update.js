@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
 import _ from 'lodash'
 import { firebase } from 'firebaseConfig'
-import CategoryForm from 'pages/settings/category-form'
 
-const CategoryUpdate = ({ category, closeForm }) => {
+import { CategoryForm } from 'pages/settings/category-form'
+
+export const CategoryUpdate = ({ category, closeForm }) => {
 	const [name, setName] = useState('')
 	const [title, setTitle] = useState('')
 	const [color, setColor] = useState('')
@@ -78,5 +79,3 @@ const CategoryUpdate = ({ category, closeForm }) => {
 		/>
 	)
 }
-
-export default CategoryUpdate

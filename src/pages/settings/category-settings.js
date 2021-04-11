@@ -5,8 +5,8 @@ import _ from 'lodash'
 import styled, { css } from 'styled-components'
 import { tokens } from 'styles/variables'
 
-import CategoryCreate from './category-create'
-import CategoryUpdate from './category-update'
+import { CategoryCreate } from './category-create'
+import { CategoryUpdate } from './category-update'
 
 export class SettingsCategories extends Component {
 	constructor(props) {

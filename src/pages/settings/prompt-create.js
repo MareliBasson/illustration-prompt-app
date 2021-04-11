@@ -1,22 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
+
 import { PromptForm } from './prompt-form'
 
-class PromptCreate extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			description: '',
-			category: '',
-			image: '',
-		}
+export const PromptCreate = ({ closeForm }) => {
+	const [description, setDescription] = React.useState('')
+	const [category, setCategory] = React.useState('')
+	// const [image, setImage] = React.useState('')
 
-		this.handleCreate = this.handleCreate.bind(this)
-		this.setValue = this.setValue.bind(this)
-	}
-
-	handleCreate() {
-		const { description, category, image } = this.state
+	const handleCreate = () => {
 		const db = firebase.firestore()
 
 		if (description && category) {
@@ -26,42 +18,35 @@ class PromptCreate extends Component {
 				// imageUrl: image ? image : '',
 			})
 
-			this.setState(
-				{
-					description: '',
-					category: '',
-					image: '',
-				},
-				() => {
-					this.props.closeForm()
-				}
-			)
+			setCategory(category)
+			setDescription(description)
+			setImage(image)
+
+			closeForm()
 		}
 	}
 
-	setValue(value, prop) {
-		this.setState({
-			[prop]: value,
-		})
+	const setValue = (prop, value) => {
+		switch (prop) {
+			case 'description':
+				setDescription(value)
+				break
+			case 'category':
+				setCategory(value)
+				break
+		}
 	}
 
-	render() {
-		const { description, category } = this.state
-		const { closeForm } = this.props
-
-		return (
-			<PromptForm
-				formName='Create a new prompt'
-				closeForm={closeForm}
-				descriptionVal={description}
-				categoryVal={category}
-				setValue={this.setValue}
-				onPrimarySubmit={() => this.handleCreate()}
-				disablePrimary={!description || !category}
-				primaryBtnLabel='Create'
-			/>
-		)
-	}
+	return (
+		<PromptForm
+			formName='Create a new prompt'
+			closeForm={closeForm}
+			descriptionVal={description}
+			categoryVal={category}
+			setValue={setValue}
+			onPrimarySubmit={() => handleCreate()}
+			disablePrimary={!description || !category}
+			primaryBtnLabel='Create'
+		/>
+	)
 }
-
-export default PromptCreate

@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
+
 import { PromptForm } from './prompt-form'
 
-class PromptUpdate extends Component {
+export class PromptUpdate extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
@@ -97,5 +98,3 @@ class PromptUpdate extends Component {
 		)
 	}
 }
-
-export default PromptUpdate

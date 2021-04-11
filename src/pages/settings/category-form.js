@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import _ from 'lodash'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
+import _ from 'lodash'
+
+import styled from 'styled-components'
 
 import { tokens } from 'styles/variables'
 
-const CategoryForm = ({
+export const CategoryForm = ({
 	formName,
 	closeForm,
 	nameVal,
@@ -21,9 +22,9 @@ const CategoryForm = ({
 	disableSecondary,
 	secondaryBtnLabel,
 }) => {
-	const [colors, setColors] = useState([])
+	const [colors, setColors] = React.useState([])
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const db = firebase.firestore()
 
 		db.collection('colors').onSnapshot((snapshot) => {
@@ -124,8 +125,6 @@ const CategoryForm = ({
 		</CategoryFormContainer>
 	)
 }
-
-export default CategoryForm
 
 const CategoryFormContainer = styled.div`
 	position: relative;
