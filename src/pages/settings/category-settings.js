@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
@@ -8,194 +8,148 @@ import { tokens } from 'styles/variables'
 import { CategoryCreate } from './category-create'
 import { CategoryUpdate } from './category-update'
 
-export class SettingsCategories extends Component {
-	constructor(props) {
-		super(props)
+export const SettingsCategories = () => {
+	const [categories, setCategories] = React.useState([])
+	const [colors, setColors] = React.useState([])
+	const [selectedCategory, setSelectedCategory] = React.useState({})
+	const [showCreateForm, setShowCreateForm] = React.useState(false)
+	const [showCreateBtn, setShowCreateBtn] = React.useState(true)
 
-		this.state = {
-			categories: [],
-			colors: [],
-			editedList: [],
-			selectedCategories: {},
-			showCreateForm: false,
-			showCreateBtn: true,
-		}
-
-		this.onDelete = this.onDelete.bind(this)
-		this.selectCategory = this.selectCategory.bind(this)
-		this.closeForm = this.closeForm.bind(this)
-		this.openCreateForm = this.openCreateForm.bind(this)
-	}
-
-	componentDidMount() {
+	React.useEffect(() => {
 		const db = firebase.firestore()
+
 		db.collection('categories').onSnapshot((snapshot) => {
 			const categoriesData = []
 			snapshot.forEach((doc) =>
 				categoriesData.push({ ...doc.data(), id: doc.id })
 			)
 
-			this.setState({
-				categories: categoriesData,
-				editedList: _.sortBy(categoriesData, 'title'),
-			})
+			setCategories(categoriesData)
 		})
 
 		db.collection('colors').onSnapshot((snapshot) => {
 			const colorsData = []
 			snapshot.forEach((doc) => colorsData.push(doc.data()))
 
-			this.setState({
-				colors: _.sortBy(colorsData, 'title'),
-			})
+			setColors(_.sortBy(colorsData, 'title'))
 		})
-	}
+	}, [])
 
-	onDelete(e, categoryId) {
-		e.stopPropagation()
-		if (window.confirm('Are you sure you want to delete this category?')) {
-			const db = firebase.firestore()
-			db.collection('categories').doc(categoryId).delete()
-		}
-	}
-
-	selectCategory(category) {
-		const { selectedCategory } = this.state
-
+	const selectCategory = (category) => {
 		if (
 			_.isEmpty(selectedCategory) ||
 			!_.isEqual(category, selectedCategory)
 		) {
-			this.setState({
-				selectedCategory: category,
-				showCreateBtn: false,
-				showCreateForm: false,
-			})
+			setSelectedCategory(category)
+			setShowCreateBtn(false)
+			setShowCreateForm(false)
 		}
 	}
 
-	closeForm() {
-		this.setState({
-			selectedCategory: {},
-			showCreateForm: false,
-			showCreateBtn: true,
-		})
+	const closeForm = () => {
+		setSelectedCategory({})
+		setShowCreateBtn(true)
+		setShowCreateForm(false)
 	}
 
-	openCreateForm() {
-		this.setState({
-			showCreateForm: true,
-			showCreateBtn: false,
-		})
+	const openCreateForm = () => {
+		setShowCreateBtn(false)
+		setShowCreateForm(true)
 	}
 
-	handleSort(prop) {
-		this.setState({
-			editedList: _.sortBy(this.state.editedList, prop),
-		})
+	const handleSort = (prop) => {
+		setCategories(_.sortBy(categories, prop))
 	}
 
-	render() {
-		const {
-			editedList,
-			selectedCategory,
-			showCreateForm,
-			showCreateBtn,
-			colors,
-		} = this.state
-
-		return (
-			<>
-				<CategoryList>
-					<div className='column left'>
-						<CategoryFilters>
-							<div className='sorting'>
-								Sort by:
-								<div
-									className='btn btn-primary btn-in-form'
-									onClick={() => this.handleSort('title')}
-								>
-									Title
-								</div>
-								<div
-									className='btn btn-primary btn-in-form'
-									onClick={() => this.handleSort('name')}
-								>
-									Name
-								</div>
-								<div
-									className='btn btn-primary btn-in-form'
-									onClick={() => this.handleSort('color')}
-								>
-									Color
-								</div>
+	return (
+		<>
+			<CategoryList>
+				<div className='column left'>
+					<CategoryFilters>
+						<div className='sorting'>
+							Sort by:
+							<div
+								className='btn btn-primary btn-in-form'
+								onClick={() => handleSort('title')}
+							>
+								Title
 							</div>
-						</CategoryFilters>
-						{editedList.map((category) => {
-							const colorObj = _.find(
-								colors,
-								(color) => color.name === category.color
-							)
+							<div
+								className='btn btn-primary btn-in-form'
+								onClick={() => handleSort('name')}
+							>
+								Name
+							</div>
+							<div
+								className='btn btn-primary btn-in-form'
+								onClick={() => handleSort('color')}
+							>
+								Color
+							</div>
+						</div>
+					</CategoryFilters>
+					{categories.map((category) => {
+						const colorObj = _.find(
+							colors,
+							(color) => color.name === category.color
+						)
 
-							return (
-								<Category
-									key={category.id}
-									$selected={_.isEqual(
-										category,
-										selectedCategory
-									)}
-									onClick={() => {
-										this.selectCategory(category)
-									}}
-								>
-									<div className='title'>
-										{category.title}
-									</div>
-									<div className='name'>{category.name}</div>
-									<div className='color'>
-										{category.color}{' '}
-										<span
-											style={{
-												backgroundColor:
-													colorObj?.value,
-											}}
-										></span>
-									</div>
-								</Category>
-							)
-						})}
-					</div>
-					<div className='column right'>
-						<CategoryActions className='category-actions'>
-							{showCreateBtn && (
-								<CreateCategoryButton
-									onClick={() => {
-										this.openCreateForm()
-									}}
-									className='btn-create-category'
-								>
-									<i className='fa fa-plus'></i>
-									<h3>Create Category</h3>
-								</CreateCategoryButton>
-							)}
+						return (
+							<Category
+								key={category.id}
+								$selected={_.isEqual(
+									category,
+									selectedCategory
+								)}
+								onClick={() => {
+									selectCategory(category)
+								}}
+							>
+								<div className='title'>{category.title}</div>
+								<div className='name'>{category.name}</div>
+								<div className='color'>
+									{category.color}{' '}
+									<span
+										style={{
+											backgroundColor: colorObj?.value,
+										}}
+									></span>
+								</div>
+							</Category>
+						)
+					})}
+				</div>
+				<div className='column right'>
+					<CategoryActions className='category-actions'>
+						{showCreateBtn && (
+							<CreateCategoryButton
+								onClick={() => {
+									openCreateForm()
+								}}
+								className='btn-create-category'
+							>
+								<i className='fa fa-plus'></i>
+								<h3>Create Category</h3>
+							</CreateCategoryButton>
+						)}
 
-							{showCreateForm && (
-								<CategoryCreate closeForm={this.closeForm} />
-							)}
+						{showCreateForm && (
+							<CategoryCreate closeForm={closeForm} />
+						)}
 
-							{!_.isEmpty(selectedCategory) && (
-								<CategoryUpdate
-									category={selectedCategory}
-									closeForm={this.closeForm}
-								/>
-							)}
-						</CategoryActions>
-					</div>
-				</CategoryList>
-			</>
-		)
-	}
+						{!_.isEmpty(selectedCategory) && (
+							<CategoryUpdate
+								category={selectedCategory}
+								closeForm={closeForm}
+							/>
+						)}
+					</CategoryActions>
+				</div>
+			</CategoryList>
+		</>
+	)
 }
+
 const CategoryList = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;

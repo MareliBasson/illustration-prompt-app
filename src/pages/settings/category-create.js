@@ -1,5 +1,6 @@
 import React from 'react'
 import { firebase } from 'firebaseConfig'
+
 import { CategoryForm } from 'pages/settings/category-form'
 
 export const CategoryCreate = ({ closeForm }) => {

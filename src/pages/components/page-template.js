@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 
-import { Header } from "pages/components/header"
+import styled from 'styled-components'
 
-import styled from "styled-components"
+import { Header } from 'pages/components/header'
 
 export const PageTemplate = ({ children, pageHead }) => {
 	return (

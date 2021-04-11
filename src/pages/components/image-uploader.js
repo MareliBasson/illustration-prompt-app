@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 import storage from 'firebaseConfig'
 
 import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
 export const ImageUpload = ({ imageUrl, setValue }) => {
-	const [image, setImage] = useState(null)
-	const [url, setUrl] = useState('')
-	const [progress, setProgress] = useState(0)
+	const [image, setImage] = React.useState(null)
+	const [url, setUrl] = React.useState('')
+	const [progress, setProgress] = React.useState(0)
 
 	const handleChange = (e) => {
 		if (e.target.files[0]) {
@@ -28,11 +28,9 @@ export const ImageUpload = ({ imageUrl, setValue }) => {
 				setProgress(progress)
 			},
 			(error) => {
-				// Error function ...
 				console.log(error)
 			},
 			() => {
-				// complete function ...
 				storage
 					.ref('images')
 					.child(image.name)
