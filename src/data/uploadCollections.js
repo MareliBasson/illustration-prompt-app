@@ -10,27 +10,9 @@ firestoreService.initializeApp(serviceAccount, databaseURL)
 const allCollectionsData = require('./collections-data.json')
 
 const buildObj = (data) => {
-	let promptArr = []
-
-	let typeArr = []
-
-	data.promptCollections.forEach((collection) => {
-		collection.prompts.forEach((prompt) => {
-			promptArr.push({
-				type: collection.type,
-				description: prompt,
-				imageUrl: '',
-			})
-		})
-
-		typeArr.push({
-			color: collection.color,
-			name: collection.type,
-			title: collection.title,
-		})
-	})
-
 	let colorArr = []
+	let promptArr = []
+	let categoryArr = []
 
 	data.colors.forEach((color) => {
 		colorArr.push({
@@ -39,7 +21,24 @@ const buildObj = (data) => {
 		})
 	})
 
-	return { prompts: promptArr, types: typeArr, colors: colorArr }
+	data.promptCollections.forEach((collection, index) => {
+		collection.prompts.forEach((prompt) => {
+			promptArr.push({
+				category: collection.category,
+				description: prompt,
+				// imageUrl: '',
+			})
+		})
+
+		// Colors are assigned in the sequence listed in the data structure
+		categoryArr.push({
+			color: colorArr[index].name,
+			name: collection.category,
+			title: collection.title,
+		})
+	})
+
+	return { prompts: promptArr, categories: categoryArr, colors: colorArr }
 }
 
 firestoreService.restore(buildObj(allCollectionsData))
@@ -48,7 +47,7 @@ firestoreService.restore(buildObj(allCollectionsData))
 
 // Data structures
 // const obj = {
-//   prompts: [{ description: "", imageUrl: "", type: "" }],
+//   prompts: [{ description: "", category: "", imageUrl: "" }],
 //   colors: [{ name: "", value: "" }],
-//   types: [{ color: "", name: "", title: "" }],
+//   categories: [{ color: "", name: "", title: "" }],
 // };

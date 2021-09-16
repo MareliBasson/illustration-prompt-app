@@ -1,89 +1,81 @@
-import React, { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import _ from 'lodash'
+import React from 'react'
 import { firebase } from 'firebaseConfig'
+import _ from 'lodash'
 
+import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
-const TypeForm = ({
+// import ImageUploader from 'pages/components/image-uploader'
+
+export const PromptForm = ({
 	formName,
 	closeForm,
-	nameVal,
-	titleVal,
-	colorVal,
-	setTitle,
-	setName,
-	setColor,
+	descriptionVal,
+	categoryVal,
+	setValue,
 	onPrimarySubmit,
 	disablePrimary,
 	primaryBtnLabel,
 	onSecondarySubmit,
 	disableSecondary,
 	secondaryBtnLabel,
+	// imageUrl,
 }) => {
-	const [colors, setColors] = useState([])
+	const [categories, setCategories] = React.useState()
 
-	useEffect(() => {
+	React.useEffect(() => {
 		const db = firebase.firestore()
 
-		db.collection('colors').onSnapshot((snapshot) => {
-			const colorsData = []
-			snapshot.forEach((doc) => colorsData.push(doc.data()))
+		db.collection('categories').onSnapshot((snapshot) => {
+			const categoriesData = []
+			snapshot.forEach((doc) => categoriesData.push(doc.data()))
 
-			if (_.isEmpty(colors)) {
-				setColors(_.sortBy(colorsData, 'name'))
-			}
+			setCategories(_.sortBy(categoriesData, 'name'))
 		})
 	})
 
 	return (
-		<TypeFormContainer>
-			<TypeFormWrapper>
-				<FormHeading>
+		<PromptFormWrapper className='prompt-form-container'>
+			<Form className='prompt-form'>
+				<FormHeading className='form-heading'>
 					<h3>{formName}</h3>
-					<button onClick={() => closeForm()} className="btn btn-icon">
-						<i className="fa fa-times"></i>
+					<button
+						onClick={() => closeForm()}
+						className='btn btn-icon'
+					>
+						<i className='fa fa-times'></i>
 					</button>
 				</FormHeading>
-				<FormFields>
-					<div>
-						<h4>Name:</h4>
+				<FormFields className='form-fields'>
+					<div className='description'>
+						<h4>Description:</h4>
 						<input
-							type="text"
-							value={nameVal}
+							type='text'
+							value={descriptionVal}
 							onChange={(e) => {
-								console.log('name changed')
-								setName(e.target.value)
+								setValue('description', e.target.value)
 							}}
-							placeholder="Name"
+							placeholder='Description'
 						/>
 					</div>
-					<div>
-						<h4>Label:</h4>
-						<input
-							type="text"
-							value={titleVal}
-							onChange={(e) => {
-								setTitle(e.target.value)
-							}}
-							placeholder="Label"
-						/>
-					</div>
-					<div>
-						<h4>Color:</h4>
-						<div className="select-wrapper">
+					<div className='category'>
+						<h4>Category:</h4>
+						<div className='select-wrapper'>
 							<select
-								name="color"
-								id=""
+								name='category'
+								id=''
 								onChange={(e) => {
-									setColor(e.target.value)
+									setValue('category', e.target.value)
 								}}
-								value={colorVal}
+								value={categoryVal}
 							>
-								<option value="default">Select color</option>
-								{colors?.map((color, index) => (
-									<option key={`${color.name}-${index}`} value={color.name}>
-										{color.name}
+								<option value='default'>Select category</option>
+								{categories?.map((category) => (
+									<option
+										key={category.name}
+										value={category.name}
+									>
+										{category.name}
 									</option>
 								))}
 							</select>
@@ -91,14 +83,16 @@ const TypeForm = ({
 					</div>
 				</FormFields>
 
-				<FormBtns>
+				{/* <ImageUploader setValue={setValue} imageUrl={imageUrl} /> */}
+
+				<FormButtons className='form-btns'>
 					{secondaryBtnLabel && (
 						<button
 							onClick={(e) => {
 								onSecondarySubmit(e)
 								closeForm()
 							}}
-							className="btn btn-destruct"
+							className='btn btn-destruct'
 							disabled={disableSecondary}
 						>
 							{secondaryBtnLabel}
@@ -108,20 +102,18 @@ const TypeForm = ({
 						onClick={() => {
 							onPrimarySubmit()
 						}}
-						className="btn btn-confirm"
+						className='btn btn-confirm'
 						disabled={disablePrimary}
 					>
 						{primaryBtnLabel}
 					</button>
-				</FormBtns>
-			</TypeFormWrapper>
-		</TypeFormContainer>
+				</FormButtons>
+			</Form>
+		</PromptFormWrapper>
 	)
 }
 
-export default TypeForm
-
-const TypeFormContainer = styled.div`
+const PromptFormWrapper = styled.div`
 	position: relative;
 	z-index: ${tokens.zPromptForm};
 
@@ -137,7 +129,7 @@ const TypeFormContainer = styled.div`
 		align-items: center;
 	}
 `
-const TypeFormWrapper = styled.div`
+const Form = styled.div`
 	width: 100%;
 	height: ${tokens.actionHeight};
 	max-height: 90vh;
@@ -181,10 +173,21 @@ const FormFields = styled.div`
 		}
 	}
 `
-const FormBtns = styled.div`
+const FormButtons = styled.div`
 	text-align: right;
 
 	> * {
 		margin-left: 10px;
 	}
 `
+// .prompt-form-container {
+// 	.prompt-form {
+// 		.form-heading {
+// 		}
+// 		.form-fields {
+// 		}
+// .form-btns {
+// 		}
+// 	}
+
+// }

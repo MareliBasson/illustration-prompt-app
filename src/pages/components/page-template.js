@@ -1,14 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
-import Header from 'components/header'
 
-const PageTemplate = ({ children, pageHead }) => {
+import styled from 'styled-components'
+
+import { Header } from 'pages/components/header'
+
+export const PageTemplate = ({ children, pageHead }) => {
 	return (
 		<Page>
 			<Header heading={pageHead} />
 
 			<PageContent>
-				<div className="container">{children}</div>
+				<div className='container'>{children}</div>
 			</PageContent>
 		</Page>
 	)
@@ -28,5 +30,3 @@ const PageContent = styled.div`
 		padding: 40px;
 	}
 `
-
-export default PageTemplate
