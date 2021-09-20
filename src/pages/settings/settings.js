@@ -5,12 +5,14 @@ import styled from 'styled-components'
 import { tokens } from 'styles/variables'
 
 import { PageTemplate } from 'pages/components/page-template'
-import { SettingsPrompts } from 'pages/settings/prompt-settings'
-import { SettingsCategories } from 'pages/settings/category-settings'
+import { SettingsPrompts } from './prompt-settings'
+import { SettingsCategories } from './category-settings'
+import { PasswordModal } from './password-overlay'
 
 export const Settings = () => {
 	const screens = ['prompts', 'categories']
 	const [settingsScreen, setSettingsScreen] = React.useState('categories')
+	const [showPassword, setShowPassword] = React.useState(true)
 
 	return (
 		<PageTemplate pageHead=''>
@@ -29,6 +31,12 @@ export const Settings = () => {
 
 			{settingsScreen === 'prompts' && <SettingsPrompts />}
 			{settingsScreen === 'categories' && <SettingsCategories />}
+
+			{showPassword && (
+				<PasswordModal hideModal={() => setShowPassword(false)}>
+					<div>Password overlay</div>
+				</PasswordModal>
+			)}
 		</PageTemplate>
 	)
 }
