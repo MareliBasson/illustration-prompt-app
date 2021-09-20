@@ -8,8 +8,8 @@ export const PasswordModal = ({ hideModal }) => {
 	return (
 		<PasswordOverlay>
 			<Modal>
-				<div>
-					Password overlay
+				<ModalContent>
+					Password:
 					<input
 						type='password'
 						autoFocus
@@ -22,7 +22,7 @@ export const PasswordModal = ({ hideModal }) => {
 							}
 						}}
 					/>
-				</div>
+				</ModalContent>
 			</Modal>
 		</PasswordOverlay>
 	)
@@ -41,11 +41,22 @@ const PasswordOverlay = styled.div`
 	align-items: center;
 `
 const Modal = styled.div`
-	width: 200px;
-	height: 100px;
+	width: 240px;
 	background-color: ${tokens.colorCyan};
-	padding: 20px;
+	padding: 20px 20px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 2px;
+`
+const ModalContent = styled.div`
+	text-align: center;
+	input {
+		width: 100%;
+		margin-top: 20px;
+		border: none;
+		border-radius: 4px;
+		padding: 10px;
+		text-align: center;
+	}
 `

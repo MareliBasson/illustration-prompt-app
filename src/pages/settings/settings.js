@@ -33,9 +33,9 @@ export const Settings = () => {
 			{settingsScreen === 'categories' && <SettingsCategories />}
 
 			{showPassword && (
-				<PasswordModal hideModal={() => setShowPassword(false)}>
-					<div>Password overlay</div>
-				</PasswordModal>
+				<PasswordModal
+					hideModal={() => setShowPassword(false)}
+				></PasswordModal>
 			)}
 		</PageTemplate>
 	)
