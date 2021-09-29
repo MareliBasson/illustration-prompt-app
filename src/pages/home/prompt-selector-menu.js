@@ -13,6 +13,68 @@ export const PromptSelectorMenu = ({
 	// Enable to sort prompt buttons alphabetically
 	// const sortedCategoriesList = _.sortBy(categories, 'title')
 
+	const [showReload, setShowReload] = React.useState(false)
+
+	React.useEffect(() => {
+		setTimeout(() => {
+			setShowReload(true)
+		}, 5000)
+	})
+
+	if (categories.length < 1) {
+		return (
+			<SelectorMenuWrapper>
+				<LoaderWrapper>
+					{showReload && (
+						<ReloadMsg>
+							If no buttons have appeared yet please refresh the
+							page.{' '}
+						</ReloadMsg>
+					)}
+					<Loader
+						version='1.1'
+						id='L4'
+						xmlns='http://www.w3.org/2000/svg'
+						xmlnsXlink='http://www.w3.org/1999/xlink'
+						x='0px'
+						y='0px'
+						viewBox='0 0 100 100'
+						enable-background='new 0 0 0 0'
+						xmlSpace='preserve'
+					>
+						<circle fill='#fff' stroke='none' cx='6' cy='50' r='6'>
+							<animate
+								attributeName='opacity'
+								dur='1s'
+								values='0;1;0'
+								repeatCount='indefinite'
+								begin='0.1'
+							/>
+						</circle>
+						<circle fill='#fff' stroke='none' cx='26' cy='50' r='6'>
+							<animate
+								attributeName='opacity'
+								dur='1s'
+								values='0;1;0'
+								repeatCount='indefinite'
+								begin='0.2'
+							/>
+						</circle>
+						<circle fill='#fff' stroke='none' cx='46' cy='50' r='6'>
+							<animate
+								attributeName='opacity'
+								dur='1s'
+								values='0;1;0'
+								repeatCount='indefinite'
+								begin='0.3'
+							/>
+						</circle>
+					</Loader>
+				</LoaderWrapper>
+			</SelectorMenuWrapper>
+		)
+	}
+
 	return (
 		<SelectorMenuWrapper>
 			{categories &&
@@ -83,6 +145,20 @@ const PromptButton = styled.button`
 			color: white;
 		}
 	}
+`
+const LoaderWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`
+const Loader = styled.svg`
+	width: 100px;
+	height: 100px;
+	margin: 20px;
+	display: inline-block;
+`
+const ReloadMsg = styled.div`
+	font-size: 24px;
 `
 
 {
