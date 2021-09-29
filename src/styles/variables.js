@@ -27,5 +27,7 @@ export const tokens = {
 	previewHeight: '250px',
 
 	zSelect: '4',
-	zPromptForm: '10',
+	zPromptForm: '9',
+	zHeader: '10',
+	zPasswordOverlay: '5',
 }

@@ -1,11 +1,11 @@
-import React from "react"
-import { firebase } from "firebaseConfig"
-import _ from "lodash"
+import React from 'react'
+import { firebase } from 'firebaseConfig'
+import _ from 'lodash'
 
-import styled from "styled-components"
-import { tokens } from "styles/variables"
+import styled from 'styled-components'
+import { tokens } from 'styles/variables'
 
-import { PromptSelectorMenu } from "pages/home/prompt-selector-menu"
+import { PromptSelectorMenu } from 'pages/home/prompt-selector-menu'
 
 export const PromptSelector = () => {
 	const [selection, setSelection] = React.useState([])
@@ -17,21 +17,21 @@ export const PromptSelector = () => {
 	React.useEffect(() => {
 		const db = firebase.firestore()
 
-		db.collection("categories").onSnapshot((snapshot) => {
+		db.collection('categories').onSnapshot((snapshot) => {
 			const categoriesData = []
 			snapshot.forEach((doc) => categoriesData.push(doc.data()))
 
 			setCategories(categoriesData)
 		})
 
-		db.collection("colors").onSnapshot((snapshot) => {
+		db.collection('colors').onSnapshot((snapshot) => {
 			const colorsData = []
 			snapshot.forEach((doc) => colorsData.push(doc.data()))
 
 			setColors(colorsData)
 		})
 
-		db.collection("prompts").onSnapshot((snapshot) => {
+		db.collection('prompts').onSnapshot((snapshot) => {
 			const promptsData = []
 			snapshot.forEach((doc) =>
 				promptsData.push({ ...doc.data(), id: doc.id })
@@ -46,7 +46,7 @@ export const PromptSelector = () => {
 	const setLists = () => {
 		const categoryList = []
 		categories.forEach((category) => {
-			if (category.name !== "") {
+			if (category.name !== '') {
 				categoryList.push(category.name)
 			}
 		})
@@ -113,11 +113,13 @@ export const PromptSelector = () => {
 		)
 	}
 
+	const visibleCategories = categories.filter((category) => category.visible)
+
 	return (
 		<div>
 			<PromptSelectorMenu
 				onClick={onSelect}
-				categories={categories}
+				categories={visibleCategories}
 				listStatus={getListStatus()}
 				colors={colors}
 			/>
@@ -231,7 +233,7 @@ const PromptCard = styled.div`
 	display: grid;
 	align-items: center;
 	grid-template-rows: 1fr 40px 30px;
-	grid-template-areas: "description" "category";
+	grid-template-areas: 'description' 'category';
 `
 const DeleteCard = styled.div`
 	position: absolute;

@@ -39,6 +39,7 @@ const PasswordOverlay = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: ${tokens.zPasswordOverlay};
 `
 const Modal = styled.div`
 	width: 240px;

@@ -19,6 +19,7 @@ export const Header = ({ pageHead }) => {
 const HeaderWrapper = styled.div`
 	flex: 0;
 	color: white;
+	z-index: ${tokens.zHeader};
 `
 const HeaderContainer = styled.div`
 	height: 100%;
