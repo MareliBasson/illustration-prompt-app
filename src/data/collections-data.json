@@ -4,6 +4,7 @@
 			"category": "humanoid",
 			"title": "Humanoid",
 			"color": "pink",
+			"visible": true,
 			"prompts": [
 				"Boy",
 				"Girl",
@@ -19,6 +20,7 @@
 			"category": "mystical",
 			"title": "Mystical creatures",
 			"color": "pink",
+			"visible": true,
 			"prompts": [
 				"Elf",
 				"Fae",
@@ -36,6 +38,7 @@
 			"category": "animals",
 			"title": "Animals",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"bird",
 				"cat",
@@ -62,6 +65,7 @@
 			"category": "insects",
 			"title": "Insects",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"bee",
 				"beetle",
@@ -80,6 +84,7 @@
 			"category": "eyes",
 			"title": "Eyes",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"bloody eyes",
 				"bloody tears",
@@ -98,6 +103,7 @@
 			"category": "head",
 			"title": "Head",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"blood",
 				"brains",
@@ -124,6 +130,7 @@
 			"category": "body",
 			"title": "Body",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"blood",
 				"blue skin",
@@ -143,6 +150,7 @@
 			"category": "clothing",
 			"title": "Clothing",
 			"color": "orange",
+			"visible": true,
 			"prompts": [
 				"armor",
 				"bodysuit",
@@ -163,6 +171,7 @@
 			"category": "accessory",
 			"title": "Accessories",
 			"color": "orange",
+			"visible": true,
 			"prompts": [
 				"boots",
 				"bow",
@@ -188,6 +197,7 @@
 			"category": "plants",
 			"title": "Plants",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"aloe",
 				"big leaf plants",
@@ -210,6 +220,7 @@
 			"category": "extras",
 			"title": "Extras",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"band-aids",
 				"barbed wire",
@@ -231,6 +242,7 @@
 			"category": "weapon",
 			"title": "Weapon",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"axe",
 				"bow and arrow",
@@ -244,6 +256,7 @@
 			"category": "feeling",
 			"title": "Expressions",
 			"color": "deep purple",
+			"visible": true,
 			"prompts": [
 				"anger",
 				"annoyed",
@@ -258,6 +271,7 @@
 			"category": "color-scheme",
 			"title": "Color scheme",
 			"color": "",
+			"visible": true,
 			"prompts": [
 				"dark red",
 				"dramatic lighting",
@@ -275,6 +289,7 @@
 			"category": "style",
 			"title": "What's the style?",
 			"color": "blue",
+			"visible": false,
 			"prompts": [
 				"Add patterns",
 				"Add something unexpected",
