@@ -1,8 +1,8 @@
 {
 	"promptCollections": [
 		{
-			"category": "humanoid",
-			"title": "Humanoid",
+			"category": "Character",
+			"title": "Character",
 			"color": "pink",
 			"visible": true,
 			"prompts": [
@@ -13,15 +13,7 @@
 				"Princess",
 				"Fairy",
 				"Villain",
-				"Warrior"
-			]
-		},
-		{
-			"category": "mystical",
-			"title": "Mystical creatures",
-			"color": "pink",
-			"visible": true,
-			"prompts": [
+				"Warrior",
 				"Elf",
 				"Fae",
 				"Fairy",
@@ -31,12 +23,14 @@
 				"Orc",
 				"Tauren",
 				"Vampire",
-				"Werewolf"
+				"Werewolf",
+				"Greek god(dess)",
+				"Norse god(dess)"
 			]
 		},
 		{
-			"category": "animals",
-			"title": "Animals",
+			"category": "animal",
+			"title": "Animal",
 			"color": "",
 			"visible": true,
 			"prompts": [
@@ -62,8 +56,8 @@
 			]
 		},
 		{
-			"category": "insects",
-			"title": "Insects",
+			"category": "insect",
+			"title": "Insect",
 			"color": "",
 			"visible": true,
 			"prompts": [
@@ -96,7 +90,13 @@
 				"one white eye",
 				"red eyes",
 				"slitted pupils",
-				"third eye"
+				"third eye",
+				"multicolor",
+				"blind",
+				"red",
+				"big eyes",
+				"glowing",
+				"bionic"
 			]
 		},
 		{
@@ -109,20 +109,26 @@
 				"brains",
 				"broken horn",
 				"busted lip",
+				"cat ears",
+				"cracks",
 				"crazy hair",
 				"fangs",
 				"freckles",
 				"hair clips",
+				"halo",
 				"horns",
 				"large face tattoo",
 				"mask",
 				"piercings",
 				"plant growth",
+				"rabbit ears",
+				"scales",
 				"scars",
 				"smile",
 				"split tongue",
 				"thorns",
 				"vitiligo",
+				"whiskers",
 				"white hair"
 			]
 		},
@@ -132,17 +138,28 @@
 			"color": "",
 			"visible": true,
 			"prompts": [
+				"amputation",
+				"angel wings",
 				"blood",
 				"blue skin",
+				"body paint",
 				"bruises",
+				"cat tail",
+				"cracks",
+				"demon wings",
+				"extra limbs",
 				"eyes",
+				"fox tail",
+				"fur",
 				"neck bandages",
 				"plant growth",
+				"scales",
 				"scars",
 				"stitches",
 				"tattoos",
 				"thorns",
 				"vitiligo",
+				"wings",
 				"wings"
 			]
 		},
@@ -153,11 +170,15 @@
 			"visible": true,
 			"prompts": [
 				"armor",
+				"astronaut's helmet",
 				"bodysuit",
+				"cape",
+				"cowboy outfit",
 				"edwardian costume",
 				"lingerie/underwear",
 				"lolita dress",
 				"maid dress",
+				"mobster suit",
 				"nun's habit",
 				"police uniform",
 				"school uniform",
@@ -175,16 +196,20 @@
 			"prompts": [
 				"boots",
 				"bow",
+				"cane",
 				"chest harness",
 				"choker/necklace",
+				"crown",
 				"crown",
 				"eye patch",
 				"fishnets",
 				"garter belt",
+				"hair comb",
 				"hat",
 				"headphones",
 				"nipple tassels",
 				"piercings",
+				"pocket watch",
 				"ruff",
 				"scarf",
 				"spectacles",
@@ -194,25 +219,33 @@
 			]
 		},
 		{
-			"category": "plants",
-			"title": "Plants",
+			"category": "flora",
+			"title": "Flora",
 			"color": "",
 			"visible": true,
 			"prompts": [
 				"aloe",
 				"big leaf plants",
+				"blossoms",
 				"cherries",
+				"climbing plant",
 				"fern fronds",
 				"fungi",
 				"ivy",
+				"lavender",
 				"monsters",
 				"moss",
 				"nightshade",
 				"non-green monstera leaves",
+				"olive",
 				"phothos",
 				"poisonous plants",
 				"raspberries",
+				"roses",
+				"succulents",
 				"tiger lillies",
+				"tropical flowers",
+				"tropical leaves",
 				"wisteria flowers"
 			]
 		},
@@ -230,7 +263,7 @@
 				"crescent moon",
 				"feathers",
 				"fire",
-				"geometric stuff",
+				"geometric patterns",
 				"moon",
 				"pirate ship",
 				"plague dr mask",
@@ -246,25 +279,36 @@
 			"prompts": [
 				"axe",
 				"bow and arrow",
+				"cane",
 				"dagger",
 				"knife",
 				"sci-fi flail/gun",
-				"staff"
+				"staff",
+				"staff",
+				"sword"
 			]
 		},
 		{
-			"category": "feeling",
+			"category": "expression",
 			"title": "Expressions",
 			"color": "deep purple",
 			"visible": true,
 			"prompts": [
+				"affectionate",
 				"anger",
 				"annoyed",
+				"coy",
 				"dreamy",
 				"dubious",
+				"frustrated",
 				"happy",
+				"heartbroken",
+				"lost",
+				"relieved",
 				"restless",
-				"sad"
+				"sad",
+				"shy",
+				"triumphant"
 			]
 		},
 		{
@@ -282,12 +326,15 @@
 				"prussian blue",
 				"purple",
 				"red",
-				"sage green"
+				"sage green",
+				"blue | orange",
+				"purple | green",
+				"pink | turquoise"
 			]
 		},
 		{
-			"category": "style",
-			"title": "What's the style?",
+			"category": "wildcard",
+			"title": "Wildcard",
 			"color": "blue",
 			"visible": false,
 			"prompts": [
