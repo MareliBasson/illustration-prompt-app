@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
+import { tokens } from 'styles/variables'
 
 export const Header = ({ pageHead }) => {
 	return (
