@@ -7,6 +7,7 @@ export const CategoryCreate = ({ closeForm }) => {
 	const [name, setName] = React.useState('')
 	const [title, setTitle] = React.useState('')
 	const [color, setColor] = React.useState('')
+	const [visible, setVisible] = React.useState(true)
 
 	const handleCreate = () => {
 		const db = firebase.firestore()
@@ -16,11 +17,13 @@ export const CategoryCreate = ({ closeForm }) => {
 				name,
 				title,
 				color,
+				visible,
 			})
 
 			setName('')
 			setTitle('')
 			setColor('')
+			setVisible(true)
 
 			closeForm()
 		}
@@ -32,9 +35,11 @@ export const CategoryCreate = ({ closeForm }) => {
 			closeForm={closeForm}
 			nameVal={name}
 			colorVal={color}
+			visibleVal={visible}
 			setTitle={setTitle}
 			setName={setName}
 			setColor={setColor}
+			setVisible={setVisible}
 			onPrimarySubmit={() => handleCreate()}
 			disablePrimary={!name || !color || !title}
 			primaryBtnLabel='Create'

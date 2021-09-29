@@ -11,9 +11,11 @@ export const CategoryForm = ({
 	nameVal,
 	titleVal,
 	colorVal,
+	visibleVal,
 	setTitle,
 	setName,
 	setColor,
+	setVisible,
 	onPrimarySubmit,
 	disablePrimary,
 	primaryBtnLabel,
@@ -57,7 +59,7 @@ export const CategoryForm = ({
 							onChange={(e) => {
 								setName(e.target.value)
 							}}
-							placeholder='Name'
+							placeholder='name'
 						/>
 					</div>
 					<div>
@@ -93,6 +95,17 @@ export const CategoryForm = ({
 								))}
 							</select>
 						</div>
+					</div>
+					<div>
+						<h4>Visible:</h4>
+						<input
+							name='visible'
+							type='checkbox'
+							checked={visibleVal}
+							onChange={(e) => {
+								setVisible(e.target.checked)
+							}}
+						/>
 					</div>
 				</FormFields>
 

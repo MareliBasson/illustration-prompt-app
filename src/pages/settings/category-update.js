@@ -8,6 +8,7 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 	const [name, setName] = React.useState('')
 	const [title, setTitle] = React.useState('')
 	const [color, setColor] = React.useState('')
+	const [visible, setVisible] = React.useState()
 
 	React.useEffect(() => {
 		updateCategory()
@@ -17,6 +18,7 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 		setName(category.name)
 		setTitle(category.title)
 		setColor(category.color)
+		setVisible(category.visible)
 	}
 
 	const onDelete = (e, categoryId) => {
@@ -31,11 +33,12 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 		const db = firebase.firestore()
 		db.collection('categories')
 			.doc(categoryId)
-			.set({ ...category, name, color, title })
+			.set({ ...category, name, color, title, visible })
 
 		setName('')
 		setTitle('')
 		setColor('')
+		setVisible(true)
 
 		closeForm()
 	}
@@ -43,7 +46,8 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 	const haveChanged =
 		name === category.name &&
 		color === category.color &&
-		title === category.title
+		title === category.title &&
+		visible === category.visible
 
 	return (
 		<CategoryForm
@@ -52,9 +56,11 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 			nameVal={name}
 			colorVal={color}
 			titleVal={title}
+			visibleVal={visible}
 			setTitle={setTitle}
 			setName={setName}
 			setColor={setColor}
+			setVisible={setVisible}
 			onPrimarySubmit={() => handleSubmit(category.id)}
 			disablePrimary={haveChanged}
 			primaryBtnLabel='Apply Changes'

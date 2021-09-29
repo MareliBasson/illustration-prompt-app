@@ -101,6 +101,11 @@ export const SettingsCategories = () => {
 							>
 								<div className='title'>{category.title}</div>
 								<div className='name'>{category.name}</div>
+								<div className='visible'>
+									{!category.visible && (
+										<i className={`fa fa-times`} />
+									)}
+								</div>
 								<div className='color'>
 									<span
 										style={{
@@ -158,7 +163,7 @@ const CategoryFilters = styled.div`
 `
 const Category = styled.div`
 	display: grid;
-	grid-template-columns: 2fr 1fr 1fr;
+	grid-template-columns: 2fr 1fr 1fr 1fr;
 	padding: 10px 10px;
 	cursor: pointer;
 
@@ -168,6 +173,10 @@ const Category = styled.div`
 
 	.name {
 		white-space: nowrap;
+	}
+
+	.visible {
+		text-align: right;
 	}
 
 	.color {
