@@ -5,6 +5,23 @@ import { firebase } from 'firebaseConfig'
 import { CategoryForm } from 'pages/settings/category-form'
 
 export const CategoryUpdate = ({ category, closeForm }) => {
+	const [prompts, setPrompts] = React.useState([])
+
+	React.useEffect(() => {
+		const db = firebase.firestore()
+
+		db.collection('prompts').onSnapshot((snapshot) => {
+			const promptsData = []
+			snapshot.forEach((doc) =>
+				promptsData.push({ ...doc.data(), id: doc.id })
+			)
+
+			if (_.isEmpty(prompts)) {
+				setPrompts(promptsData)
+			}
+		})
+	})
+
 	const [name, setName] = React.useState('')
 	const [title, setTitle] = React.useState('')
 	const [color, setColor] = React.useState('')
@@ -23,9 +40,23 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 
 	const onDelete = (e, categoryId) => {
 		e.stopPropagation()
-		if (window.confirm('Are you sure you want to delete this category?')) {
+		if (
+			window.confirm(
+				'Are you sure you want to delete this category?\nIt will delete all prompts in this category as well.'
+			)
+		) {
 			const db = firebase.firestore()
+
+			//Delete the category
 			db.collection('categories').doc(categoryId).delete()
+
+			//Delete the associated prompts
+			const promptsToDelete = prompts.filter(
+				(prompt) => prompt.category === category.name
+			)
+			for (var i = 0; i < promptsToDelete.length; i++) {
+				db.collection('prompts').doc(promptsToDelete[i].id).delete()
+			}
 		}
 	}
 
