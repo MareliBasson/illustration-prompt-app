@@ -1,7 +1,7 @@
 {
 	"promptCollections": [
 		{
-			"category": "Character",
+			"category": "character",
 			"title": "Character",
 			"color": "pink",
 			"visible": true,
@@ -34,6 +34,7 @@
 			"color": "",
 			"visible": true,
 			"prompts": [
+				"bat",
 				"bird",
 				"cat",
 				"crow",
@@ -42,17 +43,27 @@
 				"ferret",
 				"fox",
 				"frogs",
+				"gecko",
 				"goat",
 				"hairless cat",
 				"hoepoe",
 				"ibis",
+				"lemur",
+				"lioness",
+				"lizard",
 				"lizards",
 				"mystical creature",
 				"octopus",
+				"peacock",
+				"penguin",
 				"platypus",
+				"puffin",
 				"raven",
 				"scorpion",
-				"snakes"
+				"snake",
+				"snakes",
+				"tiger",
+				"weasel"
 			]
 		},
 		{
@@ -159,7 +170,6 @@
 				"tattoos",
 				"thorns",
 				"vitiligo",
-				"wings",
 				"wings"
 			]
 		},
@@ -268,7 +278,8 @@
 				"pirate ship",
 				"plague dr mask",
 				"plants/flowers",
-				"sun"
+				"sun",
+				"crystals"
 			]
 		},
 		{
@@ -283,7 +294,6 @@
 				"dagger",
 				"knife",
 				"sci-fi flail/gun",
-				"staff",
 				"staff",
 				"sword"
 			]
@@ -345,6 +355,27 @@
 				"Start with a random shape",
 				"Swop things around",
 				"Use an unusual colour"
+			]
+		},
+		{
+			"category": "daily",
+			"title": "Daily prompt",
+			"color": "",
+			"visible": true,
+			"prompts": [
+				"poisonous",
+				"tranquil",
+				"spell",
+				"star",
+				"slice",
+				"petite",
+				"fish",
+				"fancy",
+				"dune",
+				"storm",
+				"music",
+				"chef",
+				"crawl"
 			]
 		}
 	],
