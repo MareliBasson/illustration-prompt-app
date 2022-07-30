@@ -35,6 +35,7 @@ const buildObj = (data) => {
 			color: colorArr[index].name,
 			name: collection.category,
 			title: collection.title,
+			type: collection.type,
 			visible: collection.visible,
 		})
 	})

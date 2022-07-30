@@ -3,13 +3,13 @@
 		{
 			"category": "character",
 			"title": "Character",
-			"color": "pink",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"Boy",
 				"Girl",
 				"Lady",
-				"Man",
+				"Human",
 				"Princess",
 				"Fairy",
 				"Villain",
@@ -31,7 +31,7 @@
 		{
 			"category": "animal",
 			"title": "Animal",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"bat",
@@ -69,7 +69,7 @@
 		{
 			"category": "insect",
 			"title": "Insect",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"bee",
@@ -88,7 +88,7 @@
 		{
 			"category": "eyes",
 			"title": "Eyes",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"bloody eyes",
@@ -113,7 +113,7 @@
 		{
 			"category": "head",
 			"title": "Head",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"blood",
@@ -146,7 +146,7 @@
 		{
 			"category": "body",
 			"title": "Body",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"amputation",
@@ -176,7 +176,7 @@
 		{
 			"category": "clothing",
 			"title": "Clothing",
-			"color": "orange",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"armor",
@@ -201,7 +201,7 @@
 		{
 			"category": "accessory",
 			"title": "Accessories",
-			"color": "orange",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"boots",
@@ -231,7 +231,7 @@
 		{
 			"category": "flora",
 			"title": "Flora",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"aloe",
@@ -262,7 +262,7 @@
 		{
 			"category": "extras",
 			"title": "Extras",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"band-aids",
@@ -285,7 +285,7 @@
 		{
 			"category": "weapon",
 			"title": "Weapon",
-			"color": "",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"axe",
@@ -301,7 +301,7 @@
 		{
 			"category": "expression",
 			"title": "Expressions",
-			"color": "deep purple",
+			"type": "attribute",
 			"visible": true,
 			"prompts": [
 				"affectionate",
@@ -324,7 +324,7 @@
 		{
 			"category": "color-scheme",
 			"title": "Color scheme",
-			"color": "",
+			"type": "guide",
 			"visible": true,
 			"prompts": [
 				"dark red",
@@ -345,7 +345,7 @@
 		{
 			"category": "wildcard",
 			"title": "Wildcard",
-			"color": "blue",
+			"type": "guide",
 			"visible": false,
 			"prompts": [
 				"Add patterns",
@@ -360,7 +360,7 @@
 		{
 			"category": "daily",
 			"title": "Daily prompt",
-			"color": "",
+			"type": "guide",
 			"visible": true,
 			"prompts": [
 				"poisonous",
