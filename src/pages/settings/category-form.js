@@ -3,7 +3,7 @@ import { firebase } from 'firebaseConfig'
 import _ from 'lodash'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
 
 export const CategoryForm = ({
 	formName,

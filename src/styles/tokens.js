@@ -26,6 +26,9 @@ export const tokens = {
 	actionHeight: 'auto',
 	previewHeight: '250px',
 
+	fileButtonWidth: '80px',
+	fileButtonBuffer: '20px',
+
 	zSelect: '4',
 	zPromptForm: '9',
 	zHeader: '10',

@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
 
 export const PromptSelectorMenu = ({
 	onClick,
@@ -131,6 +131,7 @@ const PromptButton = styled.button`
 	cursor: pointer;
 	outline: none;
 	transition: transform ease-out 200ms;
+	font-family: ${tokens.fontPrimary};
 
 	&:hover {
 		transform: scale(1.1) translate3d(0, 0, 0);

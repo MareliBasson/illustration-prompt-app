@@ -2,17 +2,18 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
+import { Container } from 'styles/styles'
 
 export const Header = ({ pageHead }) => {
 	return (
 		<HeaderWrapper>
-			<div className='container'>
+			<Container>
 				<HeaderContainer>
 					<Title>{pageHead}</Title>
 					<Menu />
 				</HeaderContainer>
-			</div>
+			</Container>
 		</HeaderWrapper>
 	)
 }
@@ -54,8 +55,13 @@ const menuItems = [
 const Menu = () => {
 	return (
 		<MenuWrapper className='menu'>
-			{menuItems.map((item) => (
-				<MenuLink activeClassName='active' exact to={item.path}>
+			{menuItems.map((item, index) => (
+				<MenuLink
+					key={'menuItem-' + index}
+					activeClassName='active'
+					exact
+					to={item.path}
+				>
 					<i className={`fa fa-${item.icon}`} />
 				</MenuLink>
 			))}

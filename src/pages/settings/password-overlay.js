@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
 
 export const PasswordModal = ({ hideModal }) => {
 	return (

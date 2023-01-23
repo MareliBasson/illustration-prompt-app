@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
 
 import { PageTemplate } from 'pages/components/page-template'
 import { SettingsPrompts } from './prompt-settings'
@@ -17,9 +17,10 @@ export const Settings = () => {
 	return (
 		<PageTemplate pageHead=''>
 			<ScreenSwitcher>
-				{screens.map((screen) => {
+				{screens.map((screen, index) => {
 					return (
 						<Switch
+							key={screen + '-' + index}
 							onClick={() => setSettingsScreen(screen)}
 							$selected={settingsScreen === screen}
 						>

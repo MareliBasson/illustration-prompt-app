@@ -1,6 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
+import { Container } from 'styles/styles'
 
 import { Header } from 'pages/components/header'
 
@@ -10,7 +11,7 @@ export const PageTemplate = ({ children, pageHead }) => {
 			<Header heading={pageHead} />
 
 			<PageContent>
-				<div className='container'>{children}</div>
+				<Container>{children}</Container>
 			</PageContent>
 		</Page>
 	)

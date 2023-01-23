@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
 
 export const CreateButton = ({ label, onClick }) => {
 	return (

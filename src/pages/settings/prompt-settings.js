@@ -83,9 +83,9 @@ export const SettingsPrompts = () => {
 									onChange={(e) => handleFilter(e)}
 								>
 									<option value='all'>All Prompts</option>
-									{categories.map((category) => (
+									{categories.map((category, index) => (
 										<option
-											key={category.name}
+											key={category.name + '-' + index}
 											value={category.name}
 										>
 											{category.name}

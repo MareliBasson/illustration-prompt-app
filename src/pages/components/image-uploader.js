@@ -2,7 +2,7 @@ import React from 'react'
 import storage from 'firebaseConfig'
 
 import styled from 'styled-components'
-import { tokens } from 'styles/variables'
+import { tokens } from 'styles/tokens'
 
 export const ImageUpload = ({ imageUrl, setValue }) => {
 	const [image, setImage] = React.useState(null)
@@ -121,6 +121,26 @@ const FileInputWrapper = styled.div`
 
 	> * {
 		vertical-align: middle;
+	}
+	position: relative;
+
+	$file-btn-width: 80px;
+	$file-btn-buffer: 20px;
+
+	label {
+		position: relative;
+		display: inline-block;
+		width: ${tokens.fileButtonWidth};
+		z-index: 2;
+	}
+
+	.file-input-buffer {
+		position: relative;
+		width: ${tokens.fileButtonBuffer};
+		height: 30px;
+		display: inline-block;
+		background-color: ${tokens.colorPrimary};
+		z-index: 2;
 	}
 `
 const Preview = styled.div`
