@@ -96,20 +96,20 @@ export const SettingsPrompts = () => {
 						</div>
 						<div className='filter-section sorting'>
 							Sort by:
-							<div
+							<button
 								className='btn btn-primary btn-in-form'
 								onClick={() => handleSort('description')}
 							>
 								Description
-							</div>
-							<div
+							</button>
+							<button
 								className='btn btn-primary btn-in-form'
 								onClick={() =>
 									handleSort(['category', 'description'])
 								}
 							>
 								Category
-							</div>
+							</button>
 						</div>
 					</PromptFilters>
 					{editedList.map((prompt) => (

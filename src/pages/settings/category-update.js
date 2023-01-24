@@ -25,7 +25,7 @@ export const CategoryUpdate = ({ category, closeForm }) => {
 	const [name, setName] = React.useState('')
 	const [title, setTitle] = React.useState('')
 	const [color, setColor] = React.useState('')
-	const [visible, setVisible] = React.useState()
+	const [visible, setVisible] = React.useState(true)
 
 	React.useEffect(() => {
 		updateCategory()

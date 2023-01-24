@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import { tokens } from './tokens'
+
 export const GlobalStyles = createGlobalStyle`
     html,
     body,
@@ -63,9 +64,71 @@ export const GlobalStyles = createGlobalStyle`
 		position: absolute;
 		z-index: 1;
 		top: 6px;
-		left: $file-btn-width + $file-btn-buffer - 70px;
+		left: ${tokens.fileButtonWidth} + ${tokens.fileButtonBuffer} - 70px;
 		font-size: 15px;
 		color: rgb(153, 153, 153);
 	}
+
+    .btn {
+        border: none;
+        border-radius: 3px;
+        line-height: 1.3rem;
+        cursor: pointer;
+        display: inline-block;
+
+        &.btn-primary {
+            background-color: white;
+            color: ${tokens.colorPrimary};
+            padding: 5px 10px;
+            min-width: 80px;
+        }
+
+        &.btn-confirm {
+            background-color: ${tokens.colorGreen};
+            color: white;
+            padding: 5px 10px;
+            min-width: 80px;
+
+            &:hover {
+                background-color: darken(${tokens.colorGreen}, 10%);
+            }
+        }
+
+        &.btn-destruct {
+            background-color: ${tokens.colorRed};
+            color: white;
+            padding: 5px 10px;
+            min-width: 80px;
+
+            &:hover {
+                background-color: darken(${tokens.colorRed}, 10%);
+            }
+        }
+
+        &.btn-in-form {
+            padding: 9px 10px;
+        }
+
+        &.btn-icon {
+            border: none;
+            background: none;
+            color: white;
+            margin-left: 10px;
+
+            &:hover {
+                color: ${tokens.colorRed};
+            }
+
+            i {
+                cursor: pointer;
+            }
+        }
+
+        &:disabled {
+            background-color: ${tokens.colorGrey};
+            opacity: 0.8;
+            pointer-events: none;
+        }
+    }
     
 `
