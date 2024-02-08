@@ -5,24 +5,91 @@ import PaperSizes from './data/paper-sizes.json'
 import PaperFormats from './data/paper-formats.json'
 
 export const Calculator = () => {
-	const paperSizes = PaperSizes.paperSizes
 	const paperFormats = PaperFormats.paperFormats
 
-	const { register, handleSubmit } = useForm()
 	const [format, setFormat] = useState('block')
-	const [size, setSize] = useState('a3')
-	const [total, setTotal] = useState()
-	const [pricingSize, setPricingSize] = useState()
-	const [multiplier, setMultiplier] = useState(1)
-	const [numberOfSheets, setNumberOfSheets] = useState()
-
 	const [comparisonEntries, setComparisonEntries] = useState([])
 
-	const onSubmit = (data) => {
-		console.log(data)
-		console.log(data.pricingSize !== data.size)
-		console.log('-----------------------------------------')
+	return (
+		<>
+			<p>Select your paper format:</p>
+			{paperFormats.map((paperFormat) => {
+				return (
+					<>
+						<label
+							htmlFor={`field-${paperFormat.name}`}
+							key={paperFormat.name}
+						>
+							<input
+								type='radio'
+								value={paperFormat.name}
+								id={`field-${paperFormat.name}`}
+								onChange={(e) => {
+									setFormat(e.target.value)
+								}}
+								checked={format === paperFormat.name}
+							/>
+							{paperFormat.label}
+						</label>
+						<br />
+					</>
+				)
+			})}
 
+			{format === 'block' && (
+				<BlockForm
+					setComparisonEntries={setComparisonEntries}
+					comparisonEntries={comparisonEntries}
+					format={format}
+				/>
+			)}
+
+			{Boolean(comparisonEntries.length) && (
+				<ComparisonTable entries={comparisonEntries} />
+			)}
+		</>
+	)
+}
+
+const ComparisonTable = ({ entries }) => {
+	return (
+		<table>
+			<thead>
+				<tr>
+					<th>Size</th>
+					<th>Price</th>
+					<th>Number of Sheets</th>
+					<th>Pricing Size</th>
+					<th>Price per sheet</th>
+					<th>Format</th>
+				</tr>
+			</thead>
+			<tbody>
+				{entries.map((entry) => {
+					return (
+						<tr>
+							<td>{entry.size}</td>
+							<td>{entry.price}</td>
+							<td>{entry.numberOfSheets}</td>
+							<td>{entry.pricingSize}</td>
+							<td>{entry.pricePerSheet}</td>
+							<td>{entry.format}</td>
+						</tr>
+					)
+				})}
+			</tbody>
+		</table>
+	)
+}
+
+const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
+	const { register, handleSubmit } = useForm()
+	const paperSizes = PaperSizes.paperSizes
+	const [size, setSize] = useState('a3')
+	const [pricingSize, setPricingSize] = useState()
+	const [multiplier, setMultiplier] = useState(1)
+
+	const onSubmit = (data) => {
 		const calculatedNrOfSheets =
 			data.pricingSize !== data.blockSize
 				? data.numberOfSheets * 2 ** multiplier
@@ -30,17 +97,15 @@ export const Calculator = () => {
 
 		setComparisonEntries(
 			comparisonEntries.concat({
-				size: data.blockSize?.toUpperCase(),
-				price: data.price,
+				size: data.blockSize.toUpperCase(),
+				price: Number(data.price).toFixed(2),
 				numberOfSheets: calculatedNrOfSheets,
-				pricingSize: (data.size ?? data.pricingSize).toUpperCase(),
-				total: (data.price / calculatedNrOfSheets).toFixed(2),
+				pricingSize: data.pricingSize.toUpperCase(),
+				pricePerSheet: (data.price / calculatedNrOfSheets).toFixed(2),
 				format: data.format,
 			})
 		)
 	}
-
-	console.log(comparisonEntries)
 
 	const pricingSizes = paperSizes.slice(
 		0,
@@ -73,115 +138,58 @@ export const Calculator = () => {
 
 	useEffect(() => {
 		calculateMultiplier()
-	}, [pricingSize])
+	}, [pricingSize, size])
 
 	return (
-		<>
-			{/* "handleSubmit" will validate your inputs before invoking "onSubmit"  */}
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<p>Select your paper format:</p>
-				{paperFormats.map((paperFormat) => {
+		<form onSubmit={handleSubmit(onSubmit)}>
+			<p>Select your block size:</p>
+			{paperSizes.map((paperSize) => {
+				return (
+					<label
+						key={paperSize.name}
+						htmlFor={`field-${paperSize.name}`}
+					>
+						<input
+							{...register('blockSize')}
+							type='radio'
+							value={paperSize.name}
+							id={`field-${paperSize.name}`}
+							onChange={(e) => {
+								setSize(e.target.value)
+							}}
+							checked={size === paperSize.name}
+						/>
+						{paperSize.name.toUpperCase()}
+					</label>
+				)
+			})}
+			<p>Number of sheets in block/pad:</p>
+			<input
+				{...register('numberOfSheets')}
+				type='number'
+				placeholder={0}
+			/>
+
+			<p>Price you paid:</p>
+			<input {...register('price')} type='number' placeholder={0} />
+			<p>Size of sheet for pricing:</p>
+			<select
+				{...register('pricingSize')}
+				onChange={(e) => handlePricingSizeSelect(e)}
+				defaultValue={size}
+			>
+				<option value={size}>{size.toUpperCase()}</option>
+				{pricingSizes.reverse().map((priceSize) => {
 					return (
-						<>
-							<label
-								htmlFor={`field-${paperFormat.name}`}
-								key={paperFormat.name}
-							>
-								<input
-									{...register('format')}
-									type='radio'
-									value={paperFormat.name}
-									id={`field-${paperFormat.name}`}
-									onChange={(e) => {
-										setFormat(e.target.value)
-									}}
-									checked={format === paperFormat.name}
-								/>
-								{paperFormat.label}
-							</label>
-							<br />
-						</>
+						<option key={priceSize.name} value={priceSize.name}>
+							{priceSize.name.toUpperCase()}
+						</option>
 					)
 				})}
-				{format === 'block' && (
-					<>
-						<p>Select your block size:</p>
-						{paperSizes.map((paperSize) => {
-							return (
-								<label
-									key={paperSize.name}
-									htmlFor={`field-${paperSize.name}`}
-								>
-									<input
-										{...register('blockSize')}
-										type='radio'
-										value={paperSize.name}
-										id={`field-${paperSize.name}`}
-										onChange={(e) => {
-											setSize(e.target.value)
-										}}
-										checked={size === paperSize.name}
-									/>
-									{paperSize.name.toUpperCase()}
-								</label>
-							)
-						})}
-						<p>Number of sheets in block/pad:</p>
-						<input
-							{...register('numberOfSheets')}
-							type='number'
-							placeholder={0}
-						/>
-					</>
-				)}
-				<p>Price you paid:</p>
-				<input {...register('price')} type='number' placeholder={0} />
-
-				<p>Size of sheet for pricing:</p>
-				<select
-					{...register('pricingSize')}
-					onChange={(e) => handlePricingSizeSelect(e)}
-					defaultValue={size}
-				>
-					<option value={size}>{size.toUpperCase()}</option>
-					{pricingSizes.reverse().map((priceSize) => {
-						return (
-							<option key={priceSize.name} value={priceSize.name}>
-								{priceSize.name.toUpperCase()}
-							</option>
-						)
-					})}
-				</select>
-
-				<br />
-				<br />
-				<input type='submit' />
-			</form>
-
-			{Boolean(comparisonEntries.length) && (
-				<table>
-					<tr>
-						<th>Size</th>
-						<th>Price</th>
-						<th>Number of Sheets</th>
-						<th>Pricing Size</th>
-						<th>Total</th>
-						<th>Format</th>
-					</tr>
-					{comparisonEntries.map((entry) => {
-						return (
-							<tr>
-								<td>{entry.size}</td>
-								<td>{entry.price}</td>
-								<td>{entry.numberOfSheets}</td>
-								<td>{entry.pricingSize}</td>
-								<td>{entry.total}</td>
-								<td>{entry.format}</td>
-							</tr>
-						)
-					})}
-				</table>
-			)}
-		</>
+			</select>
+			<br />
+			<br />
+			<input type='submit' />
+		</form>
 	)
 }
