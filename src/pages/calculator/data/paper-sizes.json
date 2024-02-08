@@ -1,0 +1,32 @@
+{
+	"paperSizes": [
+		{
+			"name": "a6",
+			"multiplier": 6
+		},
+		{
+			"name": "a5",
+			"multiplier": 5
+		},
+		{
+			"name": "a4",
+			"multiplier": 4
+		},
+		{
+			"name": "a3",
+			"multiplier": 3
+		},
+		{
+			"name": "a2",
+			"multiplier": 2
+		},
+		{
+			"name": "a1",
+			"multiplier": 1
+		},
+		{
+			"name": "a0",
+			"multiplier": null
+		}
+	]
+}

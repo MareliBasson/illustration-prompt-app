@@ -1,0 +1,12 @@
+{
+	"paperFormats": [
+		{
+			"name": "roll",
+			"label": "Roll"
+		},
+		{
+			"name": "block",
+			"label": "Block/Pad"
+		}
+	]
+}

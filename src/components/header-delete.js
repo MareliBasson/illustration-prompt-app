@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import { tokens } from 'styles/tokens'
 import { Container } from 'styles/styles'
 
-export const Header = ({ pageHead }) => {
+export const Header = ({ heading }) => {
 	return (
 		<HeaderWrapper>
 			<Container>
 				<HeaderContainer>
-					<Title>{pageHead}</Title>
+					<Title>{heading}</Title>
 					<Menu />
 				</HeaderContainer>
 			</Container>
@@ -49,6 +49,10 @@ const menuItems = [
 	{
 		icon: 'cog',
 		path: '/settings',
+	},
+	{
+		icon: 'info',
+		path: '/calculator',
 	},
 ]
 

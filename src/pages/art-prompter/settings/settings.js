@@ -4,7 +4,6 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/tokens'
 
-import { PageTemplate } from 'pages/components/page-template'
 import { SettingsPrompts } from './prompt-settings'
 import { SettingsCategories } from './category-settings'
 import { PasswordModal } from './password-overlay'
@@ -15,7 +14,7 @@ export const Settings = () => {
 	const [showPassword, setShowPassword] = React.useState(true)
 
 	return (
-		<PageTemplate pageHead=''>
+		<>
 			<ScreenSwitcher>
 				{screens.map((screen, index) => {
 					return (
@@ -38,7 +37,7 @@ export const Settings = () => {
 					hideModal={() => setShowPassword(false)}
 				></PasswordModal>
 			)}
-		</PageTemplate>
+		</>
 	)
 }
 
