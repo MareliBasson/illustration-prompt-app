@@ -5,7 +5,7 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/tokens'
 
-import { PromptSelectorMenu } from 'pages/home/prompt-selector-menu'
+import { PromptSelectorMenu } from 'apps/art-prompter/selector/prompt-selector-menu'
 
 export const PromptSelector = () => {
 	const [selection, setSelection] = React.useState([])

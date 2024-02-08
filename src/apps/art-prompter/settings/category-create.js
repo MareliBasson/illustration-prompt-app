@@ -1,7 +1,7 @@
 import React from 'react'
 import { firebase } from 'firebaseConfig'
 
-import { CategoryForm } from 'pages/art-prompter/settings/category-form'
+import { CategoryForm } from 'apps/art-prompter/settings/category-form'
 
 export const CategoryCreate = ({ closeForm }) => {
 	const [name, setName] = React.useState('')

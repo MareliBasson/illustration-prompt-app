@@ -5,8 +5,6 @@ import _ from 'lodash'
 import styled from 'styled-components'
 import { tokens } from 'styles/tokens'
 
-// import ImageUploader from 'pages/components/image-uploader'
-
 export const PromptForm = ({
 	formName,
 	closeForm,
@@ -19,7 +17,6 @@ export const PromptForm = ({
 	onSecondarySubmit,
 	disableSecondary,
 	secondaryBtnLabel,
-	// imageUrl,
 }) => {
 	const [categories, setCategories] = React.useState()
 
@@ -82,8 +79,6 @@ export const PromptForm = ({
 						</div>
 					</div>
 				</FormFields>
-
-				{/* <ImageUploader setValue={setValue} imageUrl={imageUrl} /> */}
 
 				<FormButtons className='form-btns'>
 					{secondaryBtnLabel && (
@@ -180,14 +175,3 @@ const FormButtons = styled.div`
 		margin-left: 10px;
 	}
 `
-// .prompt-form-container {
-// 	.prompt-form {
-// 		.form-heading {
-// 		}
-// 		.form-fields {
-// 		}
-// .form-btns {
-// 		}
-// 	}
-
-// }

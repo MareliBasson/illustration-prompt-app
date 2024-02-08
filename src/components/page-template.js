@@ -5,7 +5,7 @@ import { Container } from 'styles/styles'
 import { NavLink } from 'react-router-dom'
 import { tokens } from 'styles/tokens'
 
-export const PageTemplate = ({ children, pageHead }) => {
+export const PageTemplate = ({ children }) => {
 	return (
 		<Page>
 			<Header />

@@ -2,7 +2,7 @@ import React from 'react'
 import _ from 'lodash'
 import { firebase } from 'firebaseConfig'
 
-import { CategoryForm } from 'pages/art-prompter/settings/category-form'
+import { CategoryForm } from 'apps/art-prompter/settings/category-form'
 
 export const CategoryUpdate = ({ category, closeForm }) => {
 	const [prompts, setPrompts] = React.useState([])
