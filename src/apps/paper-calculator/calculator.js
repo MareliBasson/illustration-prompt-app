@@ -1,7 +1,6 @@
-// import logo from './logo.svg'
-
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+
 import PaperSizes from './data/paper-sizes.json'
 import PaperFormats from './data/paper-formats.json'
 
@@ -20,9 +19,14 @@ export const Calculator = () => {
 	const [comparisonEntries, setComparisonEntries] = useState([])
 
 	const onSubmit = (data) => {
-		const calculatedNrOfSheets = Boolean(data.pricingSize)
-			? data.numberOfSheets * 2 ** multiplier
-			: data.numberOfSheets
+		console.log(data)
+		console.log(data.pricingSize !== data.size)
+		console.log('-----------------------------------------')
+
+		const calculatedNrOfSheets =
+			data.pricingSize !== data.blockSize
+				? data.numberOfSheets * 2 ** multiplier
+				: data.numberOfSheets
 
 		setComparisonEntries(
 			comparisonEntries.concat({

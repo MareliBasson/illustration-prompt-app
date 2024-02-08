@@ -69,7 +69,7 @@ const Title = styled.div`
 
 const menuItems = [
 	{
-		icon: 'home',
+		icon: 'paint-brush',
 		path: '/',
 	},
 	{
@@ -77,7 +77,7 @@ const menuItems = [
 		path: '/settings',
 	},
 	{
-		icon: 'info',
+		icon: 'calculator',
 		path: '/calculator',
 	},
 ]
