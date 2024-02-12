@@ -109,10 +109,14 @@ const SelectorMenuWrapper = styled.div`
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
+	width: 65%;
+	margin: 0 auto 20px;
 	border-bottom: 1px solid white;
 	padding-bottom: 20px;
-	margin-bottom: 20px;
+
+	@media (max-width: 1150px) {
+		width: 100%;
+	}
 `
 const PromptButton = styled.button`
 	background: ${(props) => props.$color || '#00bcd4'};
