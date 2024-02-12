@@ -91,6 +91,7 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 				pricingSize: data.pricingSize.toUpperCase(),
 				pricePerSheet: (data.price / calculatedNrOfSheets).toFixed(2),
 				format: data.format,
+				description: data.description,
 			})
 		)
 	}
@@ -157,20 +158,6 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 			</Row>
 
 			<Row>
-				<p>Number of sheets in block/pad:</p>
-				<input
-					{...register('numberOfSheets')}
-					type='number'
-					placeholder={0}
-				/>
-			</Row>
-
-			<Row>
-				<p>Price you paid:</p>
-				<input {...register('price')} type='number' placeholder={0} />
-			</Row>
-
-			<Row>
 				<p>Size of sheet for pricing:</p>
 				<select
 					{...register('pricingSize')}
@@ -186,6 +173,29 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 						)
 					})}
 				</select>
+			</Row>
+
+			<Row>
+				<p>Price you paid:</p>
+				<input {...register('price')} type='number' placeholder={0} />
+			</Row>
+
+			<Row>
+				<p>Number of sheets in block/pad:</p>
+				<input
+					{...register('numberOfSheets')}
+					type='number'
+					placeholder={0}
+				/>
+			</Row>
+
+			<Row>
+				<p>Description:</p>
+				<input
+					{...register('description')}
+					type='text'
+					placeholder={'eg. Montval 100% Cotton'}
+				/>
 			</Row>
 			<ButtonRow>
 				<input type='submit' />
@@ -206,10 +216,11 @@ const ComparisonTable = ({ entries }) => {
 			<table>
 				<thead>
 					<tr>
+						<th></th>
 						<th>Price</th>
 						<th>Size</th>
 						<th>Pricing Size</th>
-						<th>Number of Sheets</th>
+						<th>Amount of sheets</th>
 						<th>Price per sheet</th>
 					</tr>
 				</thead>
@@ -217,6 +228,7 @@ const ComparisonTable = ({ entries }) => {
 					{entries.map((entry) => {
 						return (
 							<tr>
+								<td>{entry.description}</td>
 								<td>{entry.price}</td>
 								<td>{entry.size}</td>
 								<td>{entry.pricingSize}</td>
