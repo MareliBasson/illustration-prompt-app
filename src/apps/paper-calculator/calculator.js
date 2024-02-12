@@ -132,7 +132,7 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
 			<Row>
-				<p>Select your block size:</p>
+				<p>Select your block/pad size:</p>
 				<div>
 					{paperSizes.map((paperSize) => {
 						return (
@@ -158,7 +158,7 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 			</Row>
 
 			<Row>
-				<p>Size of sheet for pricing:</p>
+				<p>Select the size you want it priced for:</p>
 				<select
 					{...register('pricingSize')}
 					onChange={(e) => handlePricingSizeSelect(e)}
@@ -176,12 +176,12 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 			</Row>
 
 			<Row>
-				<p>Price you paid:</p>
+				<p>Price of the block/pad:</p>
 				<input {...register('price')} type='number' placeholder={0} />
 			</Row>
 
 			<Row>
-				<p>Number of sheets in block/pad:</p>
+				<p>Amount of sheets in block/pad:</p>
 				<input
 					{...register('numberOfSheets')}
 					type='number'
@@ -198,7 +198,7 @@ const BlockForm = ({ setComparisonEntries, comparisonEntries }) => {
 				/>
 			</Row>
 			<ButtonRow>
-				<input type='submit' />
+				<input type='submit' value='Compare' />
 			</ButtonRow>
 		</form>
 	)
