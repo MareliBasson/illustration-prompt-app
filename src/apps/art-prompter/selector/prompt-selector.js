@@ -96,9 +96,9 @@ export const PromptSelector = () => {
 						useCORS: true,
 						allowTaint: true,
 						backgroundColor: '#121236', // Match the app's background color
-						scale: 2, // Higher quality
+						scale: 1, // Higher quality
 						width: window.innerWidth,
-						height: window.innerHeight,
+						height: window.outerHeight,
 						logging: false, // Disable console logging
 						ignoreElements: (element) => {
 							// Ignore the screenshot button itself to avoid recursion
@@ -181,7 +181,7 @@ export const PromptSelector = () => {
 				)}
 			</div>
 
-			<ClearPrompts onClick={clear}>
+			<ClearPrompts onClick={clear} className='clear-prompt-button'>
 				<i className='fa fa-trash'></i> <span>Clear Selection</span>
 			</ClearPrompts>
 
@@ -197,6 +197,7 @@ export const PromptSelector = () => {
 
 const ClearPrompts = styled.div`
 	position: fixed;
+	z-index: 1000;
 	right: -126px;
 	width: 180px;
 	height: 80px;
@@ -247,6 +248,7 @@ const ClearPrompts = styled.div`
 
 const ScreenshotButton = styled.div`
 	position: fixed;
+	z-index: 1000;
 	right: -126px;
 	width: 180px;
 	height: 80px;
