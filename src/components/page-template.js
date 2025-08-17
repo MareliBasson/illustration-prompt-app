@@ -23,11 +23,11 @@ const Page = styled.div`
 	justify-content: space-between;
 `
 const PageContent = styled.div`
-	padding: 20px 0;
+	padding: 40px 0;
 	flex: 1;
 
 	@media (max-width: 768px) {
-		padding: 40px;
+		padding: 20px;
 	}
 `
 

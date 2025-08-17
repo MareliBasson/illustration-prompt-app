@@ -136,7 +136,8 @@ export const PromptSelector = () => {
 			</div>
 
 			<ClearPrompts onClick={clear}>
-				<i className='fa fa-trash'></i> <span>Clear Selection</span>
+				<i className='fa fa-trash'></i>
+				{/* <span>Clear Selection</span> */}
 			</ClearPrompts>
 		</div>
 	)
@@ -144,24 +145,25 @@ export const PromptSelector = () => {
 
 const ClearPrompts = styled.div`
 	position: fixed;
-	right: -126px;
-	width: 180px;
-	height: 80px;
-	top: 45%;
+	z-index: 1000;
+	width: 50px;
+	height: 50px;
+	top: 10px;
+	left: 10px;
 	background-color: ${tokens.colorRed};
-	border-radius: 80px 0% 0 80px;
+	border-radius: 80px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	text-align: right;
-	padding: 10px 10px 10px 20px;
+	/* padding: 10px 10px 10px 20px; */
 	transition: right 0.2s ease;
 	cursor: pointer;
 	box-sizing: border-box;
 
 	i {
 		font-size: 26px;
-		margin-right: 26px;
+		margin: 0 auto;
 	}
 	span {
 		font-size: 1.2rem;

@@ -114,6 +114,11 @@ const SelectorMenuWrapper = styled.div`
 	margin: 0 auto 20px;
 	border-bottom: 1px solid white;
 	padding-bottom: 20px;
+
+	@media (max-width: 768px) {
+		max-width: 100%;
+		padding: 0 10px 20px;
+	}
 `
 const PromptButton = styled.button`
 	background: ${(props) => props.$color || '#00bcd4'};
@@ -146,6 +151,14 @@ const PromptButton = styled.button`
 			transform: scale(1) translate3d(0, 0, 0);
 			color: white;
 		}
+	}
+
+	@media (max-width: 768px) {
+		width: 70px;
+		height: 70px;
+		margin: 0px 5px 10px;
+		padding: 2px 8px 0px;
+		font-size: 0.9em;
 	}
 `
 const LoaderWrapper = styled.div`
