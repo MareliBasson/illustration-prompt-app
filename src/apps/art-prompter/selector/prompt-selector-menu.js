@@ -117,7 +117,7 @@ const SelectorMenuWrapper = styled.div`
 
 	@media (max-width: 768px) {
 		max-width: 100%;
-		padding: 0 10px 20px;
+		padding: 0 0 20px;
 	}
 `
 const PromptButton = styled.button`
@@ -154,11 +154,19 @@ const PromptButton = styled.button`
 	}
 
 	@media (max-width: 768px) {
-		width: 70px;
-		height: 70px;
+		width: 23%;
+		height: 66px;
 		margin: 0px 5px 10px;
 		padding: 2px 8px 0px;
 		font-size: 0.9em;
+		border-radius: 20px;
+	}
+
+	@media (max-width: 540px) {
+		width: 30%;
+	}
+	@media (max-width: 340px) {
+		width: 45%;
 	}
 `
 const LoaderWrapper = styled.div`

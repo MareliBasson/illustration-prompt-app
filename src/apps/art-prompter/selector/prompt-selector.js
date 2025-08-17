@@ -136,8 +136,7 @@ export const PromptSelector = () => {
 			</div>
 
 			<ClearPrompts onClick={clear}>
-				<i className='fa fa-trash'></i>
-				{/* <span>Clear Selection</span> */}
+				<i className='fa fa-trash'></i> <span>Clear Selection</span>
 			</ClearPrompts>
 		</div>
 	)
@@ -145,25 +144,24 @@ export const PromptSelector = () => {
 
 const ClearPrompts = styled.div`
 	position: fixed;
-	z-index: 1000;
-	width: 50px;
-	height: 50px;
-	top: 10px;
-	left: 10px;
+	right: -126px;
+	width: 180px;
+	height: 80px;
+	top: 45%;
 	background-color: ${tokens.colorRed};
-	border-radius: 80px;
+	border-radius: 80px 0% 0 80px;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	text-align: right;
-	/* padding: 10px 10px 10px 20px; */
+	padding: 10px 10px 10px 20px;
 	transition: right 0.2s ease;
 	cursor: pointer;
 	box-sizing: border-box;
 
 	i {
 		font-size: 26px;
-		margin: 0 auto;
+		margin-right: 26px;
 	}
 	span {
 		font-size: 1.2rem;
@@ -171,6 +169,26 @@ const ClearPrompts = styled.div`
 	&:hover {
 		right: 0px;
 		transition: right 0.2s ease;
+	}
+
+	@media (max-width: 768px) {
+		padding: 0px;
+		height: 40px;
+		width: 40px;
+		top: 10px;
+		left: 20px;
+		right: auto;
+		border-radius: 80px;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		i {
+			font-size: 20px;
+			margin: 0;
+		}
+		span {
+			display: none;
+		}
 	}
 `
 
@@ -219,8 +237,8 @@ const PromptGridWrapper = styled.div`
 	column-gap: 10px;
 	row-gap: 15px;
 
-	@media (max-width: 552px) {
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	@media (max-width: 768px) {
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
 	}
 `
 const PromptCard = styled.div`
@@ -231,11 +249,15 @@ const PromptCard = styled.div`
 	border: 5px solid
 		${(props) => props.$color || lighten(0.3, tokens.colorPrimary)};
 	border-radius: 10px;
-	padding: 30px 20px 20px;
+	padding: 30px 20px 0px;
 	display: grid;
 	align-items: center;
 	grid-template-rows: 1fr 40px 30px;
 	grid-template-areas: 'description' 'category';
+
+	@media (max-width: 768px) {
+		padding: 36px 10px 0px;
+	}
 `
 const DeleteCard = styled.div`
 	position: absolute;
@@ -246,6 +268,12 @@ const DeleteCard = styled.div`
 
 	&:hover {
 		color: ${tokens.colorRed};
+	}
+
+	@media (max-width: 768px) {
+		top: 5px;
+		right: 10px;
+		font-size: 20px;
 	}
 `
 const CardTitle = styled.div`

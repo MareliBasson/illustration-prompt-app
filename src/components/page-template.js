@@ -23,7 +23,7 @@ const Page = styled.div`
 	justify-content: space-between;
 `
 const PageContent = styled.div`
-	padding: 40px 0;
+	padding: 40px 50px;
 	flex: 1;
 
 	@media (max-width: 768px) {
