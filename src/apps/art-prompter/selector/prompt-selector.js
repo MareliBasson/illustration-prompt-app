@@ -87,6 +87,52 @@ export const PromptSelector = () => {
 		setLists()
 	}
 
+	const takeScreenshot = () => {
+		// Use html2canvas to capture the current viewport
+		import('html2canvas')
+			.then((html2canvas) => {
+				html2canvas
+					.default(document.body, {
+						useCORS: true,
+						allowTaint: true,
+						backgroundColor: '#121236', // Match the app's background color
+						scale: 2, // Higher quality
+						width: window.innerWidth,
+						height: window.innerHeight,
+						logging: false, // Disable console logging
+						ignoreElements: (element) => {
+							// Ignore the screenshot button itself to avoid recursion
+							return element.classList.contains(
+								'screenshot-button'
+							)
+						},
+					})
+					.then((canvas) => {
+						// Create download link
+						const link = document.createElement('a')
+						const timestamp = new Date()
+							.toISOString()
+							.slice(0, 19)
+							.replace(/:/g, '-')
+						link.download = `prompt-selection-${timestamp}.png`
+						link.href = canvas.toDataURL('image/png', 0.9)
+						document.body.appendChild(link)
+						link.click()
+						document.body.removeChild(link)
+					})
+					.catch((error) => {
+						console.error('Screenshot failed:', error)
+						alert('Failed to take screenshot. Please try again.')
+					})
+			})
+			.catch((error) => {
+				console.error('Failed to load html2canvas:', error)
+				alert(
+					'Screenshot feature not available. Please install html2canvas.'
+				)
+			})
+	}
+
 	const getListStatus = () => {
 		const statusObj = {}
 
@@ -138,6 +184,13 @@ export const PromptSelector = () => {
 			<ClearPrompts onClick={clear}>
 				<i className='fa fa-trash'></i> <span>Clear Selection</span>
 			</ClearPrompts>
+
+			<ScreenshotButton
+				onClick={takeScreenshot}
+				className='screenshot-button'
+			>
+				<i className='fa fa-camera'></i> <span>Take Screenshot</span>
+			</ScreenshotButton>
 		</div>
 	)
 }
@@ -178,6 +231,56 @@ const ClearPrompts = styled.div`
 		top: 10px;
 		left: 20px;
 		right: auto;
+		border-radius: 80px;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		i {
+			font-size: 20px;
+			margin: 0;
+		}
+		span {
+			display: none;
+		}
+	}
+`
+
+const ScreenshotButton = styled.div`
+	position: fixed;
+	left: -126px;
+	width: 180px;
+	height: 80px;
+	top: 45%;
+	background-color: ${tokens.colorBlue};
+	border-radius: 0% 80px 80px 0%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	text-align: left;
+	padding: 10px 20px 10px 10px;
+	transition: left 0.2s ease;
+	cursor: pointer;
+	box-sizing: border-box;
+
+	i {
+		font-size: 26px;
+		margin-left: 26px;
+	}
+	span {
+		font-size: 1.2rem;
+	}
+	&:hover {
+		left: 0px;
+		transition: left 0.2s ease;
+	}
+
+	@media (max-width: 768px) {
+		padding: 0px;
+		height: 40px;
+		width: 40px;
+		top: 10px;
+		right: 20px;
+		left: auto;
 		border-radius: 80px;
 		justify-content: center;
 		align-items: center;
