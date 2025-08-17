@@ -189,7 +189,7 @@ export const PromptSelector = () => {
 				onClick={takeScreenshot}
 				className='screenshot-button'
 			>
-				<i className='fa fa-camera'></i> <span>Take Screenshot</span>
+				<i className='fa fa-camera'></i> <span>Screenshot</span>
 			</ScreenshotButton>
 		</div>
 	)
@@ -247,31 +247,31 @@ const ClearPrompts = styled.div`
 
 const ScreenshotButton = styled.div`
 	position: fixed;
-	left: -126px;
+	right: -126px;
 	width: 180px;
 	height: 80px;
-	top: 45%;
+	top: 30%;
 	background-color: ${tokens.colorBlue};
-	border-radius: 0% 80px 80px 0%;
+	border-radius: 80px 0% 0 80px;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	align-items: center;
-	text-align: left;
-	padding: 10px 20px 10px 10px;
-	transition: left 0.2s ease;
+	text-align: right;
+	padding: 10px 10px 10px 20px;
+	transition: right 0.2s ease;
 	cursor: pointer;
 	box-sizing: border-box;
 
 	i {
 		font-size: 26px;
-		margin-left: 26px;
+		margin-right: 26px;
 	}
 	span {
 		font-size: 1.2rem;
 	}
 	&:hover {
-		left: 0px;
-		transition: left 0.2s ease;
+		right: 0px;
+		transition: right 0.2s ease;
 	}
 
 	@media (max-width: 768px) {
@@ -279,8 +279,7 @@ const ScreenshotButton = styled.div`
 		height: 40px;
 		width: 40px;
 		top: 10px;
-		right: 20px;
-		left: auto;
+		left: 70px;
 		border-radius: 80px;
 		justify-content: center;
 		align-items: center;
